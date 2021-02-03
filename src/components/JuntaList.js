@@ -10,8 +10,8 @@ function JuntaList(props) {
 
   const Spinner = () => {
     return (
-      <div class="w-full h-full fixed block top-0 left-0 bg-white opacity-90 z-50">
-        <span class="text-green-500 opacity-90 top-1/2 my-0 mx-auto block relative ">
+      <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-90 z-50">
+        <span className="text-green-500 opacity-90 top-1/2 my-0 mx-auto block relative ">
           <FaSpinner className="w-10 h-10 mx-auto" />
         </span>
       </div>
@@ -60,11 +60,11 @@ function JuntaList(props) {
         />
         <table className="w-full bg-white">
           <thead className="bg-gray-800 text-white">
-            <tr className="bg-teal-400 w-full flex flex-initial flex-no wrap sm:table-row rounded-l-lg sm:rounded-none mb-2 sm:mb-0">
+            <tr >
               <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm hidden md:block">
                 ID
               </th>
-              <th className="w-96 text-left py-3 px-4 uppercase font-semibold text-sm">
+              <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
                 Product
               </th>
               <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
@@ -72,7 +72,7 @@ function JuntaList(props) {
               </th>
             </tr>
           </thead>
-          <tbody className="flex-1">
+          <tbody>
             {data.map((obj) => {
               let id = parseInt(obj.ID);
               return (
@@ -80,7 +80,7 @@ function JuntaList(props) {
                   key={obj.ID}
                   className={`${
                     id % 2 === 1 ? "bg-gray-200" : ""
-                  } flex flex-initial flex-no wrap sm:table-row sm:rounded-none mb-2 sm:mb-0`}
+                  }`}
                 >
                   <td className="w-2/12 text-left py-3 px-4 text-sm hidden md:block">
                     {obj.ID}
