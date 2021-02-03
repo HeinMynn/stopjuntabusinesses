@@ -10,12 +10,12 @@ function App() {
   return (
     <Router>
       <div className="max-w-full">
-        <Navbar  />
+        <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/participatinglist" component={PartiList} />
-          <Route exact path="/hitstop" component={Hitstop} />
-          <Route exact path="/juntabusinesses" component={JuntaList}/>
+          <Route path="/participatinglist" component={PartiList} />
+          <Route path="/hitstop" component={Hitstop} />
+          <Route path="/juntabusinesses" component={JuntaList} />
         </Switch>
       </div>
     </Router>
