@@ -4,13 +4,8 @@ function Hitstop(props) {
   const [newData, setNewData] = useState({
     email: "",
     type: "individual",
-    gender: "female",
-    aircon: "aircon",
-    date: "",
-    term: "",
-    cooking: true,
-    featuredImage: "",
-    contact: "test@gmail.com",
+    name: "",
+    juntabusinesses: "",
   });
   const encode = (data) => {
     return Object.keys(data)
@@ -20,7 +15,7 @@ function Hitstop(props) {
       .join("&");
   };
   const handleSubmit = (e) => {
-    fetch("/", {
+    fetch("/hitstop", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: encode({ "form-name": "hitstop", ...newData }),
@@ -130,7 +125,7 @@ function Hitstop(props) {
                 required
                 rows="3"
                 onChange={handleChange}
-                value={newData.name ? newData.name : ""}
+                value={newData.juntabusinesses ? newData.juntabusinesses : ""}
               />
             </div>
             <div className="submit w-full mb-6 px-3">
