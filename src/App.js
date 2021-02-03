@@ -12,10 +12,10 @@ function App() {
       <div className="max-w-full">
         <Navbar />
         <Switch>
-          <Route exact path="/" component={Home} />
           <Route path="/participatinglist" component={PartiList} />
           <Route path="/hitstop" component={Hitstop} />
           <Route path="/juntabusinesses" component={JuntaList} />
+          <Route exact path="/" component={Home} />
         </Switch>
       </div>
     </Router>
