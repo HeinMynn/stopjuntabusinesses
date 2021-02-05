@@ -6,6 +6,7 @@ function Hitstop(props) {
     type: "individual",
     name: "",
     juntabusinesses: "",
+    allowtodisplay: "allow",
   });
   const encode = (data) => {
     return Object.keys(data)
@@ -127,6 +128,23 @@ function Hitstop(props) {
                 onChange={handleChange}
                 value={newData.juntabusinesses ? newData.juntabusinesses : ""}
               />
+            </div>
+            <div className="type w-full mb-6 px-3">
+              <label
+                htmlFor="individual"
+                className="uppercase tracking-wide mb-2 mr-10"
+              >
+                <input
+                  type="checkbox"
+                  name="allowtodisplay"
+                  id="allowtodisplay"
+                  className="h-4 w-4 mr-2"
+                  value="allow"
+                  onChange={handleChange}
+                  checked={newData.allowtodisplay === "allow" ? true : false}
+                />
+                ယခုအချက်အလက်များကို ဖော်ပြရန် ခွင့်ပြုပါသည်။
+              </label>
             </div>
             <div className="submit w-full mb-6 px-3">
               <input

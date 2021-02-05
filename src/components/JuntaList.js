@@ -8,6 +8,9 @@ function JuntaList(props) {
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
+  const Industry = Array.from(new Set(data));
+  console.log("Industry ->" + Industry);
+
   const Spinner = () => {
     return (
       <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-90 z-50">
@@ -33,10 +36,8 @@ function JuntaList(props) {
     setSearch(s);
 
     if (search !== "") {
-      let dataFilter = data.filter(
-        (obj) =>
-          obj.Product.toLowerCase().includes(search.toLowerCase()) ||
-          obj.Industry.toLowerCase().includes(search.toLowerCase())
+      let dataFilter = data.filter((obj) =>
+        obj.Product.toLowerCase().includes(search.toLowerCase())
       );
       setData(dataFilter);
     }
@@ -49,18 +50,21 @@ function JuntaList(props) {
   return (
     <div className="w-full flex items-center justify-center">
       {isLoading ? <Spinner /> : ""}
-      <div className="w-full max-w-7xl mx-auto">
+      <div className="w-1/2 max-w-7xl mx-auto">
         <input
           name="search"
           type="text"
           placeholder="search here..."
-          className="border-2 border-gray-300 px-4 w-full pr-16 h-10 focus:outline-none"
+          className="border-2 border-gray-300 px-4 w-full pr-16 h-10 focus:outline-none my-2 rounded-md"
           onChange={onChange}
           value={search ? search : ""}
         />
+        {/* <select className="w-1/2">
+          <option value="food">food</option>
+              </select> */}
         <table className="w-full bg-white">
           <thead className="bg-gray-800 text-white">
-            <tr >
+            <tr>
               <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm hidden md:block">
                 ID
               </th>
@@ -78,9 +82,7 @@ function JuntaList(props) {
               return (
                 <tr
                   key={obj.ID}
-                  className={`${
-                    id % 2 === 1 ? "bg-gray-200" : ""
-                  }`}
+                  className={`${id % 2 === 1 ? "bg-gray-200" : ""}`}
                 >
                   <td className="w-2/12 text-left py-3 px-4 text-sm hidden md:block">
                     {obj.ID}
