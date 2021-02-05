@@ -8,9 +8,6 @@ function JuntaList(props) {
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
 
-  const Industry = Array.from(new Set(data));
-  console.log("Industry ->" + Industry);
-
   const Spinner = () => {
     return (
       <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-90 z-50">
@@ -50,18 +47,22 @@ function JuntaList(props) {
   return (
     <div className="w-full flex items-center justify-center">
       {isLoading ? <Spinner /> : ""}
-      <div className="w-1/2 max-w-7xl mx-auto">
+      <div className="w-full max-w-7xl mx-auto">
         <input
           name="search"
           type="text"
           placeholder="search here..."
-          className="border-2 border-gray-300 px-4 w-full pr-16 h-10 focus:outline-none my-2 rounded-md"
+          className="w-1/2 border-2 border-gray-300 px-4 pr-16 h-10 focus:outline-none my-2 rounded-md"
           onChange={onChange}
           value={search ? search : ""}
         />
-        {/* <select className="w-1/2">
-          <option value="food">food</option>
-              </select> */}
+        <select className="w-1/2 border border-gray-300 px-4">
+          <option value="">Filter by Industry</option>
+          <option value="Cigarettes">Cigarettes</option>
+          <option value="Entertainment/Tourism">Entertainment/Tourism</option>
+          <option value="Food and drink">Food and drink</option>
+          <option value="Media">Media</option>
+        </select>
         <table className="w-full bg-white">
           <thead className="bg-gray-800 text-white">
             <tr>
