@@ -57,7 +57,7 @@ function Navbar(props) {
           </div>
         </div>
       </nav>
-      <nav className="fixed bottom-0 w-full border bg-red-800 flex overflow-x-auto">
+      <nav className="flex md:hidden lg:hidden fixed bottom-0 w-full border bg-red-800 overflow-x-auto h-15">
         <NavLink
           to="/"
           className="flex flex-col flex-grow items-center justify-center
@@ -65,7 +65,8 @@ function Navbar(props) {
     ease-in-out bg-white hover:bg-gray-200 focus:text-orange-500"
           activeClassName="active"
         >
-          <FaHome className="w-10 h-auto" />
+          <FaHome className="w-5 h-auto p-1" />
+          <span>Home</span>
         </NavLink>
         <NavLink
           to="/hitstop"
@@ -74,7 +75,8 @@ function Navbar(props) {
     ease-in-out bg-white hover:bg-gray-200 focus:text-orange-500"
           activeClassName="active"
         >
-          <FaRegHandRock className="w-10 h-auto" />
+          <FaRegHandRock className="w-5 h-auto" />
+          <span>Hit Stop</span>
         </NavLink>
         <NavLink
           to="/juntabusinesses"
@@ -83,7 +85,8 @@ function Navbar(props) {
     ease-in-out bg-white hover:bg-gray-200 focus:text-orange-500"
           activeClassName="active"
         >
-          <FaListUl className="w-10 h-auto" />
+          <FaListUl className="w-5 h-auto" />
+          <span>Ban these</span>
         </NavLink>
         <NavLink
           to="/participatinglist"
@@ -92,7 +95,8 @@ function Navbar(props) {
     ease-in-out bg-white hover:bg-gray-200 focus:text-orange-500"
           activeClassName="active"
         >
-          <FaUsers className="w-10 h-auto" />
+          <FaUsers className="w-5 h-auto" />
+          <span>Participating</span>
         </NavLink>
       </nav>
     </div>
