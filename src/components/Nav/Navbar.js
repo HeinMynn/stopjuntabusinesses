@@ -8,8 +8,8 @@ function Navbar(props) {
       <nav className="bg-red-800">
         <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-31">
-            <div className="flex items-center">
-              <div className="flex-shrink-0 sm:mx-auto">
+            <div className="block lg:flex items-center xs:mx-auto">
+              <div className="mx-auto self-center lg:flex-shrink-0">
                 <Link to="/">
                   <img
                     className="h-20 w-14 py-1"
@@ -45,11 +45,11 @@ function Navbar(props) {
                     Hit Stop Junta Businesses
                   </NavLink>
                   <NavLink
-                    to="/participatinglist"
+                    to="/publicshame"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    Participating
+                    Shame
                   </NavLink>
                 </div>
               </div>
@@ -57,7 +57,7 @@ function Navbar(props) {
           </div>
         </div>
       </nav>
-      <nav className="flex md:hidden lg:hidden fixed bottom-0 w-full border bg-red-800 overflow-x-auto h-15">
+      <nav className="flex md:hidden lg:hidden fixed bottom-0 w-full border bg-red-800 overflow-x-auto h-16">
         <NavLink
           to="/"
           className="flex flex-col flex-grow items-center justify-center
@@ -65,7 +65,7 @@ function Navbar(props) {
     ease-in-out bg-white hover:bg-gray-200 focus:text-orange-500"
           activeClassName="active"
         >
-          <FaHome className="w-5 h-auto p-1" />
+          <FaHome className="w-5 h-auto" />
           <span>Home</span>
         </NavLink>
         <NavLink
@@ -86,17 +86,17 @@ function Navbar(props) {
           activeClassName="active"
         >
           <FaListUl className="w-5 h-auto" />
-          <span>Ban these</span>
+          <span>Ban</span>
         </NavLink>
         <NavLink
-          to="/participatinglist"
+          to="/publicshame"
           className="flex flex-col flex-grow items-center justify-center
 		overflow-hidden whitespace-no-wrap text-sm transition-colors duration-100
     ease-in-out bg-white hover:bg-gray-200 focus:text-orange-500"
           activeClassName="active"
         >
           <FaUsers className="w-5 h-auto" />
-          <span>Participating</span>
+          <span>Shame</span>
         </NavLink>
       </nav>
     </div>

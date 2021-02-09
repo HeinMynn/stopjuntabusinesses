@@ -16,6 +16,7 @@
     "react-icons": "^4.1.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "reactjs-popup": "^2.0.4",
     "styled-components": "^5.2.1",
     "tabletop": "^1.6.3",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
