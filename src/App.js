@@ -7,6 +7,7 @@ import Navbar from "./components/Nav/Navbar";
 import Hitstop from './components/Hitstop';
 import JuntaList from "./components/JuntaList";
 import PublicShame from "./components/PublicShame";
+import MobileNav from "./components/Nav/MobileNav";
 
 function App() {
   return (
@@ -19,6 +20,8 @@ function App() {
           <Route path="/juntabusinesses" component={JuntaList} />
           <Route exact path="/" component={Home} />
         </Switch>
+        <div className="h-16 md:hidden"></div>
+        <MobileNav />
       </div>
     </Router>
   );
