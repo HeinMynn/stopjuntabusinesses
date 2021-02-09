@@ -114,16 +114,16 @@ function PublicShame(props) {
                             {obj.Remark}
                           </div>
                           <div className="actions text-center">
-                            {
-                              obj.Profile && <a
-                              href={obj.Profile}
-                              target="_blank"
-                              rel="noreferrer"
-                              className="rounded-md bg-blue-400 px-4 py-2 text-white mr-4"
-                            >
-                              Profile
-                            </a>
-                            }
+                            {obj.Profile && (
+                              <a
+                                href={obj.Profile}
+                                target="_blank"
+                                rel="noreferrer"
+                                className="rounded-md bg-blue-400 px-4 py-2 text-white mr-4"
+                              >
+                                Profile
+                              </a>
+                            )}
                             <a
                               href={obj.CaseLink}
                               target="_blank"
