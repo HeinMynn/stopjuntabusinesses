@@ -57,7 +57,7 @@ function Navbar(props) {
           </div>
         </div>
       </nav>
-      <nav className="flex md:hidden lg:hidden fixed bottom-0 w-full border bg-red-800 overflow-x-auto h-16">
+      <nav className="flex md:hidden lg:hidden fixed bottom-0 w-full border bg-red-800 overflow-x-auto h-16 z-50">
         <NavLink
           to="/"
           className="flex flex-col flex-grow items-center justify-center

@@ -61,38 +61,39 @@ function PublicShame(props) {
                 className="border-b border-gray-300 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap"
               >
                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
-                  <span class="lg:hidden inline-block w-1/2 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                     ID
                   </span>
-                  <span className="inline-block w-1/2">{obj.ID}</span>
+                  <span className="inline-block w-3/4">{obj.ID}</span>
                 </td>
                 <td className="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
-                  <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
-                     အမည်
+                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    အမည်
                   </span>
-                  {obj.Name}
+                  <span className="inline-block w-3/4">{obj.Name}</span>
                 </td>
                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                  <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
-                     ရာထူး
+                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    ရာထူး
                   </span>
-                  {obj.Designation}
+                  <span className="inline-block w-3/4">{obj.Designation}</span>
                 </td>
                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                  <span class="lg:hidden absolute left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
-                     ဌာန/အလုပ်အကိုင်
+                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    ဌာန/အလုပ်အကိုင်
                   </span>
-                  {obj.Department}
+                  <span className="inline-block w-3/4">{obj.Department}</span>
                 </td>
-                <td className="w-full lg:w-auto text-left py-3 px-4 text-sm block lg:table-cell">
-                  <span class="lg:hidden absolute left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
-                     ဖြစ်စဉ်
+                <td className="w-full lg:w-auto text-center py-3 px-4 text-sm block lg:table-cell">
+                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    ဖြစ်စဉ်
                   </span>
+
                   <a
                     href={obj.CaseLink}
                     target="_blank"
                     rel="noreferrer"
-                    className="rounded-md bg-blue-400 px-4 py-2 text-white"
+                    className="inline-block w-3/4 rounded-md bg-blue-400 px-4 py-2 text-white"
                   >
                     Detail
                   </a>
