@@ -35,19 +35,19 @@ function PublicShame(props) {
       <table className="w-full bg-white">
         <thead className="text-blue-500 border-b border-gray-500">
           <tr>
-            <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm hidden md:block">
+            <th className="w-full lg:w-auto text-left py-3 px-4 uppercase font-semibold text-sm hidden lg:table-cell">
               စဉ်
             </th>
-            <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
+            <th className="w-full lg:w-auto text-left py-3 px-4 uppercase font-semibold text-sm hidden lg:table-cell">
               အမည်
             </th>
-            <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
+            <th className="w-full lg:w-auto text-left py-3 px-4 uppercase font-semibold text-sm hidden lg:table-cell">
               ရာထူး
             </th>
-            <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
+            <th className="w-full lg:w-autotext-left py-3 px-4 uppercase font-semibold text-sm hidden lg:table-cell">
               ဌာန/အလုပ်အကိုင်
             </th>
-            <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
+            <th className="w-full lg:w-auto text-left py-3 px-4 uppercase font-semibold text-sm hidden lg:table-cell">
               ဖြစ်စဉ်
             </th>
           </tr>
@@ -56,20 +56,38 @@ function PublicShame(props) {
           {shame.map((obj) => {
             // let id = parseInt(obj.ID);
             return (
-              <tr key={obj.ID} className="border-b border-gray-300">
-                <td className="w-2/12 text-left py-3 px-4 text-sm hidden md:block">
-                  {obj.ID}
+              <tr
+                key={obj.ID}
+                className="border-b border-gray-300 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap"
+              >
+                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b  block lg:table-cell relative lg:static">
+                  <span class="lg:hidden inline-block w-1/2 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                    ID
+                  </span>
+                  <span className="inline-block w-1/2">{obj.ID}</span>
                 </td>
-                <td className="w-max text-left py-3 px-4 text-sm">
+                <td className="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
+                  <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                     အမည်
+                  </span>
                   {obj.Name}
                 </td>
-                <td className="w-5/12 text-left py-3 px-4 text-sm">
+                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                  <span class="lg:hidden absolute top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                     ရာထူး
+                  </span>
                   {obj.Designation}
                 </td>
-                <td className="w-5/12 text-left py-3 px-4 text-sm">
+                <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                  <span class="lg:hidden absolute left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                     ဌာန/အလုပ်အကိုင်
+                  </span>
                   {obj.Department}
                 </td>
-                <td className="w-5/12 text-left py-3 px-4 text-sm">
+                <td className="w-full lg:w-auto text-left py-3 px-4 text-sm block lg:table-cell">
+                  <span class="lg:hidden absolute left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                     ဖြစ်စဉ်
+                  </span>
                   <a
                     href={obj.CaseLink}
                     target="_blank"
