@@ -1,6 +1,5 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import { FaHome, FaListUl, FaRegHandRock, FaUsers } from "react-icons/fa";
 
 function Navbar(props) {
   return (
