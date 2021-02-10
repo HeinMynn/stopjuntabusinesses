@@ -132,6 +132,53 @@ function Home(props) {
               </ul>
             </div>
           </div>
+          {/* left */}
+          <div class="flex flex-row-reverse md:contents">
+            <div class="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+              <h3 class="font-semibold text-lg mb-1">
+                မြို့ကြီးများတွင် ဆန္ဒထုတ်ဖော်မှုများ စတင်
+              </h3>
+              <ul className="list-disc ml-2">
+                <li>
+                  ရန်ကုန်၊ မန္တလေး၊ နေပြည်တော် မြို့ကြီးများတွင် လမ်းပေါ်ထွက်၍
+                  စစ်အာဏာရှင်ကို ဆန့်ကျင်ကြောင်း ပြသကြ
+                </li>
+                <li>အင်တာနက်လိုင်းများ အားလုံးကို ဖြတ်တောက်</li>
+              </ul>
+            </div>
+            <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
+              <div class="h-full w-16 flex items-center justify-center">
+                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+              </div>
+              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+                <span>6 Feb</span>
+              </div>
+            </div>
+          </div>
+          {/* right */}
+          <div class="flex md:contents">
+            <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
+              <div class="h-full w-16 flex items-center justify-center">
+                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+              </div>
+              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+                <span>7 Feb</span>
+              </div>
+            </div>
+            <div class="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
+              <h3 class="font-semibold text-lg mb-1">
+                တိုင်းဒေသကြီး၊ ပြည်နယ်လွှတ်တော်များ စတင်
+              </h3>
+              <ul className="list-disc ml-2">
+                <li>ရန်ကုန်တိုင်းဒေသကြီး လွှတ်တော် စတင်ခေါ်ယူ</li>
+                <li>
+                  ရန်ကုန်၊ မန္တလေး၊ မြောင်းမြ၊ ပုသိမ်၊ ပေါင်းတည်၊ မကွေး အပါအဝင်
+                  မြန်မာနိုင်ငံအနှံ့ လူထုဆန္ဒပြပွဲများ အရှိန်မြင့်တက်
+                </li>
+                <li>မြဝတီမြို့တွင် ဆန္ဒပြပွဲကို သေနတ်ပစ်ဖောက် ဖြိုခွဲ</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
