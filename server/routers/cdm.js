@@ -22,7 +22,7 @@ cdmRoutes.route("/add").post((req, res) => {
   const content = req.body.content;
   const link = req.body.link;
 
-  const newBusinessData = {
+  const newCDMData = {
     name,
     imgLink,
     content,
