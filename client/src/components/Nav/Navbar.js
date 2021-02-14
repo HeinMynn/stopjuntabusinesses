@@ -37,11 +37,11 @@ function Navbar(props) {
                   </NavLink>
 
                   <NavLink
-                    to="/hitstop"
+                    to="/cdm"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    Hit Stop Junta Businesses
+                    CDM Information Center
                   </NavLink>
                   <NavLink
                     to="/publicshame"

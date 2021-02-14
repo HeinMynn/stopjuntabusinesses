@@ -30,15 +30,20 @@ function JuntaList(props) {
   }
   function onChange(e) {
     const s = e.target.value;
-    setSearch(s);
-
-    if (search !== "") {
-      let dataFilter = data.filter((obj) =>
-        obj.Product.toLowerCase().includes(search.toLowerCase())
-      );
-      setData(dataFilter);
-    }
+    const searchString = s.toLowerCase();
+    setSearch(searchString);
   }
+
+  function filterSearch(array, value) {
+    return array.filter((e) => {
+      return e.Product.trim().toLowerCase().match(search);
+    });
+  }
+
+  if (search !== "") {
+    data = filterSearch(data, search);
+  }
+
   function onChangeInd(e) {
     setSearchInd(e.target.value);
   }
@@ -78,10 +83,25 @@ function JuntaList(props) {
             onChange={onChangeInd}
           >
             <option value="">-Industry</option>
+            <option value="Banking and finance">Banking and finance</option>
             <option value="Cigarettes">Cigarettes</option>
+            <option value="Communications">Communications</option>
+            <option value="Construction">Construction</option>
             <option value="Entertainment/Tourism">Entertainment/Tourism</option>
             <option value="Food and drink">Food and drink</option>
+            <option value="Health Servcies">Health Servcies</option>
+            <option value="Health and Beauty Products">
+              Health and Beauty Products
+            </option>
+            <option value="Industrial Estates/Offices">
+              Industrial Estates/Offices
+            </option>
+            <option value="Manufacturing">Manufacturing</option>
             <option value="Media">Media</option>
+            <option value="Port">Port</option>
+            <option value="Retail">Retail</option>
+            <option value="Trading companies">Trading companies</option>
+            <option value="Transport">Transport</option>
           </select>
         </div>
       </div>
@@ -103,10 +123,7 @@ function JuntaList(props) {
           {data.map((obj) => {
             // let id = parseInt(obj.ID);
             return (
-              <tr
-                key={obj.ID}
-                className="border-b border-gray-300"
-              >
+              <tr key={obj.ID} className="border-b border-gray-300">
                 <td className="w-2/12 text-left py-3 px-4 text-sm hidden md:block">
                   {obj.ID}
                 </td>
@@ -121,15 +138,6 @@ function JuntaList(props) {
           })}
         </tbody>
       </table>
-      {/* <div className="inner w-full">
-        <DataTable
-          title="Stop Buying Junta Businesses"
-          columns={columns}
-          data={data}
-          striped
-          highlightOnHover
-        />
-      </div> */}
     </div>
   );
 }

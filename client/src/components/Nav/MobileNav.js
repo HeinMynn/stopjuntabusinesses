@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { FaHome, FaListUl, FaRegHandRock, FaUsers } from "react-icons/fa";
+import { FaHome, FaInfoCircle, FaListUl, FaUsers } from "react-icons/fa";
 
 function MobileNav(props) {
   return (
@@ -17,14 +17,14 @@ function MobileNav(props) {
           <span>Home</span>
         </NavLink>
         <NavLink
-          to="/hitstop"
+          to="/cdm"
           className="flex flex-col flex-grow items-center justify-center
 		overflow-hidden whitespace-no-wrap text-sm transition-colors duration-100
     ease-in-out bg-white hover:bg-gray-200 focus:text-orange-500"
           activeClassName="active"
         >
-          <FaRegHandRock className="w-5 h-auto" />
-          <span>Hit Stop</span>
+          <FaInfoCircle className="w-5 h-auto" />
+          <span>CDM Info</span>
         </NavLink>
         <NavLink
           to="/juntabusinesses"
