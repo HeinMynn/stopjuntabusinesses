@@ -18,8 +18,10 @@ connection.once("open", function () {
 });
 
 const businessRouter = require("./routers/businesses");
+const cdmRouter = require("./routers/cdm");
 
 app.use("/business", businessRouter);
+app.use("/cdm", cdmRouter);
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
