@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 // import DataTable from "react-data-table-component";
 import Tabletop from "tabletop";
 import { FaSpinner } from "react-icons/fa";
+import axios from "axios";
 
 function JuntaList(props) {
   let [data, setData] = useState([]);
@@ -11,23 +12,35 @@ function JuntaList(props) {
 
   const Spinner = () => {
     return (
-      <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-90 z-50">
-        <span className="text-green-500 opacity-90 top-1/2 my-0 mx-auto block relative ">
-          <FaSpinner className="w-10 h-10 mx-auto" />
-        </span>
+      <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+        <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-64 w-64"></div>
       </div>
     );
   };
-  function fetchData() {
-    Tabletop.init({
-      key: "1l8JYfCSKMGYGjZ45XhGSmtwS9p8h82sZY9UAP1PaTL4",
-      callback: (googleData) => {
-        setData(googleData);
+
+  function fetchBusiness() {
+    axios
+      .get("https://mm010221.herokuapp.com/business/")
+      .then((res) => {
+        setData(res.data);
         setLoading(false);
-      },
-      simpleSheet: true,
-    });
+        console.log(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
+
+  // function fetchData() {
+  //   Tabletop.init({
+  //     key: "1l8JYfCSKMGYGjZ45XhGSmtwS9p8h82sZY9UAP1PaTL4",
+  //     callback: (googleData) => {
+  //       setData(googleData);
+  //       setLoading(false);
+  //     },
+  //     simpleSheet: true,
+  //   });
+  // }
   function onChange(e) {
     const s = e.target.value;
     const searchString = s.toLowerCase();
@@ -36,7 +49,7 @@ function JuntaList(props) {
 
   function filterSearch(array, value) {
     return array.filter((e) => {
-      return e.Product.trim().toLowerCase().match(search);
+      return e.product.trim().toLowerCase().match(search);
     });
   }
 
@@ -54,17 +67,17 @@ function JuntaList(props) {
 
   function filterInd(array, value) {
     return array.filter((e) => {
-      return e.Industry === value;
+      return e.industry === value;
     });
   }
 
   useEffect(() => {
     if (search === "") {
-      fetchData();
+      fetchBusiness();
     }
   }, [search]);
   return (
-    <div className="w-full items-center justify-center px-1">
+    <div className="container items-center justify-center px-1 mx-auto">
       {isLoading ? <Spinner /> : ""}
       <div className="flex w-full max-w-full lg:max-w-6xl items-center mx-auto">
         <div className="flex-initial md:w-1/2 search mr-3">
@@ -108,9 +121,6 @@ function JuntaList(props) {
       <table className="w-full bg-white">
         <thead className="text-blue-500 border-b border-gray-500">
           <tr>
-            <th className="w-2/12 text-left py-3 px-4 uppercase font-semibold text-sm hidden md:block">
-              ID
-            </th>
             <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
               Product
             </th>
@@ -123,15 +133,12 @@ function JuntaList(props) {
           {data.map((obj) => {
             // let id = parseInt(obj.ID);
             return (
-              <tr key={obj.ID} className="border-b border-gray-300">
-                <td className="w-2/12 text-left py-3 px-4 text-sm hidden md:block">
-                  {obj.ID}
-                </td>
+              <tr key={obj._id} className="border-b border-gray-300">
                 <td className="w-max text-left py-3 px-4 text-sm">
-                  {obj.Product}
+                  {obj.product}
                 </td>
                 <td className="w-5/12 text-left py-3 px-4 text-sm">
-                  {obj.Industry}
+                  {obj.industry}
                 </td>
               </tr>
             );

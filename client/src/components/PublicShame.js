@@ -9,10 +9,8 @@ function PublicShame(props) {
 
   const Spinner = () => {
     return (
-      <div className="w-full h-full fixed block top-0 left-0 bg-white opacity-90 z-50">
-        <span className="text-green-500 opacity-90 top-1/2 my-0 mx-auto block relative ">
-          <FaSpinner className="w-10 h-10 mx-auto" />
-        </span>
+      <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
+        <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-64 w-64"></div>
       </div>
     );
   };
