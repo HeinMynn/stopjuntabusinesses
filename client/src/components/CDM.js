@@ -41,7 +41,7 @@ function CDM(props) {
       <div className="card text-center">
         <div className="cardBody mx-auto">
           <img
-            src={`/images/${props.imgLink}`}
+            src={props.imgLink}
             className="rounded-full mx-auto w-32 h-32 shadow-2xl border-4 border-white"
             alt={props.name}
           />
