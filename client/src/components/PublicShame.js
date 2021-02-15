@@ -113,7 +113,7 @@ function PublicShame(props) {
                             {obj.remark}
                           </div>
                           <div className="actions text-center">
-                            {obj.Profile && (
+                            {obj.profile && (
                               <a
                                 href={obj.profile}
                                 target="_blank"
