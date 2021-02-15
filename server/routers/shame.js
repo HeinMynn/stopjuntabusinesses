@@ -49,7 +49,7 @@ shameRoutes.route("/add").post((req, res) => {
       res.status(400).send("adding new Shaming failed");
     });
 });
-
+//nothing
 shameRoutes.route("/:id").get(function (req, res) {
   let id = req.params.id;
   Shame.findById(id, function (err, shame) {
