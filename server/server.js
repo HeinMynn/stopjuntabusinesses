@@ -6,9 +6,15 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
 
-const corsOptions = {
-  origin: "https://010221.org",
-  optionsSuccessStatus: 200,
+var whitelist = ["https://010221.org", "http://localhost:3000"];
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
 };
 
 app.use(cors(corsOptions));
