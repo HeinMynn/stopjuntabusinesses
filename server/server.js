@@ -5,7 +5,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
-app.use(cors());
+
+const corsOptions = {
+  origin: "https://010221.org",
+  optionsSuccessStatus: 200,
+};
+
+app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
