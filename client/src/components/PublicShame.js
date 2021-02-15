@@ -91,7 +91,7 @@ function PublicShame(props) {
                   <div className="w-3/4 mx-auto">
                     <Popup
                       trigger={
-                        <button className="button px-4 py-2 border bg-green-400 text-white">
+                        <button className="button px-4 py-2 border bg-red-400 text-white focus:outline-none rounded-md hover:bg-red-800">
                            အသေးစိတ် ဖတ်ရန်
                         </button>
                       }
@@ -100,7 +100,7 @@ function PublicShame(props) {
                       {(close) => (
                         <div className="modal w-full px-1 py-4">
                           <button
-                            className="close float-right border border-gray-600 px-2 rounded"
+                            className="close float-right border border-gray-600 px-2 rounded focus:outline-none"
                             onClick={close}
                           >
                             &times;
@@ -118,16 +118,16 @@ function PublicShame(props) {
                                 href={obj.profile}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="rounded-md bg-blue-400 px-4 py-2 text-white mr-4"
+                                className="rounded-md bg-red-400 px-4 py-2 text-white mr-4 hover:bg-red-800"
                               >
-                                Profile
+                                ဖေ့စ်ဘွတ်ခ်အကောင့်
                               </a>
                             )}
                             <a
                               href={obj.caseLink}
                               target="_blank"
                               rel="noreferrer"
-                              className="rounded-md bg-blue-400 px-4 py-2 text-white"
+                              className="rounded-md bg-red-400 px-4 py-2 text-white hover:bg-red-800"
                             >
                               မူရင်းလင့်ခ်
                             </a>
