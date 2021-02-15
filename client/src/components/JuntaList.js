@@ -1,7 +1,4 @@
 import React, { useEffect, useState } from "react";
-// import DataTable from "react-data-table-component";
-import Tabletop from "tabletop";
-import { FaSpinner } from "react-icons/fa";
 import axios from "axios";
 
 function JuntaList(props) {

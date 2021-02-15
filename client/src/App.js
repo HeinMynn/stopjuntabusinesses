@@ -9,6 +9,7 @@ import JuntaList from "./components/JuntaList";
 import PublicShame from "./components/PublicShame";
 import MobileNav from "./components/Nav/MobileNav";
 import CDMDetail from "./components/CDMDetail";
+import Daily from "./components/Daily";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/cdm" component={CDM} />
           <Route path="/cdmdetail/:id" component={CDMDetail} />
           <Route path="/juntabusinesses" component={JuntaList} />
+          <Route path="/daily/:date" component={Daily} />
           <Route exact path="/" component={Home} />
         </Switch>
         <div className="h-16 md:hidden"></div>
