@@ -19,9 +19,11 @@ connection.once("open", function () {
 
 const businessRouter = require("./routers/businesses");
 const cdmRouter = require("./routers/cdm");
+const shameRouter = require("./routers/shame");
 
 app.use("/business", businessRouter);
 app.use("/cdm", cdmRouter);
+app.use("/shame", shameRouter);
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
