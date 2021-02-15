@@ -21,23 +21,24 @@ function JuntaList(props) {
       .then((res) => {
         setData(res.data);
         setLoading(false);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }
+  function groupBy(data, key) {
+    return data.reduce((acc, x) => {
+      acc[x[key]] = [...(acc[x[key]] || []), x];
+      return acc;
+    }, {});
+  }
+  var i = 0;
+  var groupByIndustry = groupBy(data, "industry");
 
-  // function fetchData() {
-  //   Tabletop.init({
-  //     key: "1l8JYfCSKMGYGjZ45XhGSmtwS9p8h82sZY9UAP1PaTL4",
-  //     callback: (googleData) => {
-  //       setData(googleData);
-  //       setLoading(false);
-  //     },
-  //     simpleSheet: true,
-  //   });
-  // }
+  function clearFilter() {
+    setSearch("");
+    setSearchInd("");
+  }
   function onChange(e) {
     const s = e.target.value;
     const searchString = s.toLowerCase();
@@ -52,6 +53,7 @@ function JuntaList(props) {
 
   if (search !== "") {
     data = filterSearch(data, search);
+    groupByIndustry = groupBy(data, "industry");
   }
 
   function onChangeInd(e) {
@@ -60,6 +62,7 @@ function JuntaList(props) {
 
   if (searchInd !== "") {
     data = filterInd(data, searchInd);
+    groupByIndustry = groupBy(data, "industry");
   }
 
   function filterInd(array, value) {
@@ -74,25 +77,32 @@ function JuntaList(props) {
     }
   }, [search]);
   return (
-    <div className="container items-center justify-center px-1 mx-auto">
+    <div className="container px-2 mx-auto">
+      <h1 className="text-xl md:text-4xl font-black text-gray-600 text-center my-4">
+        တပ်ပိုင် စီးပွားရေး လုပ်ငန်းများ သပိတ်မှောက် လှုပ်ရှားမှု
+      </h1>
+      <hr />
       {isLoading ? <Spinner /> : ""}
-      <div className="flex w-full max-w-full lg:max-w-6xl items-center mx-auto">
-        <div className="flex-initial md:w-1/2 search mr-3">
+      <div className="lg:max-w-4xl grid lg:grid-cols-2 gap-2 mx-auto">
+        <div className="search">
           <input
             name="search"
             type="text"
             placeholder="search here..."
-            className="w-full border-2 border-gray-300 px-4 h-10 focus:outline-none my-2 mr-2 rounded-md"
+            className="w-full border-2  border-gray-300 px-4 h-10 focus:outline-none my-2 rounded-md"
             onChange={onChange}
             value={search ? search : ""}
           />
         </div>
-        <div className="flex-1 md:w-1/2 filter">
+        <div className="filter grid grid-cols-4">
           <select
-            className="w-full border border-gray-300 px-4 py-2 my-2 h-10 rounded-md"
+            className="border border-gray-300 px-4 py-2 my-2 h-10 rounded-md col-span-3"
             onChange={onChangeInd}
+            value={searchInd}
           >
-            <option value="">-Industry</option>
+            <option value="" disabled>
+              --- Choose Industry ---
+            </option>
             <option value="Banking and finance">Banking and finance</option>
             <option value="Cigarettes">Cigarettes</option>
             <option value="Communications">Communications</option>
@@ -113,35 +123,61 @@ function JuntaList(props) {
             <option value="Trading companies">Trading companies</option>
             <option value="Transport">Transport</option>
           </select>
+          <button
+            onClick={clearFilter}
+            className="text-red-400 cursor-pointer focus:outline-none"
+          >
+            clear filter
+          </button>
         </div>
       </div>
-      <table className="w-full bg-white">
-        <thead className="text-blue-500 border-b border-gray-500">
-          <tr>
-            <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
-              Product
-            </th>
-            <th className="w-5/12 text-left py-3 px-4 uppercase font-semibold text-sm">
-              Industry
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((obj) => {
-            // let id = parseInt(obj.ID);
-            return (
-              <tr key={obj._id} className="border-b border-gray-300">
-                <td className="w-max text-left py-3 px-4 text-sm">
-                  {obj.product}
-                </td>
-                <td className="w-5/12 text-left py-3 px-4 text-sm">
-                  {obj.industry}
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
+      <div className="wrap">
+        <div className="list mx-auto">
+          {groupByIndustry &&
+            Object.keys(groupByIndustry).map((ind) => {
+              i++;
+              return (
+                <div key={i} className="w-full lg:w-1/2 mx-auto">
+                  <h3 className="text-red-400 font-serif text-2xl font-bold mt-5 mb-1 text-left leading-7 tracking-wide">
+                    {ind}
+                  </h3>
+                  {groupByIndustry[ind].map((obj) => {
+                    return (
+                      <div
+                        key={obj._id}
+                        className="w-full border border-gray-200 px-4 py-4 rounded-md mb-2 shadow-md"
+                      >
+                        <p className="font-normal text-gray-600 tracking-wider leading-4">
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                          {obj.product}
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        
+                        </p>
+                      </div>
+                    );
+                  })}
+                </div>
+              );
+            })}
+        </div>
+      </div>
     </div>
   );
 }

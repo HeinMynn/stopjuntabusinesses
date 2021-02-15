@@ -3,15 +3,15 @@ import { Link, NavLink } from "react-router-dom";
 
 function Navbar(props) {
   return (
-    <div>
+    <div className="fixed w-full shadow-md z-50 top-0">
       <nav className="bg-red-800">
         <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-31">
+          <div className="md:flex items-center justify-between h-31">
             <div className="block lg:flex items-center xs:mx-auto">
-              <div className="mx-auto self-center lg:flex-shrink-0">
+              <div className="mx-auto lg:self-center lg:flex-shrink-0">
                 <Link to="/">
                   <img
-                    className="h-20 w-14 py-1"
+                    className="h-20 w-14 py-1 block mx-auto"
                     src="/images/logo.png"
                     alt="Workflow"
                   />

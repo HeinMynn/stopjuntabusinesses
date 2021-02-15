@@ -16,6 +16,7 @@ function App() {
     <Router>
       <div className="max-w-full container">
         <Navbar />
+        <div className="h-24"></div>
         <Switch>
           <Route path="/publicshame" component={PublicShame} />
           <Route path="/cdm" component={CDM} />

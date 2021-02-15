@@ -8,15 +8,15 @@ function Home(props) {
           စစ်အာဏာရှင်စနစ် ကျဆုံးပါစေ
         </h3>
       </div> */}
-      <div class="container mx-auto">
-        <div class="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
+      <div className="container mx-auto">
+        <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
           {/* left */}
-          <div class="flex flex-row-reverse md:contents">
-            <div class="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
-              <h3 class="font-semibold text-lg mb-1">
+          <div className="flex flex-row-reverse md:contents">
+            <div className="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+              <h3 className="font-semibold text-lg mb-1">
                 စစ်တပ်မှ အဓမ္မ အာဏာသိမ်းယူ
               </h3>
-              <p class="leading-tight text-justify">
+              <p className="leading-tight text-justify">
                 စစ်တပ်မှ နိုင်ငံတော်သမ္မတ ဦးဝင်းမြင့်နှင့် အတိုင်ပင်ခံ
                 ဒေါ်အောင်ဆန်းစုကြည်ကို ဖမ်းဆီးပြီး နိုင်ငံတော်အာဏာကို အဓမ္မ
                 သိမ်းယူ။ ယာယီသမ္မတ ဦးမြင့်ဆွေမှ နိုင်ငံတော်အာဏာကို
@@ -26,39 +26,39 @@ function Home(props) {
                 <a href="/daily/1Feb">အသေးစိတ်</a>
               </div>
             </div>
-            <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-              <div class="h-full w-16 flex items-center justify-center">
-                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+            <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
+              <div className="h-full w-16 flex items-center justify-center">
+                <div className="h-full w-1 bg-red-800 pointer-events-none"></div>
               </div>
-              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+              <div className="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
                 <span>1 Feb</span>
               </div>
             </div>
           </div>
           {/* right */}
-          <div class="flex md:contents">
-            <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-              <div class="h-full w-16 flex items-center justify-center">
-                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+          <div className="flex md:contents">
+            <div className="col-start-5 col-end-6 mr-10 md:mx-auto relative">
+              <div className="h-full w-16 flex items-center justify-center">
+                <div className="h-full w-1 bg-red-800 pointer-events-none"></div>
               </div>
-              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+              <div className="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
                 <span>2 Feb</span>
               </div>
             </div>
-            <div class="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
-              <h3 class="font-semibold text-lg mb-1">
+            <div className="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
+              <h3 className="font-semibold text-lg mb-1">
                 သံပုန်းတီး လှုပ်ရှားမှု စတင်
               </h3>
-              <p class="leading-tight text-justify">
+              <p className="leading-tight text-justify">
                 စစ်အာဏာရှင်စနစ်ကို မကျေနပ်ကြောင်း ပြသသည့်အနေဖြင့် ပြည်သူများမှ ည
                 (၈) နာရီတွင် သံပုန်းတီး
               </p>
             </div>
           </div>
           {/* left */}
-          <div class="flex flex-row-reverse md:contents">
-            <div class="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
-              <h3 class="font-semibold text-lg mb-1">
+          <div className="flex flex-row-reverse md:contents">
+            <div className="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+              <h3 className="font-semibold text-lg mb-1">
                 စစ်အုပ်ချုပ်ရေးအဖွဲ့ဖွဲ့
               </h3>
               <ul className="list-disc ml-2">
@@ -75,19 +75,19 @@ function Home(props) {
                 <li>ဆရာဝန်များမှ Civil Disobedience Movement စတင်။</li>
               </ul>
             </div>
-            <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-              <div class="h-full w-16 flex items-center justify-center">
-                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+            <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
+              <div className="h-full w-16 flex items-center justify-center">
+                <div className="h-full w-1 bg-red-800 pointer-events-none"></div>
               </div>
-              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+              <div className="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
                 <span>3 Feb</span>
               </div>
             </div>
           </div>
           {/* left */}
-          <div class="flex flex-row-reverse md:contents">
-            <div class="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
-              <h3 class="font-semibold text-lg mb-1">
+          <div className="flex flex-row-reverse md:contents">
+            <div className="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+              <h3 className="font-semibold text-lg mb-1">
                 Social Media များကို စတင် ပိတ်ဆို့
               </h3>
               <ul className="list-disc ml-2">
@@ -99,27 +99,27 @@ function Home(props) {
                 </li>
               </ul>
             </div>
-            <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-              <div class="h-full w-16 flex items-center justify-center">
-                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+            <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
+              <div className="h-full w-16 flex items-center justify-center">
+                <div className="h-full w-1 bg-red-800 pointer-events-none"></div>
               </div>
-              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+              <div className="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
                 <span>4 Feb</span>
               </div>
             </div>
           </div>
           {/* right */}
-          <div class="flex md:contents">
-            <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-              <div class="h-full w-16 flex items-center justify-center">
-                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+          <div className="flex md:contents">
+            <div className="col-start-5 col-end-6 mr-10 md:mx-auto relative">
+              <div className="h-full w-16 flex items-center justify-center">
+                <div className="h-full w-1 bg-red-800 pointer-events-none"></div>
               </div>
-              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+              <div className="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
                 <span>5 Feb</span>
               </div>
             </div>
-            <div class="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
-              <h3 class="font-semibold text-lg mb-1">
+            <div className="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
+              <h3 className="font-semibold text-lg mb-1">
                 ပြည်ထောင်စုလွှတ်တော် ကိုယ်စားပြုကော်မတီဖွဲ့စည်း
               </h3>
               <ul className="list-disc ml-2">
@@ -136,9 +136,9 @@ function Home(props) {
             </div>
           </div>
           {/* left */}
-          <div class="flex flex-row-reverse md:contents">
-            <div class="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
-              <h3 class="font-semibold text-lg mb-1">
+          <div className="flex flex-row-reverse md:contents">
+            <div className="bg-red-500 col-start-1 col-end-5 p-4 rounded-xl my-4 ml-auto shadow-md">
+              <h3 className="font-semibold text-lg mb-1">
                 မြို့ကြီးများတွင် ဆန္ဒထုတ်ဖော်မှုများ စတင်
               </h3>
               <ul className="list-disc ml-2">
@@ -149,27 +149,27 @@ function Home(props) {
                 <li>အင်တာနက်လိုင်းများ အားလုံးကို ဖြတ်တောက်</li>
               </ul>
             </div>
-            <div class="col-start-5 col-end-6 md:mx-auto relative mr-10">
-              <div class="h-full w-16 flex items-center justify-center">
-                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+            <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
+              <div className="h-full w-16 flex items-center justify-center">
+                <div className="h-full w-1 bg-red-800 pointer-events-none"></div>
               </div>
-              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+              <div className="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
                 <span>6 Feb</span>
               </div>
             </div>
           </div>
           {/* right */}
-          <div class="flex md:contents">
-            <div class="col-start-5 col-end-6 mr-10 md:mx-auto relative">
-              <div class="h-full w-16 flex items-center justify-center">
-                <div class="h-full w-1 bg-red-800 pointer-events-none"></div>
+          <div className="flex md:contents">
+            <div className="col-start-5 col-end-6 mr-10 md:mx-auto relative">
+              <div className="h-full w-16 flex items-center justify-center">
+                <div className="h-full w-1 bg-red-800 pointer-events-none"></div>
               </div>
-              <div class="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
+              <div className="flex flex-col justify-center w-16 h-16 absolute top-1/2 -mt-3 rounded-full bg-red-500 shadow text-center">
                 <span>7 Feb</span>
               </div>
             </div>
-            <div class="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
-              <h3 class="font-semibold text-lg mb-1">
+            <div className="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
+              <h3 className="font-semibold text-lg mb-1">
                 တိုင်းဒေသကြီး၊ ပြည်နယ်လွှတ်တော်များ စတင်
               </h3>
               <ul className="list-disc ml-2">
