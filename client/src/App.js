@@ -27,8 +27,8 @@ function App() {
             <Route exact path="/" component={Home} />
           </Switch>
         </div>
-        <div className="h-16 md:hidden"></div>
         <Footer />
+        <div className="h-16 md:hidden"></div>
         <MobileNav />
       </div>
     </Router>

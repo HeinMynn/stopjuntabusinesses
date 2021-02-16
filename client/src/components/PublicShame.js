@@ -120,7 +120,7 @@ function PublicShame(props) {
                                 rel="noreferrer"
                                 className="rounded-md bg-red-400 px-4 py-2 text-white mr-4 hover:bg-red-800"
                               >
-                                ဖေ့စ်ဘွတ်ခ်အကောင့်
+                                Profile
                               </a>
                             )}
                             <a

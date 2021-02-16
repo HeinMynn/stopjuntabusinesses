@@ -19,7 +19,7 @@ function CDM(props) {
       return null;
     }
   }
-  function fetchRooms() {
+  function fetchCDM() {
     axios
       .get("https://mm010221.herokuapp.com/cdm/")
       .then((res) => {
@@ -33,7 +33,7 @@ function CDM(props) {
   }
 
   useEffect(() => {
-    fetchRooms();
+    fetchCDM();
   }, []);
 
   const Card = (props) => {

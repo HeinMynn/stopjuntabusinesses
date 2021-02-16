@@ -22,9 +22,9 @@ function Home(props) {
                 သိမ်းယူ။ ယာယီသမ္မတ ဦးမြင့်ဆွေမှ နိုင်ငံတော်အာဏာကို
                 မင်းအောင်လှိုင်ထံ ပေးအပ်။
               </p>
-              <div className="detail">
+              {/* <div className="detail">
                 <a href="/daily/1Feb">အသေးစိတ်</a>
-              </div>
+              </div> */}
             </div>
             <div className="col-start-5 col-end-6 md:mx-auto relative mr-10">
               <div className="h-full w-16 flex items-center justify-center">
