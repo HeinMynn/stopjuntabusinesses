@@ -10,7 +10,7 @@ function JuntaList(props) {
   const Spinner = () => {
     return (
       <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
-        <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-64 w-64"></div>
+        <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-32 w-32"></div>
       </div>
     );
   };
@@ -148,27 +148,7 @@ function JuntaList(props) {
                         className="w-full border border-gray-200 px-4 py-4 rounded-md mb-2 shadow-md"
                       >
                         <p className="font-normal text-gray-600 tracking-wider leading-4">
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
-                          
                           {obj.product}
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
-                        
                         </p>
                       </div>
                     );
