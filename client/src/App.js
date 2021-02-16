@@ -10,10 +10,12 @@ import PublicShame from "./components/PublicShame";
 import MobileNav from "./components/Nav/MobileNav";
 import CDMDetail from "./components/CDMDetail";
 import Daily from "./components/Daily";
+import ScrollToTop from "./components/Nav/ScrollToTop";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="max-w-full container">
         <Navbar />
         <div className="h-24"></div>

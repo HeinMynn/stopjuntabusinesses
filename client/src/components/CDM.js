@@ -25,7 +25,6 @@ function CDM(props) {
       .then((res) => {
         setCDM(res.data);
         setLoading(false);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);

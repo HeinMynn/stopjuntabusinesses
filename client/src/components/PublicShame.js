@@ -9,7 +9,7 @@ function PublicShame(props) {
   const Spinner = () => {
     return (
       <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
-        <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-64 w-64"></div>
+        <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-32 w-32"></div>
       </div>
     );
   };
@@ -19,7 +19,6 @@ function PublicShame(props) {
       .then((res) => {
         setShame(res.data);
         setLoading(false);
-        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -71,25 +70,25 @@ function PublicShame(props) {
                 className="border-b border-gray-300 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap"
               >
                 <td className="w-full lg:w-auto p-3 text-gray-800 border border-b text-center block lg:table-cell relative lg:static">
-                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                  <span className="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                     အမည်
                   </span>
                   <span className="inline-block w-3/4">{obj.name}</span>
                 </td>
                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                  <span className="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                     ရာထူး
                   </span>
                   <span className="inline-block w-3/4">{obj.designation}</span>
                 </td>
                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                  <span class="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                  <span className="lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                     ဌာန/အလုပ်အကိုင်
                   </span>
                   <span className="inline-block w-3/4">{obj.department}</span>
                 </td>
                 <td className="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static mb-5">
-                  <span class="float-left lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
+                  <span className="float-left lg:hidden inline-block w-1/4 top-0 left-0 bg-blue-200 px-2 py-1 text-xs font-bold uppercase">
                     ဖြစ်စဉ်
                   </span>
                   <div className="w-3/4 mx-auto">
