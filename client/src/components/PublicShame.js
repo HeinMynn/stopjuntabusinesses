@@ -40,6 +40,10 @@ function PublicShame(props) {
   }, []);
   return (
     <div className="w-full items-center justify-center px-1">
+      <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider">
+        Public Shaming List
+      </h1>
+      <hr />
       {isLoading ? <Spinner /> : ""}
       <table className="w-full bg-white mt-4">
         <thead className="text-blue-500 border-b border-gray-500">
