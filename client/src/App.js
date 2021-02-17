@@ -11,18 +11,27 @@ import MobileNav from "./components/Nav/MobileNav";
 import CDMDetail from "./components/CDMDetail";
 import Daily from "./components/Daily";
 import ScrollToTop from "./components/Nav/ScrollToTop";
+import Login from "./components/Login";
+import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
+import AddCDM from "./components/Admin/AddCDM";
+import LogOut from "./components/LogOut";
+import { isLogin } from "./utils";
 
 function App() {
   return (
     <Router>
       <ScrollToTop />
       <div className="max-w-full container">
-        <Navbar />
+        <Navbar loggedIn={isLogin()}/>
         <div className="h-24"></div>
         <div className="min-h-screen">
           <Switch>
+            <PublicRoute restricted={true} path="/login" component={Login} />
+            <PrivateRoute path="/logout" component={LogOut} />
+            <PrivateRoute path="/admin/addnewcdm" component={AddCDM}  />
             <Route path="/publicshame" component={PublicShame} />
-            <Route path="/cdm" component={CDM} />
+            <PublicRoute restricted={false} path="/cdm" component={CDM} />
             <Route path="/cdmdetail/:id" component={CDMDetail} />
             <Route path="/juntabusinesses" component={JuntaList} />
             <Route path="/daily/:date" component={Daily} />

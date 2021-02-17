@@ -3,11 +3,17 @@ import React from "react";
 function Home(props) {
   return (
     <div className=" w-full h-full">
-      {/* <div className="mainBanner block bg-red-500 w-full h-96 text-center">
-        <h3 className="font-extrabold text-lg py-4">
-          စစ်အာဏာရှင်စနစ် ကျဆုံးပါစေ
-        </h3>
+      {/* <div className="titleWrapper w-full">
+        <h1 class="title text-center">
+          01 Feb 21
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+          <span class="drop"></span>
+        </h1>
       </div> */}
+      <h1 className="title text-center">01 Feb 21</h1>
       <div className="container mx-auto">
         <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
           {/* left */}

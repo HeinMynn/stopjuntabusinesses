@@ -2,6 +2,7 @@ import React from "react";
 import { Link, NavLink } from "react-router-dom";
 
 function Navbar(props) {
+  const LoggedStatus = props.loggedIn;
   return (
     <div className="fixed w-full shadow-md z-50 top-0">
       <nav className="bg-red-800">
@@ -50,6 +51,17 @@ function Navbar(props) {
                   >
                     Shame
                   </NavLink>
+                  {LoggedStatus ? (
+                    <NavLink
+                      to="/logout"
+                      className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
+                      activeClassName="active"
+                    >
+                      Log Out
+                    </NavLink>
+                  ) : (
+                    ""
+                  )}
                 </div>
               </div>
             </div>

@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function CDM(props) {
-  const [cdm, setCDM] = useState([]);
+  let [cdm, setCDM] = useState([]);
   const [isLoading, setLoading] = useState(true);
-
+  const [searchCity, setSearchCity] = useState("");
+  var i = 0;
   function CdmCheck() {
     if (cdm.length === 0 && isLoading === false) {
       return (
@@ -34,6 +35,24 @@ function CDM(props) {
   useEffect(() => {
     fetchCDM();
   }, []);
+  let Cities = [...new Set(cdm.map((d) => d.city))];
+  
+  function onChangeCity(e) {
+    setSearchCity(e.target.value);
+  }
+
+  if (searchCity !== "") {
+    cdm = filterCity(cdm, searchCity);
+  }
+  function clearFilter() {
+    setSearchCity("");
+  }
+
+  function filterCity(array, value) {
+    return array.filter((e) => {
+      return e.city === value;
+    });
+  }
 
   const Card = (props) => {
     return (
@@ -77,13 +96,47 @@ function CDM(props) {
       )}
       <div className="mx-auto">
         <img
-          src="https://bn1301files.storage.live.com/y4mFIW9cd1mOdi36W1ne8UXWUFBA7vzpK46BcSLKbAwZjzNPapp9Y9ztJ1bVzb-4sHvIWV_vxEz0VFO_aYmQSBTAaf6QzOS2pDYYLCWVOarqv6tjjStgbiFtaV7-EtTw_pXNJlbEP_5cSAZ0Jgrlzd1uN3gbohVxKxuPMabVapf6lI?width=960&height=550&cropmode=none"
+          src="https://bn1301files.storage.live.com/y4m1anhU9nlFZR2nIXw19TGONK6nooP2ztl4q45sDq-SYH2YYec2QNr7_6VkBp3_wLNrJ2PlPKayStjpJjo1eDTaDE6VNzjzEqDZwEK30kcSCLH4UQsyg-XnFBMU6sGyGYTuBjljxQfWbvAlvUycODAQztEPVMjSftvhJXlseRi1XM?width=1024&height=587&cropmode=none"
           alt="banner"
           className="block mx-auto"
         />
+        <p className="text-xs text-right mb-3">
+          Art by
+          <a
+            href="https://www.facebook.com/jajahappy1"
+            className="cursor-pointer text-red-400"
+          >
+            {" "}
+            Ja Paul Art Journey
+          </a>
+        </p>
       </div>
       <CdmCheck />
-
+      <div className="Filter grid grid-cols-4 md:w-1/3 mx-auto">
+        <select
+          name="city"
+          id="city"
+          className="w-full border border-gray-300 text-gray-600 focus:outline-none px-4 py-2 my-2 h-10 rounded-md col-span-3"
+          onChange={onChangeCity}
+          value={searchCity}
+        >
+          <option value="">Filter By City</option>
+          {Cities.map((obj) => {
+            i++;
+            return (
+              <option value={obj} key={i}>
+                {obj}
+              </option>
+            );
+          })}
+        </select>
+        <button
+          onClick={clearFilter}
+          className="text-red-400 cursor-pointer focus:outline-none"
+        >
+          clear filter
+        </button>
+      </div>
       <div className="cardWrap grid md:grid-cols-2 lg:grid-cols-4 gap-2">
         {cdm.map((obj) => {
           return (
