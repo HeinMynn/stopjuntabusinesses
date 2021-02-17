@@ -32,10 +32,12 @@ connection.once("open", function () {
 const businessRouter = require("./routers/businesses");
 const cdmRouter = require("./routers/cdm");
 const shameRouter = require("./routers/shame");
+const userRouter = require("./routers/users");
 
 app.use("/business", businessRouter);
 app.use("/cdm", cdmRouter);
 app.use("/shame", shameRouter);
+app.use("/user", userRouter);
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
