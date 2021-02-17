@@ -105,6 +105,8 @@ function CDM(props) {
           <a
             href="https://www.facebook.com/jajahappy1"
             className="cursor-pointer text-red-400"
+            target="_blank"
+            rel="noreferrer"
           >
             {" "}
             Ja Paul Art Journey
