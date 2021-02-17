@@ -13,5 +13,11 @@ let CDM = new Schema({
   link: {
     type: String,
   },
+  city: {
+    type: String,
+  },
+  region: {
+    type: String,
+  },
 });
 module.exports = mongoose.model("CDM", CDM);

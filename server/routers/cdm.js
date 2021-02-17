@@ -21,12 +21,16 @@ cdmRoutes.route("/add").post((req, res) => {
   const imgLink = req.body.imgLink;
   const content = req.body.content;
   const link = req.body.link;
+  const city = req.body.city;
+  const region = req.body.region;
 
   const newCDMData = {
     name,
     imgLink,
     content,
     link,
+    city,
+    region,
   };
 
   const newCDM = new CDM(newCDMData);
@@ -45,6 +49,34 @@ cdmRoutes.route("/:id").get(function (req, res) {
   CDM.findById(id, function (err, cdm) {
     res.json(cdm);
   });
+});
+
+cdmRoutes.route("/update/:id").post((req, res) => {
+  const name = req.body.name;
+  const imgLink = req.body.imgLink;
+  const content = req.body.content;
+  const link = req.body.link;
+  const city = req.body.city;
+  const region = req.body.region;
+
+  const newCDMData = {
+    name,
+    imgLink,
+    content,
+    link,
+    city,
+    region,
+  };
+
+  const newCDM = new CDM(newCDMData);
+  newCDM
+    .save()
+    .then((cdm) => {
+      res.status(200).json({ cdm: "CDM info added successfully" });
+    })
+    .catch((err) => {
+      res.status(400).send("adding new CDM failed");
+    });
 });
 
 module.exports = cdmRoutes;
