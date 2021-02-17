@@ -2,6 +2,8 @@ const express = require("express");
 const cdmRoutes = express.Router();
 let CDM = require("../models/cdm.model");
 
+const validateCDMInput = require("../validation/checkCDM");
+
 cdmRoutes.route("/testcdm").get(function (req, res) {
   res.send("Hello from CDM!");
 });
@@ -17,6 +19,11 @@ cdmRoutes.route("/").get(function (req, res) {
 });
 
 cdmRoutes.route("/add").post((req, res) => {
+  const { errors, isValid } = validateCDMInput(req.body);
+  // Check validation
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
   const name = req.body.name;
   const imgLink = req.body.imgLink;
   const content = req.body.content;
