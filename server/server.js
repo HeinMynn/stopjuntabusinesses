@@ -33,11 +33,13 @@ const businessRouter = require("./routers/businesses");
 const cdmRouter = require("./routers/cdm");
 const shameRouter = require("./routers/shame");
 const userRouter = require("./routers/users");
+const cityRouter = require("./routers/city");
 
 app.use("/business", businessRouter);
 app.use("/cdm", cdmRouter);
 app.use("/shame", shameRouter);
 app.use("/user", userRouter);
+app.use("/city", cityRouter);
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
