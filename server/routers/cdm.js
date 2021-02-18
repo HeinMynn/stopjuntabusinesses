@@ -36,9 +36,14 @@ cdmRoutes.route("/").get(function (req, res) {
 
 cdmRoutes.route("/add", authenticateJWT).post((req, res) => {
   const { errors, isValid } = validateCDMInput(req.body);
+  const { email } = req.user;
   // Check validation
   if (!isValid) {
     return res.status(400).json(errors);
+  }
+
+  if (email !== "admin@010221.org") {
+    return res.sendStatus(403);
   }
   const name = req.body.name;
   const imgLink = req.body.imgLink;
