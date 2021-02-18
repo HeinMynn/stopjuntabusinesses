@@ -34,7 +34,7 @@ cdmRoutes.route("/").get(function (req, res) {
   });
 });
 
-cdmRoutes.route("/add", authenticateJWT).post((req, res) => {
+cdmRoutes.post("/add", authenticateJWT, (req, res) => {
   const { errors, isValid } = validateCDMInput(req.body);
   const { email } = req.user;
   // Check validation
@@ -43,7 +43,9 @@ cdmRoutes.route("/add", authenticateJWT).post((req, res) => {
   }
 
   if (email !== "admin@010221.org") {
-    return res.sendStatus(403);
+    return res
+      .status(403)
+      .send({ auth: false, message: "Failed to authenticate token."  +  email });
   }
   const name = req.body.name;
   const imgLink = req.body.imgLink;
