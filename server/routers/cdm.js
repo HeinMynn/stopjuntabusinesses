@@ -1,12 +1,28 @@
 const express = require("express");
 const cdmRoutes = express.Router();
+const jwt = require("jsonwebtoken");
+
 let CDM = require("../models/cdm.model");
 
 const validateCDMInput = require("../validation/checkCDM");
 
-cdmRoutes.route("/testcdm").get(function (req, res) {
-  res.send("Hello from CDM!");
-});
+const authenticateJWT = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (authHeader) {
+    const token = authHeader.split(" ")[1];
+
+    jwt.verify(token, process.env.secretOrKey, (err, user) => {
+      if (err) {
+        return res.sendStatus(403);
+      }
+      req.user = user;
+      next();
+    });
+  } else {
+    res.sendStatus(401);
+  }
+};
 
 cdmRoutes.route("/").get(function (req, res) {
   CDM.find(function (err, cdm) {
@@ -18,7 +34,7 @@ cdmRoutes.route("/").get(function (req, res) {
   });
 });
 
-cdmRoutes.route("/add").post((req, res) => {
+cdmRoutes.route("/add", authenticateJWT).post((req, res) => {
   const { errors, isValid } = validateCDMInput(req.body);
   // Check validation
   if (!isValid) {
