@@ -5,7 +5,13 @@ function CDM(props) {
   let [cdm, setCDM] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [searchCity, setSearchCity] = useState("");
+  const [searchRegion, setSearchRegion] = useState("");
+  let [location, setLocation] = useState([]);
   var i = 0;
+
+  //cities && regions
+  // let
+
   function CdmCheck() {
     if (cdm.length === 0 && isLoading === false) {
       return (
@@ -13,12 +19,23 @@ function CDM(props) {
           className="px-4 py-3 leading-normal mt-5 text-yellow-700 bg-yellow-100 rounded-lg w-1/2 mx-auto"
           role="alert"
         >
-          <p>No Room Found!</p>
+          <p>No CDM Found!</p>
         </div>
       );
     } else {
       return null;
     }
+  }
+
+  function fetchCity() {
+    axios
+      .get("https://mm010221.herokuapp.com/city/")
+      .then((res) => {
+        setLocation(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   function fetchCDM() {
     axios
@@ -34,23 +51,58 @@ function CDM(props) {
 
   useEffect(() => {
     fetchCDM();
+    fetchCity();
   }, []);
-  let Cities = [...new Set(cdm.map((d) => d.city))];
   
+  function getUniqueRegionBy(arr, key,subkey) {
+    return [...new Map(arr.map((item) => [item[key][subkey], item[key]])).values()];
+  }
+  function getUniqueCityBy(arr, key) {
+    return [
+      ...new Map(arr.map((item) => [item[key], item])).values(),
+    ];
+  }
+
+  let Cities = getUniqueCityBy(location, 'name');
+  const Regions = getUniqueRegionBy(location, 'region', 'mmName');
+
   function onChangeCity(e) {
     setSearchCity(e.target.value);
   }
-
+//filter city
   if (searchCity !== "") {
     cdm = filterCity(cdm, searchCity);
   }
   function clearFilter() {
     setSearchCity("");
+    setSearchRegion("");
   }
 
   function filterCity(array, value) {
     return array.filter((e) => {
       return e.city === value;
+    });
+  }
+
+
+  //filter region
+  function onChangeRegion(e) {
+    setSearchRegion(e.target.value);
+  }
+ 
+
+  if (searchRegion !== "") {
+    cdm = filterRegion(cdm, searchRegion);
+    Cities=filterCityByRegion(Cities,searchRegion)
+  }
+function filterCityByRegion(array, value) {
+  return array.filter((e) => {
+    return e.region.name === value;
+  });
+}
+  function filterRegion(array, value) {
+    return array.filter((e) => {
+      return e.region === value;
     });
   }
 
@@ -88,8 +140,8 @@ function CDM(props) {
   return (
     <div className="mx-auto container px-4">
       {isLoading ? (
-        <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
-          <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-32 w-32"></div>
+        <div className="absolute right-1/2 bottom-1/3  transform translate-x-1/2 translate-y-1/2 ">
+          <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-16 w-16"></div>
         </div>
       ) : (
         ""
@@ -113,33 +165,59 @@ function CDM(props) {
           </a>
         </p>
       </div>
-      <CdmCheck />
-      <div className="Filter grid grid-cols-4 md:w-1/3 mx-auto">
-        <select
-          name="city"
-          id="city"
-          className="w-full border border-gray-300 text-gray-600 focus:outline-none px-4 py-2 my-2 h-10 rounded-md col-span-3"
-          onChange={onChangeCity}
-          value={searchCity}
-        >
-          <option value="">Filter By City</option>
-          {Cities.map((obj) => {
-            i++;
-            return (
-              <option value={obj} key={i}>
-                {obj}
-              </option>
-            );
-          })}
-        </select>
-        <button
-          onClick={clearFilter}
-          className="text-red-400 cursor-pointer focus:outline-none"
-        >
-          clear filter
-        </button>
+
+      <div className="Filter grid lg:grid-cols-2 gap-2 md:w-2/3 mx-auto">
+        <div className="region">
+          <select
+            name="region"
+            id="region"
+            className="w-full border border-gray-300 text-gray-600 focus:outline-none px-4 py-2 my-2 h-10 rounded-md"
+            onChange={onChangeRegion}
+            value={searchRegion}
+          >
+            <option value="" disabled>
+              Filter By Region
+            </option>
+            {Regions.map((obj) => {
+              i++;
+              return (
+                <option value={obj.name} key={i}>
+                  {obj.mmName}
+                </option>
+              );
+            })}
+          </select>
+        </div>
+        <div className="city grid grid-cols-4">
+          <select
+            name="city"
+            id="city"
+            className="w-full border border-gray-300 text-gray-600 focus:outline-none px-4 py-2 my-2 h-10 rounded-md col-span-3"
+            onChange={onChangeCity}
+            value={searchCity}
+          >
+            <option value="" disabled>
+              Filter By City
+            </option>
+            {Cities.map((obj) => {
+              i++;
+              return (
+                <option value={obj.name} key={i}>
+                  {obj.mmName}
+                </option>
+              );
+            })}
+          </select>
+          <button
+            onClick={clearFilter}
+            className="text-red-400 cursor-pointer focus:outline-none"
+          >
+            clear filter
+          </button>
+        </div>
       </div>
       <div className="cardWrap grid md:grid-cols-2 lg:grid-cols-4 gap-2">
+        <CdmCheck />
         {cdm.map((obj) => {
           return (
             <Card
