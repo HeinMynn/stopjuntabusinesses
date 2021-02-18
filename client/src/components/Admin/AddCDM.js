@@ -39,8 +39,9 @@ function AddCDM(props) {
         headers
       )
       .then((res) => {
-        localStorage.setItem("token", res.data.token);
+        // localStorage.setItem("token", res.data.token);
         setMsg(res.data.cdm);
+        console.log(res);
         history.push("/admin/addnewcdm");
         setNewCDM({
           ...newCDM,
