@@ -50,9 +50,11 @@ function CDM(props) {
   }
 
   useEffect(() => {
-    fetchCDM();
-    fetchCity();
-  }, []);
+    if (searchCity === "" && searchRegion === "") {
+      fetchCDM();
+      fetchCity();
+    }
+  }, [searchCity]);
   
   function getUniqueRegionBy(arr, key,subkey) {
     return [...new Map(arr.map((item) => [item[key][subkey], item[key]])).values()];
@@ -92,8 +94,8 @@ function CDM(props) {
  
 
   if (searchRegion !== "") {
-    cdm = filterRegion(cdm, searchRegion);
-    Cities=filterCityByRegion(Cities,searchRegion)
+    Cities = filterCityByRegion(Cities, searchRegion);
+    // cdm = filterRegion(cdm, searchRegion);
   }
 function filterCityByRegion(array, value) {
   return array.filter((e) => {
@@ -196,9 +198,7 @@ function filterCityByRegion(array, value) {
             onChange={onChangeCity}
             value={searchCity}
           >
-            <option value="" disabled>
-              Filter By City
-            </option>
+            <option value="">Filter By City</option>
             {Cities.map((obj) => {
               i++;
               return (
