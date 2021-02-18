@@ -23,7 +23,7 @@ function AddCDM(props) {
     e.preventDefault();
 
       const headers = {
-        headers: { Authorization: `Bearer ${token}` },
+        headers: { authorization: token },
       };
     axios
       .post(
@@ -55,7 +55,8 @@ function AddCDM(props) {
       })
       .catch((err) => {
         if (err.response) {
-          setErrors(err.response.data);
+            setErrors(err.response.data);
+            console.log(err.response);
         }
       });
   }
