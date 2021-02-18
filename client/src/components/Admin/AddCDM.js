@@ -5,7 +5,8 @@ import { useHistory } from "react-router-dom";
 function AddCDM(props) {
   const history = useHistory();
   const [msg, setMsg] = useState("");
-  const [errors, setErrors] = useState([]);
+    const [errors, setErrors] = useState([]);
+    const token = localStorage.getItem("token");
   const [newCDM, setNewCDM] = useState({
     name: "",
     imgLink: "",
@@ -20,15 +21,23 @@ function AddCDM(props) {
   }
   function handleSubmit(e) {
     e.preventDefault();
+
+      const headers = {
+        headers: { Authorization: `Bearer ${token}` },
+      };
     axios
-      .post("https://mm010221.herokuapp.com/cdm/add", {
-        name: newCDM.name,
-        imgLink: newCDM.imgLink,
-        content: newCDM.content,
-        link: newCDM.link,
-        city: newCDM.city,
-        region: newCDM.region,
-      })
+      .post(
+        "https://mm010221.herokuapp.com/cdm/add",
+        {
+          name: newCDM.name,
+          imgLink: newCDM.imgLink,
+          content: newCDM.content,
+          link: newCDM.link,
+          city: newCDM.city,
+          region: newCDM.region,
+        },
+        headers
+      )
       .then((res) => {
         localStorage.setItem("token", res.data.token);
         setMsg(res.data.cdm);
