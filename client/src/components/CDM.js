@@ -7,6 +7,7 @@ function CDM(props) {
   const [searchCity, setSearchCity] = useState("");
   const [searchRegion, setSearchRegion] = useState("");
   let [location, setLocation] = useState([]);
+  const [cityMsg, setCityMsg] = useState("");
   var i = 0;
 
   //cities && regions
@@ -70,6 +71,7 @@ function CDM(props) {
 
   function onChangeCity(e) {
     setSearchCity(e.target.value);
+    setCityMsg("");
   }
 //filter city
   if (searchCity !== "") {
@@ -90,6 +92,7 @@ function CDM(props) {
   //filter region
   function onChangeRegion(e) {
     setSearchRegion(e.target.value);
+    setCityMsg("မိမိမြို့နယ်ကို ရွေးပါ");
   }
  
 
@@ -191,23 +194,32 @@ function filterCityByRegion(array, value) {
           </select>
         </div>
         <div className="city grid grid-cols-4">
-          <select
-            name="city"
-            id="city"
-            className="w-full border border-gray-300 text-gray-600 focus:outline-none px-4 py-2 my-2 h-10 rounded-md col-span-3"
-            onChange={onChangeCity}
-            value={searchCity}
-          >
-            <option value="">Filter By City</option>
-            {Cities.map((obj) => {
-              i++;
-              return (
-                <option value={obj.name} key={i}>
-                  {obj.mmName}
-                </option>
-              );
-            })}
-          </select>
+          <div className="grid col-span-3">
+            <select
+              name="city"
+              id="city"
+              className="w-full border border-gray-300 text-gray-600 focus:outline-none px-4 py-2 my-2 h-10 rounded-md"
+              onChange={onChangeCity}
+              value={searchCity}
+            >
+              <option value="">Filter By City</option>
+              {Cities.map((obj) => {
+                i++;
+                return (
+                  <option value={obj.name} key={i}>
+                    {obj.mmName}
+                  </option>
+                );
+              })}
+            </select>
+            {cityMsg ?
+              <span
+                className="bg-red-400 text-xs text-white rounded-md block w-full px-2 py-2"
+              >
+                {cityMsg}
+              </span>
+              : ""}
+          </div>
           <button
             onClick={clearFilter}
             className="text-red-400 cursor-pointer focus:outline-none"
