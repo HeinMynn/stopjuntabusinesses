@@ -10,6 +10,8 @@
     "@testing-library/user-event": "^12.6.3",
     "autoprefixer": "^9.8.6",
     "axios": "^0.21.1",
+    "contentful": "^8.1.7",
+    "interweave": "^12.7.0",
     "postcss": "^7.0.35",
     "react": "^17.0.1",
     "react-data-table-component": "^7.0.0-alpha-5",

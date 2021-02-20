@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Interweave from "interweave";
 
 function CDM(props) {
   let [cdm, setCDM] = useState([]);
@@ -55,7 +56,7 @@ function CDM(props) {
       fetchCDM();
       fetchCity();
     }
-  }, [searchCity]);
+  }, [searchCity,searchRegion]);
   
   function getUniqueRegionBy(arr, key,subkey) {
     return [...new Map(arr.map((item) => [item[key][subkey], item[key]])).values()];
@@ -105,11 +106,12 @@ function filterCityByRegion(array, value) {
     return e.region.name === value;
   });
 }
-  function filterRegion(array, value) {
-    return array.filter((e) => {
-      return e.region === value;
-    });
-  }
+  // function filterRegion(array, value) {
+  //   fetchCDM();
+  //   return array.filter((e) => {
+  //     return e.region === value;
+  //   });
+  // }
 
   const Card = (props) => {
     return (
@@ -125,7 +127,7 @@ function filterCityByRegion(array, value) {
               {props.name}
             </h3>
             <div className="body py-2 md:min-h-cardContent text-sm leading-6">
-              {props.content}
+              <Interweave content={props.content}/>
             </div>
             <div className="cardFooter w-full py-4 border-t border-gray-200">
               <a
@@ -212,13 +214,15 @@ function filterCityByRegion(array, value) {
                 );
               })}
             </select>
-            {cityMsg ?
-              <span
-                className="bg-red-400 text-xs text-white rounded-md block w-full px-2 py-2"
-              >
-                {cityMsg}
-              </span>
-              : ""}
+            
+              {cityMsg ? (
+                <span className="bg-red-400 text-xs text-white rounded-md block w-full px-2 py-2">
+                  {cityMsg}
+                </span>
+              ) : (
+                ""
+              )}
+
           </div>
           <button
             onClick={clearFilter}
