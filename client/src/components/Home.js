@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Interweave from "interweave";
+import Spinner from "./Parts/Spinner";
 
 function Home(props) {
   const contentful = require("contentful");
+  const [isLoading, setLoading] = useState(true);
+
   const client = contentful.createClient({
     space: "r2ak70f7xd3d",
     accessToken: "86Bm_4aW31vATZgvdJOMuZbiZ2l04DATXR0Ihfluvrg",
@@ -12,6 +15,7 @@ function Home(props) {
   useEffect(() => {
     client.getEntries({ order: "sys.createdAt" }).then((response) => {
       setPost(response.items);
+      setLoading(false);
     });
   }, []);
 
@@ -63,6 +67,7 @@ function Home(props) {
       <h1 className="title text-center">01 Feb 21</h1>
       <div className="container mx-auto">
         <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
+          {isLoading ? <Spinner /> : ""}
           {/* left */}
           {post &&
             post.map((obj) => {

@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Spinner from "./Parts/Spinner";
 
 function JuntaList(props) {
   let [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [searchInd, setSearchInd] = useState("");
-
-  const Spinner = () => {
-    return (
-      <div className="absolute right-1/2 bottom-1/2  transform translate-x-1/2 translate-y-1/2 ">
-        <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-32 w-32"></div>
-      </div>
-    );
-  };
 
   function fetchBusiness() {
     axios

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Interweave from "interweave";
+import Spinner from "./Parts/Spinner";
 
 function CDM(props) {
   let [cdm, setCDM] = useState([]);
@@ -146,13 +147,7 @@ function filterCityByRegion(array, value) {
   };
   return (
     <div className="mx-auto container px-4">
-      {isLoading ? (
-        <div className="absolute right-1/2 bottom-1/3  transform translate-x-1/2 translate-y-1/2 ">
-          <div className="border-solid animate-spin border-t-0 rounded-full border-blue-400 border-8 h-16 w-16"></div>
-        </div>
-      ) : (
-        ""
-      )}
+      {isLoading ? <Spinner /> : ""}
       <div className="mx-auto">
         <img
           src="https://bn1301files.storage.live.com/y4m1anhU9nlFZR2nIXw19TGONK6nooP2ztl4q45sDq-SYH2YYec2QNr7_6VkBp3_wLNrJ2PlPKayStjpJjo1eDTaDE6VNzjzEqDZwEK30kcSCLH4UQsyg-XnFBMU6sGyGYTuBjljxQfWbvAlvUycODAQztEPVMjSftvhJXlseRi1XM?width=1024&height=587&cropmode=none"
@@ -214,15 +209,14 @@ function filterCityByRegion(array, value) {
                 );
               })}
             </select>
-            
-              {cityMsg ? (
-                <span className="bg-red-400 text-xs text-white rounded-md block w-full px-2 py-2">
-                  {cityMsg}
-                </span>
-              ) : (
-                ""
-              )}
 
+            {cityMsg ? (
+              <span className="bg-red-400 text-xs text-white rounded-md block w-full px-2 py-2">
+                {cityMsg}
+              </span>
+            ) : (
+              ""
+            )}
           </div>
           <button
             onClick={clearFilter}
