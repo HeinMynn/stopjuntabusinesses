@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Popup from "reactjs-popup";
 import Spinner from "./Parts/Spinner";
 import { Link } from "react-router-dom";
 import { FaBriefcase, FaUserTie } from "react-icons/fa";

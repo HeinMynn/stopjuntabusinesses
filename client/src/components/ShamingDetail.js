@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import { useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams } from "react-router-dom";
 import Spinner from "./Parts/Spinner";
 
 function CDMDetail(props) {
@@ -29,10 +29,10 @@ function CDMDetail(props) {
   return (
     <div className="w-full md:max-w-4xl mx-auto items-center justify-center px-1">
       <div className="heading flex justify-items-center">
-        <button onClick={history.goBack} className="items-center flex-none">
+        <Link to="/publicshame" className="text-center flex-none">
           <IoIosArrowBack className="text-gray-500 inline-block" size={30} />
           <span>Back</span>
-        </button>
+        </Link>
         <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider flex-1">
           Public Shaming List
         </h1>
@@ -47,10 +47,12 @@ function CDMDetail(props) {
         <div>
           <div className="profile mx-auto text-center mb-4">
             <img
-              src={`/images/${
-                profile.gender === "male"
-                  ? "sample-male.png"
-                  : "sample-female.png"
+              src={`${
+                profile.image
+                  ? profile.image
+                  : profile.gender === "male"
+                  ? "/images/sample-male.png"
+                  : "/images/sample-female.png"
               }`}
               alt="sample"
               className="w-32 h-auto inline-block"
@@ -69,17 +71,46 @@ function CDMDetail(props) {
             <div className="remark text-center mb-2 px-4">{profile.remark}</div>
             <div className="proof">
               {profile.proof ? <img src={profile.proof} alt="proof" /> : ""}
+              {profile.proof2 ? (
+                <video width="320" height="240" controls className="mx-auto">
+                  <source src={`${profile.proof2}#t=0.1`} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                ""
+              )}
+            </div>
+            <div className="case mx-auto text-center mt-4">
               {profile.caseLink ? (
-                <img
-                  src={profile.caseLink}
+                <a
+                  href={profile.caseLink}
                   alt="case"
-                  className="w-1/2 mx-auto"
-                />
+                  className="px-6 py-2 mr-4 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-md text-center"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  အသေးစိတ် ကြည့်ရန်
+                </a>
+              ) : (
+                ""
+              )}
+
+              {profile.profile ? (
+                <a
+                  href={profile.profile}
+                  alt="case"
+                  className="px-6 py-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-md text-center"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  အကောင့်ကြည့်ရန်
+                </a>
               ) : (
                 ""
               )}
             </div>
           </div>
+
           <div className="feedback"></div>
         </div>
       </div>
