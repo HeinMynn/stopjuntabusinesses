@@ -69,7 +69,7 @@ function CDMDetail(props) {
               |<span className="px-2 text-gray-500">{profile.department}</span>
             </div>
             <div className="remark text-center mb-2 px-4">{profile.remark}</div>
-            <div className="proof">
+            <div className="proof mx-auto">
               {profile.proof ? <img src={profile.proof} alt="proof" /> : ""}
               {profile.proof2 ? (
                 <video width="320" height="240" controls className="mx-auto">
@@ -102,6 +102,7 @@ function CDMDetail(props) {
                   className="px-6 py-2 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white rounded-md text-center"
                   target="_blank"
                   rel="noreferrer"
+                  data-fbid={profile.fbid}
                 >
                   အကောင့်ကြည့်ရန်
                 </a>

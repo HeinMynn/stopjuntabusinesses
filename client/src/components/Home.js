@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
+import GetOS from "./Parts/GetOS";
 
 function Home(props) {
   const contentful = require("contentful");
@@ -65,6 +66,7 @@ function Home(props) {
   return (
     <div className=" w-full h-full">
       <h1 className="title text-center">01 Feb 21</h1>
+      {/* <GetOS id="1474835114" /> */}
       <div className="container mx-auto">
         <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
           {isLoading ? <Spinner /> : ""}
