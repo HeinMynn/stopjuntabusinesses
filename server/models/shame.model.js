@@ -24,8 +24,8 @@ let Shame = new Schema({
     type: String,
   },
   proof: {
-    type: String,
-    default: null,
+    type: array,
+    default: [],
   },
   proof2: {
     type: String,
