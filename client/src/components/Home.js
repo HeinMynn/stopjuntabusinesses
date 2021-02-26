@@ -65,7 +65,7 @@ function Home(props) {
   };
   return (
     <div className="container px-4 mx-auto">
-      <h1 className="title text-center">01 Feb 21</h1>
+      {/* <h1 className="title text-center">01 Feb 21</h1> */}
       <Disclaimer/>
       {/* <GetOS id="1474835114" /> */}
       <div className="container mx-auto">
