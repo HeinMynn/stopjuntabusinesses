@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import axios from "axios";
 import Spinner from "./Parts/Spinner";
 import { Link } from "react-router-dom";
@@ -9,7 +9,7 @@ function PublicShame(props) {
   let [shame, setShame] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
-
+  const inputRef = useRef();
   const MyList = (props) => {
     return (
       <div
@@ -58,7 +58,10 @@ function PublicShame(props) {
         </Link>
       </div>
     );
-  };;
+  };
+  function onFocus() {
+    inputRef.current.scrollIntoView({ behavior: "smooth" });
+  }
   function onChange(e) {
     const s = e.target.value;
     const searchString = s.toLowerCase();
@@ -102,10 +105,13 @@ function PublicShame(props) {
       <div className="search relative">
         <input
           name="search"
+          ref={inputRef}
+          id="searchName"
           type="text"
           placeholder="နာမည်နဲ့ ရှာမယ် ..."
-          className="w-full border-gray-300 px-4 h-10 focus:outline-none my-2 shadow rounded border-0 p-3"
+          className="w-full border-gray-300 px-4 my-4 h-10 focus:outline-none shadow rounded border-0 p-3"
           onChange={onChange}
+          onFocus={onFocus}
           value={search ? search : ""}
         />
         <div class="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">

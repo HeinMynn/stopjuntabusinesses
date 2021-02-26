@@ -100,3 +100,7 @@
     transform: translateY(60vh) scaleX(.85) rotate(45deg);
   }
 }
+
+#searchName{
+  scroll-margin-top: 6em;
+}
