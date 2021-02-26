@@ -10,6 +10,22 @@ function PublicShame(props) {
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const inputRef = useRef();
+
+function ShamingCheck() {
+  if (shame.length === 0 && isLoading === false) {
+    return (
+      <div
+        className="px-4 py-3 leading-normal mt-5 text-yellow-700 bg-yellow-100 rounded-lg w-1/2 mx-auto"
+        role="alert"
+      >
+        <p>သင်ရှာနေသောလူကို မတွေ့ပါ။ ဒီစာရင်းမှာ ပါဝင်သင့်တယ်လို့ ထင်ပါက <a href="mailto:contact@010221.org">contact@010221.org</a> ကို ဆက်သွယ်နိုင်ပါတယ်။</p>
+      </div>
+    );
+  } else {
+    return null;
+  }
+}
+
   const MyList = (props) => {
     return (
       <div
