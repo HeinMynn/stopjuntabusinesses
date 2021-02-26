@@ -18,8 +18,14 @@ import PublicRoute from "./components/Parts/PublicRoute";
 import AddCDM from "./components/Admin/AddCDM";
 import LogOut from "./components/Auth/LogOut";
 import { isLogin } from "./utils";
+import { PageView, initGA } from "./components/Tracking";
+import { useEffect } from "react";
 
 function App() {
+  useEffect(() => {
+    initGA("UA-43406006-6");
+    PageView();
+  },[])
   return (
     <Router>
       <ScrollToTop />
