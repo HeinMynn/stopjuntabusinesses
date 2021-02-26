@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "./Parts/Spinner";
 import { Link } from "react-router-dom";
-import { FaBriefcase, FaUserTie } from "react-icons/fa";
+import { FaBriefcase, FaUserTie, FaSearch } from "react-icons/fa";
+import Disclaimer from "./Parts/Disclaimer";
 
 function PublicShame(props) {
-  const [shame, setShame] = useState([]);
+  let [shame, setShame] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
 
   const MyList = (props) => {
     return (
@@ -57,7 +59,22 @@ function PublicShame(props) {
       </div>
     );
   };;
-
+  function onChange(e) {
+    const s = e.target.value;
+    const searchString = s.toLowerCase();
+    setSearch(searchString);
+  }
+  if (search !== "") {
+    shame = filterSearch(shame, search);
+  }
+  function filterSearch(array, value) {
+    return array.filter((e) => {
+      return (
+        e.name.trim().toLowerCase().match(search) ||
+        e.mmName.trim().toLowerCase().match(search)
+      );
+    });
+  }
   function fetchShaming() {
     axios
       .get("https://mm010221.herokuapp.com/shame/")
@@ -79,8 +96,22 @@ function PublicShame(props) {
       <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider">
         Public Shaming List
       </h1>
+      <Disclaimer />
       <hr />
       {isLoading ? <Spinner /> : ""}
+      <div className="search relative">
+        <input
+          name="search"
+          type="text"
+          placeholder="နာမည်နဲ့ ရှာမယ် ..."
+          className="w-full border-gray-300 px-4 h-10 focus:outline-none my-2 shadow rounded border-0 p-3"
+          onChange={onChange}
+          value={search ? search : ""}
+        />
+        <div class="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">
+          <FaSearch className="text-gray-400" />
+        </div>
+      </div>
       <div
         className={`wrapper w-full mx-auto px-2 py-2 my-4 border border-gray-300 rounded-md ${
           isLoading ? "hidden" : ""

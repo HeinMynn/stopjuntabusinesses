@@ -11,10 +11,6 @@ function CDMDetail(props) {
   const [isLoading, setLoading] = useState(true);
   const [isOpen, setOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(0);
-const images = [
-  "https://filedn.com/l93kLEa2KHo41tqunjWByH0/010221.org/EiEiPhyo.jpg",
-  "https://filedn.com/l93kLEa2KHo41tqunjWByH0/010221.org/EiEiPhyo.jpg",
-];
 
   function fetchProfile() {
     axios

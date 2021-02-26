@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "./Parts/Spinner";
+import Disclaimer from "./Parts/Disclaimer";
+import { FaSearch } from "react-icons/fa";
 
 function JuntaList(props) {
   let [data, setData] = useState([]);
@@ -75,17 +77,21 @@ function JuntaList(props) {
         တပ်ပိုင် စီးပွားရေး လုပ်ငန်းများ သပိတ်မှောက် လှုပ်ရှားမှု
       </h1>
       <hr />
+      <Disclaimer source="Burma Campaign UK" />
       {isLoading ? <Spinner /> : ""}
       <div className="lg:max-w-4xl grid lg:grid-cols-2 gap-2 mx-auto">
-        <div className="search">
+        <div className="search relative">
           <input
             name="search"
             type="text"
-            placeholder="search here..."
-            className="w-full border-2  border-gray-300 px-4 h-10 focus:outline-none my-2 rounded-md"
+            placeholder="နာမည်နဲ့ ရှာမယ်"
+            className="w-full border-gray-300 px-4 h-10 focus:outline-none my-2 shadow rounded border-0 p-3"
             onChange={onChange}
             value={search ? search : ""}
           />
+          <div class="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">
+            <FaSearch className="text-gray-400"/>
+          </div>
         </div>
         <div className="filter grid grid-cols-4">
           <select

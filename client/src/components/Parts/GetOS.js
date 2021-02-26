@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 export default function getOS(props) {
   var userAgent = window.navigator.userAgent,
     platform = window.navigator.platform,

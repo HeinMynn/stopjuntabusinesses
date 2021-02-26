@@ -5,7 +5,7 @@ function Footer(props) {
   return (
     <div className="w-full bg-black min-h-footer text-center text-white align-middle leading-7">
       <span>
-        made with <FaHeart className="inline" /> by Jack!
+        made with <FaHeart className="inline" /> by John Doe!
       </span>
       <br />
       <span>

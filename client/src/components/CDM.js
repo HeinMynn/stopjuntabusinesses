@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
+import Disclaimer from "./Parts/Disclaimer";
 
 function CDM(props) {
   let [cdm, setCDM] = useState([]);
@@ -178,7 +179,7 @@ function filterCityByRegion(array, value) {
             value={searchRegion}
           >
             <option value="" disabled>
-              Filter By Region
+              တိုင်းဒေသကြီး/ပြည်နယ် ရွေးရန်
             </option>
             {Regions.map((obj) => {
               i++;
@@ -199,7 +200,7 @@ function filterCityByRegion(array, value) {
               onChange={onChangeCity}
               value={searchCity}
             >
-              <option value="">Filter By City</option>
+              <option value="">မြို့ရွေးရန်</option>
               {Cities.map((obj) => {
                 i++;
                 return (
@@ -226,6 +227,7 @@ function filterCityByRegion(array, value) {
           </button>
         </div>
       </div>
+      <Disclaimer />
       <div className="cardWrap grid md:grid-cols-2 lg:grid-cols-4 gap-2">
         <CdmCheck />
         {cdm.map((obj) => {
