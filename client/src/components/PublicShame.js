@@ -76,7 +76,7 @@ function ShamingCheck() {
     );
   };
   function onFocus() {
-    inputRef.current.scrollIntoView({ behavior: "smooth" });
+    inputRef.current.scrollIntoView();
   }
   function onChange(e) {
     const s = e.target.value;
