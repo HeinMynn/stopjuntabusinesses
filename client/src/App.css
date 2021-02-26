@@ -12,7 +12,9 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
+.leftWrapper{
+  max-width: 75%;
+}
 .title {
   font-weight: 900;
   font-size: 13vw;
