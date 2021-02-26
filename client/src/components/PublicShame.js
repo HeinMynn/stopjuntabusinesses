@@ -46,7 +46,7 @@ function ShamingCheck() {
                   : "/images/sample-female.png"
               }`}
               alt="sample"
-              className="w-12 md:w-24 h-auto object-cover object-top inline-block"
+              className="w-12 h-12 md:w-24 md:h-24 object-cover object-top inline-block"
             />
 
           </div>
