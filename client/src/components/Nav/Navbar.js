@@ -7,8 +7,8 @@ function Navbar(props) {
     <div className="fixed w-full shadow-md z-50 top-0">
       <nav className="bg-red-800">
         <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="md:flex items-center justify-between h-31">
-            <div className="block lg:flex items-center xs:mx-auto">
+          <div className="lg:flex items-center justify-between h-31">
+            <div className="block md:flex items-center xs:mx-auto">
               <div className="mx-auto lg:self-center lg:flex-shrink-0">
                 <Link to="/">
                   <img

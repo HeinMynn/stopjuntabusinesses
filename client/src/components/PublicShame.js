@@ -15,10 +15,10 @@ function ShamingCheck() {
   if (shame.length === 0 && isLoading === false) {
     return (
       <div
-        className="px-4 py-3 leading-normal mt-5 text-yellow-700 bg-yellow-100 rounded-lg w-1/2 mx-auto"
+        className="px-4 py-3 leading-normal mt-5 text-yellow-700 bg-yellow-100 rounded-lg w-full mx-auto"
         role="alert"
       >
-        <p>သင်ရှာနေသောလူကို မတွေ့ပါ။ ဒီစာရင်းမှာ ပါဝင်သင့်တယ်လို့ ထင်ပါက <a href="mailto:contact@010221.org">contact@010221.org</a> ကို ဆက်သွယ်နိုင်ပါတယ်။</p>
+        <p>သင်ရှာနေသောလူကို မတွေ့ပါ။ ဒီစာရင်းမှာ ပါဝင်သင့်တယ်လို့ ထင်ပါက <a href="mailto:contact@010221.org">contact@010221.org</a> ကို အချက်အလက်များ ပေးပို့နိုင်ပါတယ်။</p>
       </div>
     );
   } else {
@@ -38,14 +38,17 @@ function ShamingCheck() {
         >
           <div className="thumbnail flex-none mr-4">
             <img
-              src={`/images/${
-                props.gender === "male"
-                  ? "sample-male.png"
-                  : "sample-female.png"
+              src={`${
+                props.image
+                  ? props.image
+                  : props.gender === "male"
+                  ? "/images/sample-male.png"
+                  : "/images/sample-female.png"
               }`}
               alt="sample"
-              className="w-12 md:w-24 h-auto inline-block"
+              className="w-12 md:w-24 h-auto object-cover object-top inline-block"
             />
+
           </div>
           <div className="info flex-auto flex-grow justify-self-start">
             <div className="name">
@@ -55,10 +58,12 @@ function ShamingCheck() {
             </div>
             <div className="info">
               <span className="text-gray-500 text-xs md:text-sm mr-2 pr-2 border-r border-gray-500 leading-7">
-                <FaUserTie className="inline-block mr-1 text-red-500"/>{props.job}
+                <FaUserTie className="inline-block mr-1 text-red-500" />
+                {props.job}
               </span>
               <span className="text-gray-500 text-xs md:text-sm leading-7">
-                <FaBriefcase className="inline-block mr-1 text-red-500"/>{props.work}
+                <FaBriefcase className="inline-block mr-1 text-red-500" />
+                {props.work}
               </span>
             </div>
           </div>
@@ -100,7 +105,6 @@ function ShamingCheck() {
       .then((res) => {
         setShame(res.data);
         setLoading(false);
-        console.log(res.data)
       })
       .catch((err) => {
         console.log(err);
@@ -139,10 +143,12 @@ function ShamingCheck() {
           isLoading ? "hidden" : ""
         }`}
       >
+        <ShamingCheck />
         {shame.map((obj) => {
           return (
             <MyList
               key={obj._id}
+              image={obj.image}
               gender={obj.gender}
               name={obj.name}
               job={obj.designation}
