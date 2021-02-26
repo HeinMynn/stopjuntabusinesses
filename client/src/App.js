@@ -1,6 +1,7 @@
 import { Route, BrowserRouter as Router, Switch } from "react-router-dom";
 import './App.css';
-import "reactjs-popup/dist/index.css";
+import "react-awesome-lightbox/build/style.css";
+import "react-image-lightbox/style.css";
 import Home from "./components/Home";
 import Navbar from "./components/Nav/Navbar";
 import Footer from "./components/Parts/Footer";

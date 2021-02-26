@@ -1,14 +1,21 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { IoIosArrowBack } from "react-icons/io";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Spinner from "./Parts/Spinner";
+import Lightbox from "react-image-lightbox";
 
 function CDMDetail(props) {
   const { id } = useParams();
-  let history = useHistory();
   const [profile, setProfile] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  const [isOpen, setOpen] = useState(false);
+  const [photoIndex, setPhotoIndex] = useState(0);
+const images = [
+  "https://filedn.com/l93kLEa2KHo41tqunjWByH0/010221.org/EiEiPhyo.jpg",
+  "https://filedn.com/l93kLEa2KHo41tqunjWByH0/010221.org/EiEiPhyo.jpg",
+];
+
   function fetchProfile() {
     axios
       .get("https://mm010221.herokuapp.com/shame/" + id)
@@ -55,7 +62,7 @@ function CDMDetail(props) {
                   : "/images/sample-female.png"
               }`}
               alt="sample"
-              className="w-32 h-auto inline-block"
+              className="w-40 h-40 object-cover object-top inline-block"
             />
           </div>
           <div className="detail">
@@ -70,9 +77,51 @@ function CDMDetail(props) {
             </div>
             <div className="remark text-center mb-2 px-4">{profile.remark}</div>
             <div className="proof mx-auto">
-              {profile.proof ? <img src={profile.proof} alt="proof" /> : ""}
+              {/* {profile.proof ?
+                <img src={profile.proof} alt="proof" onClick={() => setIsImageViewerOpen(true)}
+              className="mb-4 mx-auto w-full md:w-2/5 cursor-pointer"/>:null
+            } */}
+              <div
+                className={`proof-img grid grid-cols-2 md:grid-cols-${
+                  profile.proof ? profile.proof.length : "1"
+                } gap-3 mx-auto w-full md:w-3/5`}
+              >
+                {profile.proof &&
+                  profile.proof.map((obj) => {
+                    return (
+                      <img
+                        src={obj}
+                        alt="proof"
+                        onClick={() => setOpen(true)}
+                        className="mb-4 px-6 py-6 w-full cursor-pointer"
+                      />
+                    );
+                  })}
+              </div>
+
+              {isOpen ? (
+                <Lightbox
+                  mainSrc={profile.proof[photoIndex]}
+                  nextSrc={profile.proof[(photoIndex + 1) % profile.proof.length]}
+                  prevSrc={
+                    profile.proof[(photoIndex + profile.proof.length - 1) % profile.proof.length]
+                  }
+                  onCloseRequest={() => setOpen(false)}
+                  onMovePrevRequest={() =>
+                    setPhotoIndex(
+                        (photoIndex + profile.proof.length - 1) % profile.proof.length,
+                    )
+                  }
+                  onMoveNextRequest={() =>
+                    setPhotoIndex(
+                      (photoIndex + 1) % profile.proof.length,
+                    )
+                  }
+                  className="mb-4 mx-auto w-full md:w-3/5"
+                />
+              ) : null}
               {profile.proof2 ? (
-                <video width="320" height="240" controls className="mx-auto">
+                <video width="640" height="480" controls className="mx-auto">
                   <source src={`${profile.proof2}#t=0.1`} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
