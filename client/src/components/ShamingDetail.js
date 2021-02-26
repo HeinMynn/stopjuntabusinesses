@@ -17,7 +17,6 @@ function CDMDetail(props) {
       .get("https://mm010221.herokuapp.com/shame/" + id)
       .then((res) => {
         // let newres = Object.entries(res);
-        console.log(res.data);
         setProfile(res.data);
         setLoading(false);
       })

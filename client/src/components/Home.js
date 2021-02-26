@@ -20,8 +20,6 @@ function Home(props) {
     });
   }, []);
 
-  console.log(post);
-
   const Left = (props) => {
     return (
       <div className="flex flex-row-reverse md:contents">
