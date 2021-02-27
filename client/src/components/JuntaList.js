@@ -3,6 +3,7 @@ import axios from "axios";
 import Spinner from "./Parts/Spinner";
 import Disclaimer from "./Parts/Disclaimer";
 import { FaSearch } from "react-icons/fa";
+import CheckingEmpty from "./Parts/CheckingEmpty";
 
 function JuntaList(props) {
   let [data, setData] = useState([]);
@@ -89,7 +90,7 @@ function JuntaList(props) {
             onChange={onChange}
             value={search ? search : ""}
           />
-          <div class="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">
+          <div className="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">
             <FaSearch className="text-gray-400"/>
           </div>
         </div>
@@ -132,6 +133,7 @@ function JuntaList(props) {
       </div>
       <div className="wrap">
         <div className="list mx-auto">
+          <CheckingEmpty data={data} loading={isLoading}/>
           {groupByIndustry &&
             Object.keys(groupByIndustry).map((ind) => {
               i++;

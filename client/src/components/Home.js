@@ -15,7 +15,7 @@ function Home(props) {
   const [post, setPost] = useState([]);
   useEffect(() => {
     client.getEntries({ order: "sys.createdAt" }).then((response) => {
-      setPost(response.items);
+      setPost(response.items.reverse());
       setLoading(false);
     });
   }, []);

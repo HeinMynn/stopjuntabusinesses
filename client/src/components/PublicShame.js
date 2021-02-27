@@ -4,27 +4,13 @@ import Spinner from "./Parts/Spinner";
 import { Link } from "react-router-dom";
 import { FaBriefcase, FaUserTie, FaSearch } from "react-icons/fa";
 import Disclaimer from "./Parts/Disclaimer";
+import CheckingEmpty from "./Parts/CheckingEmpty";
 
 function PublicShame(props) {
   let [shame, setShame] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const inputRef = useRef();
-
-function ShamingCheck() {
-  if (shame.length === 0 && isLoading === false) {
-    return (
-      <div
-        className="px-4 py-3 leading-normal mt-5 text-yellow-700 bg-yellow-100 rounded-lg w-full mx-auto"
-        role="alert"
-      >
-        <p>သင်ရှာနေသောလူကို မတွေ့ပါ။ ဒီစာရင်းမှာ ပါဝင်သင့်တယ်လို့ ထင်ပါက <a href="mailto:contact@010221.org">contact@010221.org</a> ကို အချက်အလက်များ ပေးပို့နိုင်ပါတယ်။</p>
-      </div>
-    );
-  } else {
-    return null;
-  }
-}
 
   const MyList = (props) => {
     return (
@@ -69,11 +55,9 @@ function ShamingCheck() {
           </div>
           <div className="action flex-none justify-self-end">
             <div className="view">
-              <button>
-                <Link to={`/shaming/${props.link}`} className="text-gray-500">
+                
                   &gt;
-                </Link>
-              </button>
+                
             </div>
           </div>
         </Link>
@@ -94,8 +78,8 @@ function ShamingCheck() {
   function filterSearch(array, value) {
     return array.filter((e) => {
       return (
-        e.name.trim().toLowerCase().match(search) ||
-        e.mmName.trim().toLowerCase().match(search)
+        e.name.trim().toLowerCase().match(search.trim()) ||
+        e.mmName.trim().toLowerCase().match(search.trim())
       );
     });
   }
@@ -103,7 +87,7 @@ function ShamingCheck() {
     axios
       .get("https://mm010221.herokuapp.com/shame/")
       .then((res) => {
-        setShame(res.data);
+        setShame(res.data.reverse());
         setLoading(false);
       })
       .catch((err) => {
@@ -134,7 +118,7 @@ function ShamingCheck() {
           onFocus={onFocus}
           value={search ? search : ""}
         />
-        <div class="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">
+        <div className="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">
           <FaSearch className="text-gray-400" />
         </div>
       </div>
@@ -143,7 +127,7 @@ function ShamingCheck() {
           isLoading ? "hidden" : ""
         }`}
       >
-        <ShamingCheck />
+        <CheckingEmpty data={shame} loading={isLoading} />
         {shame.map((obj) => {
           return (
             <MyList

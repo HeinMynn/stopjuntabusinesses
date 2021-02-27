@@ -124,7 +124,7 @@ function CDMDetail(props) {
                 ""
               )}
             </div>
-            <div className="case mx-auto text-center mt-4">
+            <div className="case mx-auto text-center my-4">
               {profile.caseLink ? (
                 <a
                   href={profile.caseLink}
