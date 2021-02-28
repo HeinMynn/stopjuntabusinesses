@@ -6,7 +6,7 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const PORT = process.env.PORT || 5000;
 
-var whitelist = ["https://010221.org", "http://localhost:3000"];
+var whitelist = ["https://010221.org", "http://localhost:3000","http://localhost:8000"];
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
