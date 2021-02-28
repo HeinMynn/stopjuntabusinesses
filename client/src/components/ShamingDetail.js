@@ -10,8 +10,13 @@ function CDMDetail(props) {
   const [profile, setProfile] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [isOpen, setOpen] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
+  const [photoIndex, setPhotoIndex] = useState();
 
+  let counter = -1;
+  function handleClick(props) {
+    setOpen(true);
+    setPhotoIndex(props);
+  }
   function fetchProfile() {
     axios
       .get("https://mm010221.herokuapp.com/shame/" + id)
@@ -82,12 +87,12 @@ function CDMDetail(props) {
                 } gap-3 mx-auto w-full md:w-3/5`}
               >
                 {profile.proof &&
-                  profile.proof.map((obj) => {
+                  profile.proof.map((obj, index) => {
                     return (
                       <img
                         src={obj}
-                        alt="proof"
-                        onClick={() => setOpen(true)}
+                        alt={`${index}`}
+                        onClick={() => handleClick(index)}
                         className="mb-4 px-6 py-6 w-full cursor-pointer"
                       />
                     );
@@ -97,20 +102,24 @@ function CDMDetail(props) {
               {isOpen ? (
                 <Lightbox
                   mainSrc={profile.proof[photoIndex]}
-                  nextSrc={profile.proof[(photoIndex + 1) % profile.proof.length]}
+                  nextSrc={
+                    profile.proof[(photoIndex + 1) % profile.proof.length]
+                  }
                   prevSrc={
-                    profile.proof[(photoIndex + profile.proof.length - 1) % profile.proof.length]
+                    profile.proof[
+                      (photoIndex + profile.proof.length - 1) %
+                        profile.proof.length
+                    ]
                   }
                   onCloseRequest={() => setOpen(false)}
                   onMovePrevRequest={() =>
                     setPhotoIndex(
-                        (photoIndex + profile.proof.length - 1) % profile.proof.length,
+                      (photoIndex + profile.proof.length - 1) %
+                        profile.proof.length
                     )
                   }
                   onMoveNextRequest={() =>
-                    setPhotoIndex(
-                      (photoIndex + 1) % profile.proof.length,
-                    )
+                    setPhotoIndex((photoIndex + 1) % profile.proof.length)
                   }
                   className="mb-4 mx-auto w-full md:w-3/5"
                 />
