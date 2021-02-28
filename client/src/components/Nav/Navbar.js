@@ -9,13 +9,16 @@ function Navbar(props) {
         <div className="lg:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:flex items-center justify-between h-31">
             <div className="block md:flex items-center xs:mx-auto">
-              <div className="mx-auto lg:self-center lg:flex-shrink-0">
+              <div className="mx-auto lg:self-center lg:flex-shrink-0 text-center">
                 <Link to="/">
                   <img
-                    className="h-20 w-14 py-1 block mx-auto"
+                    className="h-15 w-10 py-1 inline-block"
                     src="/images/logo.png"
-                    alt="Workflow"
+                    alt="010221.org"
                   />
+                  <h1 className="inline-block md:hidden ml-4 text-2xl tracking-widest font-black text-white text-center">
+                    010221.org
+                  </h1>
                 </Link>
               </div>
               <div className="hidden md:block">
