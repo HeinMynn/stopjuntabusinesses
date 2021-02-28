@@ -12,7 +12,6 @@ function CDMDetail(props) {
   const [isOpen, setOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
 
-  let counter = -1;
   function handleClick(props) {
     setOpen(true);
     setPhotoIndex(props);
@@ -90,10 +89,11 @@ function CDMDetail(props) {
                   profile.proof.map((obj, index) => {
                     return (
                       <img
+                        key={index}
                         src={obj}
                         alt={`${index}`}
                         onClick={() => handleClick(index)}
-                        className="mb-4 px-6 py-6 w-full cursor-pointer"
+                        className="mb-4 px-6 py-6 w-full h-52 object-cover cursor-pointer"
                       />
                     );
                   })}
