@@ -81,7 +81,9 @@ function CDMDetail(props) {
               className="mb-4 mx-auto w-full md:w-2/5 cursor-pointer"/>:null
             } */}
               <div
-                className={`proof-img grid grid-cols-2 md:grid-cols-${
+                className={`proof-img grid ${
+                  profile.proof && profile.proof.length > 1 ? "grid-cols-2" : ""
+                } lg:grid-cols-${
                   profile.proof ? profile.proof.length : "1"
                 } gap-3 mx-auto w-full md:w-3/5`}
               >
