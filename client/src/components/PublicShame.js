@@ -13,6 +13,7 @@ function PublicShame(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [shamePerPage, setShamePerPage] = useState(10);
   const inputRef = useRef();
+  const pageNumbers = [];
 
   function handleClick(e) {
     setCurrentPage(Number(e.target.id));
@@ -22,25 +23,6 @@ function PublicShame(props) {
   const indexOfFirstShame = indexOfLastShame - shamePerPage;
   let currentShame = shame.slice(indexOfFirstShame, indexOfLastShame);
   let lastPageNumber = shame.length / shamePerPage;
-
-  const pageNumbers = [];
-  for (let i = 1; i <= Math.ceil(lastPageNumber); i++) {
-    pageNumbers.push(i);
-  }
-  const renderPageNumbers = pageNumbers.map((number) => {
-    return (
-      <li
-        key={number}
-        id={number}
-        onClick={handleClick}
-        className={`inline mr-2 cursor-pointer px-2 py-1 ${
-          currentPage == number ? "text-white bg-red-500" : ""
-        }`}
-      >
-        {number}
-      </li>
-    );
-  });
 
   const MyList = (props) => {
     return (
@@ -64,7 +46,6 @@ function PublicShame(props) {
               alt="sample"
               className="w-12 h-12 md:w-24 md:h-24 object-cover object-top inline-block"
             />
-
           </div>
           <div className="info flex-auto flex-grow justify-self-start">
             <div className="name">
@@ -84,11 +65,7 @@ function PublicShame(props) {
             </div>
           </div>
           <div className="action flex-none justify-self-end">
-            <div className="view">
-                
-                  &gt;
-                
-            </div>
+            <div className="view">&gt;</div>
           </div>
         </Link>
       </div>
@@ -107,7 +84,6 @@ function PublicShame(props) {
     shame = filterSearch(shame, search);
     currentShame = shame.slice(indexOfFirstShame, indexOfLastShame);
     lastPageNumber = shame.length / shamePerPage;
-    
   }
   function filterSearch(array, value) {
     return array.filter((e) => {
@@ -117,6 +93,25 @@ function PublicShame(props) {
       );
     });
   }
+
+  for (let i = 1; i <= Math.ceil(lastPageNumber); i++) {
+    pageNumbers.push(i);
+  }
+  const renderPageNumbers = pageNumbers.map((number) => {
+    return (
+      <li
+        key={number}
+        id={number}
+        onClick={handleClick}
+        className={`inline mr-2 cursor-pointer px-2 py-1 ${
+          currentPage == number ? "text-white bg-red-500" : ""
+        }`}
+      >
+        {number}
+      </li>
+    );
+  });
+
   function fetchShaming() {
     axios
       .get("https://mm010221.herokuapp.com/shame/")
