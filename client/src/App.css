@@ -38,6 +38,9 @@
 .popup-content{
   width: 70% !important;
 }
+.popup-overlay{
+  background:rgba(0,0,0,0.8) !important;
+}
 .App-link {
   color: #61dafb;
 }

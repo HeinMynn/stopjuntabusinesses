@@ -27,7 +27,7 @@ function Home(props) {
           <h3 className="font-semibold text-md md:text-lg mb-1">
             {props.title}
           </h3>
-          <div className="leading-tight text-sm">
+          <div className="leading-6 text-sm">
             <Interweave tagName="div" content={props.entry} />
           </div>
         </div>
@@ -55,8 +55,10 @@ function Home(props) {
           </div>
         </div>
         <div className="bg-red-500 col-start-6 col-end-10 p-4 rounded-xl my-4 mr-auto shadow-md">
-          <h3 className="font-semibold text-md md:text-lg mb-1">{props.title}</h3>
-          <ul className="leading-tight text-sm">
+          <h3 className="font-semibold text-md md:text-lg mb-1">
+            {props.title}
+          </h3>
+          <ul className="leading-6 text-sm">
             <Interweave content={props.entry} />
           </ul>
         </div>
