@@ -20,8 +20,8 @@ function PublicShame(props) {
 
   const indexOfLastShame = currentPage * shamePerPage;
   const indexOfFirstShame = indexOfLastShame - shamePerPage;
-  const currentShame = shame.slice(indexOfFirstShame, indexOfLastShame);
-  const lastPageNumber = shame.length / shamePerPage;
+  let currentShame = shame.slice(indexOfFirstShame, indexOfLastShame);
+  let lastPageNumber = shame.length / shamePerPage;
 
   const pageNumbers = [];
   for (let i = 1; i <= Math.ceil(lastPageNumber); i++) {
@@ -101,9 +101,13 @@ function PublicShame(props) {
     const s = e.target.value;
     const searchString = s.toLowerCase();
     setSearch(searchString);
+    setCurrentPage(1);
   }
   if (search !== "") {
     shame = filterSearch(shame, search);
+    currentShame = shame.slice(indexOfFirstShame, indexOfLastShame);
+    lastPageNumber = shame.length / shamePerPage;
+    
   }
   function filterSearch(array, value) {
     return array.filter((e) => {
@@ -180,7 +184,7 @@ function PublicShame(props) {
               Prev
             </li>
           ) : null}
-          {renderPageNumbers}
+          {lastPageNumber <= 1 ? "" : renderPageNumbers}
           {currentPage < lastPageNumber ? (
             <li
               onClick={() => setCurrentPage(currentPage + 1)}
