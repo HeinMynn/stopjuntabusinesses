@@ -10,7 +10,37 @@ function PublicShame(props) {
   let [shame, setShame] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
+  const [currentPage, setCurrentPage] = useState(1);
+  const [shamePerPage, setShamePerPage] = useState(10);
   const inputRef = useRef();
+
+  function handleClick(e) {
+    setCurrentPage(Number(e.target.id));
+  }
+
+  const indexOfLastShame = currentPage * shamePerPage;
+  const indexOfFirstShame = indexOfLastShame - shamePerPage;
+  const currentShame = shame.slice(indexOfFirstShame, indexOfLastShame);
+  const lastPageNumber = shame.length / shamePerPage;
+
+  const pageNumbers = [];
+  for (let i = 1; i <= Math.ceil(lastPageNumber); i++) {
+    pageNumbers.push(i);
+  }
+  const renderPageNumbers = pageNumbers.map((number) => {
+    return (
+      <li
+        key={number}
+        id={number}
+        onClick={handleClick}
+        className={`inline mr-2 cursor-pointer px-2 py-1 ${
+          currentPage == number ? "text-white bg-red-500" : ""
+        }`}
+      >
+        {number}
+      </li>
+    );
+  });
 
   const MyList = (props) => {
     return (
@@ -128,7 +158,7 @@ function PublicShame(props) {
         }`}
       >
         <CheckingEmpty data={shame} loading={isLoading} />
-        {shame.map((obj) => {
+        {currentShame.map((obj) => {
           return (
             <MyList
               key={obj._id}
@@ -141,6 +171,25 @@ function PublicShame(props) {
             />
           );
         })}
+        <ul id="page-numbers" className="mt-2 text-center">
+          {currentPage > 1 ? (
+            <li
+              onClick={() => setCurrentPage(currentPage - 1)}
+              className={`inline mr-2 cursor-pointer px-2 py-1 `}
+            >
+              Prev
+            </li>
+          ) : null}
+          {renderPageNumbers}
+          {currentPage < lastPageNumber ? (
+            <li
+              onClick={() => setCurrentPage(currentPage + 1)}
+              className={`inline mr-2 cursor-pointer px-2 py-1 `}
+            >
+              Next
+            </li>
+          ) : null}
+        </ul>
       </div>
     </div>
   );
