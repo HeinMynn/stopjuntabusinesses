@@ -142,7 +142,7 @@ function PublicShame(props) {
           id="searchName"
           type="text"
           placeholder="နာမည်နဲ့ ရှာမယ် ..."
-          className="w-full border-gray-300 px-4 my-4 h-10 focus:outline-none shadow rounded border-0 p-3"
+          className="w-full border-gray-300 dark:text-gray-500 px-4 my-4 h-10 focus:outline-none shadow rounded border-0 p-3"
           onChange={onChange}
           onFocus={onFocus}
           value={search ? search : ""}
