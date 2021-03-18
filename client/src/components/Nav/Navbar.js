@@ -81,17 +81,17 @@ function Navbar(props) {
                     nested
                   >
                     {(close) => (
-                      <div className="modal bg-white px-6 py-2 shadow-md rounded-md">
+                      <div className="modal bg-white dark:bg-gray-700 px-6 py-2 shadow-md rounded-md">
                         <button
                           className="close focus:outline-none float-right"
                           onClick={close}
                         >
                           &times;
                         </button>
-                        <div className="header text-center text-2xl"> 
+                        <div className="header text-center text-2xl dark:text-white">
                           01 02 21 . org
                         </div>
-                        <div className="content px-6 leading-7 tracking-wide">
+                        <div className="content px-6 leading-7 tracking-wide dark:text-white">
                           010221.org website သည်
                           မြန်မာ့နွေဦးတော်လှန်ရေးကာလအတွင်း အောက်ပါ
                           အချက်အလက်များကို စုစည်းဖော်ပြပေးထားပါသည်။
@@ -115,7 +115,8 @@ function Navbar(props) {
                             </li>
                           </ol>
                           <br />
-                          အချက်အလက်များ ပေးပို့လိုပါက contact@010221.org သို့ email ပေးပို့ အကြောင်းကြားနိုင်ပါသည်။
+                          အချက်အလက်များ ပေးပို့လိုပါက contact@010221.org သို့
+                          email ပေးပို့ အကြောင်းကြားနိုင်ပါသည်။
                         </div>
                       </div>
                     )}

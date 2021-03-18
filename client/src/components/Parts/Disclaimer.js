@@ -6,7 +6,7 @@ function Disclaimer(props) {
     return (
       <>
         {isOpen ? (
-          <div className="bg-yellow-400 pl-6 py-2 rounded-md">
+          <div className="bg-yellow-400 pl-6 py-2 rounded-md mb-4">
             <span
               className="float-right cursor-pointer text-white top-0 bg-black inline-block w-6 h-6 text-center mx-2"
               onClick={() => setOpen(false)}

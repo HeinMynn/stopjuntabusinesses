@@ -74,10 +74,9 @@ function JuntaList(props) {
   }, [search]);
   return (
     <div className="container px-2 mx-auto">
-      <h1 className="text-xl md:text-4xl font-black text-gray-600 text-center my-4">
+      <h1 className="text-xl md:text-4xl font-black text-gray-600 dark:text-white text-center my-4">
         တပ်ပိုင် စီးပွားရေး လုပ်ငန်းများ သပိတ်မှောက် လှုပ်ရှားမှု
       </h1>
-      <hr />
       <Disclaimer source="Burma Campaign UK" />
       {isLoading ? <Spinner /> : ""}
       <div className="lg:max-w-4xl grid lg:grid-cols-2 gap-2 mx-auto">
@@ -86,17 +85,17 @@ function JuntaList(props) {
             name="search"
             type="text"
             placeholder="နာမည်နဲ့ ရှာမယ်"
-            className="w-full border-gray-300 px-4 h-10 focus:outline-none my-2 shadow rounded border-0 p-3"
+            className="w-full border-gray-300 px-4 h-10 focus:outline-none my-2 shadow rounded border-0 p-3 dark:text-gray-500"
             onChange={onChange}
             value={search ? search : ""}
           />
           <div className="absolute right-0 top-0 mt-5 mr-4 text-purple-lighter">
-            <FaSearch className="text-gray-400"/>
+            <FaSearch className="text-gray-400" />
           </div>
         </div>
         <div className="filter grid grid-cols-4">
           <select
-            className="border border-gray-300 px-4 py-2 my-2 h-10 rounded-md col-span-3"
+            className="border border-gray-300 dark:text-gray-500 px-4 py-2 my-2 h-10 rounded-md col-span-3"
             onChange={onChangeInd}
             value={searchInd}
           >
@@ -133,7 +132,7 @@ function JuntaList(props) {
       </div>
       <div className="wrap">
         <div className="list mx-auto">
-          <CheckingEmpty data={data} loading={isLoading}/>
+          <CheckingEmpty data={data} loading={isLoading} />
           {groupByIndustry &&
             Object.keys(groupByIndustry).map((ind) => {
               i++;
@@ -148,7 +147,7 @@ function JuntaList(props) {
                         key={obj._id}
                         className="w-full border border-gray-200 px-4 py-4 rounded-md mb-2 shadow-md"
                       >
-                        <p className="font-normal text-gray-600 tracking-wider leading-4">
+                        <p className="font-normal text-gray-600 dark:text-white tracking-wider leading-4">
                           {obj.product}
                         </p>
                       </div>

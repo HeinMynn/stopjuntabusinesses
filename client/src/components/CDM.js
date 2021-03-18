@@ -121,22 +121,22 @@ function filterCityByRegion(array, value) {
         <div className="cardBody mx-auto">
           <img
             src={props.imgLink}
-            className="rounded-full mx-auto w-32 h-32 shadow-2xl border-4 border-white"
+            className="rounded-full mx-auto w-32 h-32 shadow-2xl border-4 border-white dark:border-red-500"
             alt={props.name}
           />
-          <div className="content shadow-lg px-6 pt-12 pb-6 -mt-10 border border-red-50">
+          <div className="content shadow-lg px-6 pt-12 pb-6 -mt-10 border border-red-50 rounded-md dark:border-red-500">
             <h3 className="font-semibold md:min-h-cardHeader align-middle text-lg text-red-400 py-3 border-b border-red-400">
               {props.name}
             </h3>
             <div className="body py-2 md:min-h-cardContent text-sm leading-6">
-              <Interweave content={props.content}/>
+              <Interweave content={props.content} />
             </div>
             <div className="cardFooter w-full py-4 border-t border-gray-200">
               <a
                 href={props.link}
                 target="_blank"
                 rel="noreferrer"
-                className="px-2 py-2 bg-red-500 rounded-md text-center text-white hover:bg-white border hover:border-red-500 hover:text-red-500 inline-block w-full"
+                className="px-2 py-2 bg-red-500 rounded-md text-center text-white hover:bg-white border dark:border-gray-900 hover:border-red-500 hover:text-red-500 inline-block w-full"
               >
                 ဆက်သွယ်ရန်
               </a>

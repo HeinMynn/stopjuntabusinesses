@@ -80,6 +80,7 @@ function CDMDetail(props) {
                 <img src={profile.proof} alt="proof" onClick={() => setIsImageViewerOpen(true)}
               className="mb-4 mx-auto w-full md:w-2/5 cursor-pointer"/>:null
             } */}
+            
               <div
                 className={`proof-img grid ${
                   profile.proof && profile.proof.length > 1 ? "grid-cols-2" : ""
@@ -95,12 +96,11 @@ function CDMDetail(props) {
                         src={obj}
                         alt={`${index}`}
                         onClick={() => handleClick(index)}
-                        className="mb-4 px-6 py-6 w-full h-52 object-cover cursor-pointer"
+                        className="mb-4 px-6 py-6 w-full h-52 object-cover cursor-pointer border"
                       />
                     );
                   })}
               </div>
-
               {isOpen ? (
                 <Lightbox
                   mainSrc={profile.proof[photoIndex]}

@@ -29,10 +29,10 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="max-w-full container">
+      <div className="max-w-full container dark:bg-black dark:text-white">
         <Navbar loggedIn={isLogin()} />
-        <div className="h-24"></div>
-        <div className="min-h-screen">
+        <div className="h-24 dark:bg-black"></div>
+        <div className="min-h-screen dark:bg-black">
           <Switch>
             <PublicRoute restricted={true} path="/login" component={Login} />
             <PrivateRoute path="/logout" component={LogOut} />

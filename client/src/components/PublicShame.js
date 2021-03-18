@@ -11,7 +11,7 @@ function PublicShame(props) {
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
-  const [shamePerPage, setShamePerPage] = useState(10);
+  const [shamePerPage] = useState(10);
   const inputRef = useRef();
   const pageNumbers = [];
 
@@ -54,11 +54,11 @@ function PublicShame(props) {
               </h3>
             </div>
             <div className="info">
-              <span className="text-gray-500 text-xs md:text-sm mr-2 pr-2 border-r border-gray-500 leading-7">
+              <span className="text-gray-500 dark:text-white text-xs md:text-sm mr-2 pr-2 border-r border-gray-500 leading-7">
                 <FaUserTie className="inline-block mr-1 text-red-500" />
                 {props.job}
               </span>
-              <span className="text-gray-500 text-xs md:text-sm leading-7">
+              <span className="text-gray-500 dark:text-white text-xs md:text-sm leading-7">
                 <FaBriefcase className="inline-block mr-1 text-red-500" />
                 {props.work}
               </span>
@@ -104,7 +104,7 @@ function PublicShame(props) {
         id={number}
         onClick={handleClick}
         className={`inline mr-2 cursor-pointer px-2 py-1 ${
-          currentPage == number ? "text-white bg-red-500" : ""
+          currentPage === number ? "text-white bg-red-500" : ""
         }`}
       >
         {number}
@@ -129,7 +129,7 @@ function PublicShame(props) {
   }, []);
   return (
     <div className="w-full md:max-w-3xl mx-auto items-center justify-center px-2">
-      <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider">
+      <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider dark:text-white">
         Public Shaming List
       </h1>
       <Disclaimer />
@@ -170,7 +170,7 @@ function PublicShame(props) {
             />
           );
         })}
-        <ul id="page-numbers" className="mt-2 text-center">
+        <ul id="page-numbers" className="mt-2 text-center dark:text-white">
           {currentPage > 1 ? (
             <li
               onClick={() => setCurrentPage(currentPage - 1)}
