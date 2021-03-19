@@ -34,7 +34,10 @@ function Navbar(props) {
                 className={`transform top-0 left-0 w-64 text-gray-800 bg-white dark:text-white dark:bg-gray-800 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
               >
-                <FaTimes className="w-5 h-auto float-right mt-2 mr-2 text-white bg-red-500" onClick={toggle} />
+                <FaTimes
+                  className="w-5 h-auto float-right mt-2 mr-2 text-white bg-red-500"
+                  onClick={toggle}
+                />
                 <img
                   className="w-14 block mx-auto py-2"
                   src="/images/logo.png"
@@ -97,11 +100,16 @@ function Navbar(props) {
                       <FaExternalLinkAlt className="inline-block ml-2" />
                     </a>
                   </li>
-                  <li className="border-b py-2 cursor-not-allowed">အချက်အလက် ပြင်မယ်</li>
-                  <li onClick={() => setTheme(colorTheme)}>
-                    <div
-                      className="wrapper bg-gray-300 dark:bg-gray-600 overflow-hidden w-1/2 mx-auto rounded-2xl mt-4 shadow-inner"
-                    >
+                  <li className="border-b py-2 cursor-not-allowed">
+                    အချက်အလက် ပြင်မယ်
+                  </li>
+                  <li
+                    onClick={() => {
+                      setTheme(colorTheme);
+                      localStorage.theme = colorTheme;
+                    }}
+                  >
+                    <div className="wrapper bg-gray-300 dark:bg-gray-600 overflow-hidden w-1/2 mx-auto rounded-2xl mt-4 shadow-inner">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -115,9 +123,9 @@ function Navbar(props) {
                         }`}
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1"
                           d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                         />
                       </svg>
@@ -135,9 +143,9 @@ function Navbar(props) {
                         }`}
                       >
                         <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="1"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="1"
                           d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                         />
                       </svg>
