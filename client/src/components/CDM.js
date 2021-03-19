@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
-import Disclaimer from "./Parts/Disclaimer";
 
 function CDM(props) {
   let [cdm, setCDM] = useState([]);
@@ -227,7 +226,6 @@ function filterCityByRegion(array, value) {
           </button>
         </div>
       </div>
-      <Disclaimer />
       <div className="cardWrap grid md:grid-cols-2 lg:grid-cols-4 gap-2">
         <CdmCheck />
         {cdm.map((obj) => {

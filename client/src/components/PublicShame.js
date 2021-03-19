@@ -3,7 +3,6 @@ import axios from "axios";
 import Spinner from "./Parts/Spinner";
 import { Link } from "react-router-dom";
 import { FaBriefcase, FaUserTie, FaSearch } from "react-icons/fa";
-import Disclaimer from "./Parts/Disclaimer";
 import CheckingEmpty from "./Parts/CheckingEmpty";
 
 function PublicShame(props) {
@@ -132,7 +131,6 @@ function PublicShame(props) {
       <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider dark:text-white">
         Public Shaming List
       </h1>
-      <Disclaimer />
       <hr />
       {isLoading ? <Spinner /> : ""}
       <div className="search relative">
@@ -190,6 +188,7 @@ function PublicShame(props) {
           ) : null}
         </ul>
       </div>
+
     </div>
   );
 }

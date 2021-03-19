@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "./Parts/Spinner";
-import Disclaimer from "./Parts/Disclaimer";
 import { FaSearch } from "react-icons/fa";
 import CheckingEmpty from "./Parts/CheckingEmpty";
 
@@ -77,7 +76,6 @@ function JuntaList(props) {
       <h1 className="text-xl md:text-4xl font-black text-gray-600 dark:text-white text-center my-4">
         တပ်ပိုင် စီးပွားရေး လုပ်ငန်းများ သပိတ်မှောက် လှုပ်ရှားမှု
       </h1>
-      <Disclaimer source="Burma Campaign UK" />
       {isLoading ? <Spinner /> : ""}
       <div className="lg:max-w-4xl grid lg:grid-cols-2 gap-2 mx-auto">
         <div className="search relative">
