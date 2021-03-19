@@ -129,7 +129,7 @@ function PublicShame(props) {
   return (
     <div className="w-full md:max-w-3xl mx-auto items-center justify-center px-2">
       <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider dark:text-white">
-        Public Shaming List
+        လောက်ကောင်စာရင်း
       </h1>
       <hr />
       {isLoading ? <Spinner /> : ""}
@@ -140,7 +140,7 @@ function PublicShame(props) {
           id="searchName"
           type="text"
           placeholder="နာမည်နဲ့ ရှာမယ် ..."
-          className="w-full border-gray-300 dark:text-gray-500 px-4 my-4 h-10 focus:outline-none shadow rounded border-0 p-3"
+          className="w-full border-gray-300 dark:text-gray-500 px-4 my-2 h-10 focus:outline-none shadow rounded border-0 p-3"
           onChange={onChange}
           onFocus={onFocus}
           value={search ? search : ""}
@@ -188,7 +188,6 @@ function PublicShame(props) {
           ) : null}
         </ul>
       </div>
-
     </div>
   );
 }

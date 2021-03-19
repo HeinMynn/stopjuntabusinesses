@@ -44,7 +44,84 @@
 .App-link {
   color: #61dafb;
 }
-
+label, .toggle {
+  height: 2.8rem;
+  border-radius: 100px;
+}
+label {
+  width: 100%;
+  background-color: rgba(0,0,0,.1);
+  border-radius: 100px;
+  position: relative;
+  margin: 1.8rem 0 4rem 0; 
+  cursor: pointer;
+}
+.toggle {
+  position: absolute;
+  width: 50%;
+  background-color: #fff;
+  box-shadow: 0 2px 15px rgba(0,0,0,.15);
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  transition-duration: 150ms;
+}
+.names {
+  font-size: 90%;
+  font-weight: bolder;
+  width: 65%;
+  margin-left: 17.5%;
+  margin-top: .5%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+[type="checkbox"] {
+  display: none;
+}
+/* Toggle */
+[type="checkbox"]:checked + .app .toggle{
+  transform: translateX(100%);
+  background-color: #34323D;
+}
+[type="checkbox"]:checked + .app .dark{
+  opacity: 1;
+}
+[type="checkbox"]:checked + .app .light{
+  opacity: .5;
+}
+/* App */
+[type="checkbox"]:checked + .app .body{
+  background-color:  #26242E;
+  color: white;
+}
+/* Circle */
+[type="checkbox"]:checked + .app .crescent{
+  transform: scale(1);
+  background: #26242E;
+}
+[type="checkbox"]:checked + .app .circle{
+  background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
+}
+[type="checkbox"]:checked + .app .main-circle{
+  background: linear-gradient(40deg, #8983F7, #A3DAFB 70%);
+}
+/* Fab */
+[type="checkbox"]:checked + .app .fab{
+  background-color: #34323D;
+}
+[type="checkbox"]:checked + .app .arrow,
+[type="checkbox"]:checked + .app .mark,
+[type="checkbox"]:checked + .app .battery{
+  background-color: white;
+}
+[type="checkbox"]:checked + .app .network{
+  border-color: transparent transparent white transparent;
+}
+[type="checkbox"]:checked + .app .swipe{
+  background-color: #34323D;
+  opacity: 1;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

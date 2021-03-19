@@ -3,7 +3,7 @@ import { FaEnvelope, FaHeart } from "react-icons/fa";
 
 function Footer(props) {
   return (
-    <div className="hidden md:block w-full bg-black min-h-footer text-center text-white align-middle leading-7">
+    <div className="hidden md:block w-full dark:bg-gray-700 bg-black min-h-footer text-center text-white align-middle leading-7">
       <span>
         made with <FaHeart className="inline" /> by John Doe!
       </span>

@@ -28,20 +28,20 @@ function Navbar(props) {
           <div className="lg:flex items-center justify-between h-31">
             <div className="flex lg:flex flex-grow items-center xs:mx-auto">
               <div className="setting">
-                <FaBars className="w-8 h-auto" onClick={toggle} />
+                <FaBars className="w-8 h-auto text-white" onClick={toggle} />
               </div>
               <aside
-                className={`transform top-0 left-0 w-64 text-white bg-gray-800 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 
+                className={`transform top-0 left-0 w-64 text-gray-800 bg-white dark:text-white dark:bg-gray-800 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
               >
-                <FaTimes className="w-5 h-auto right" onClick={toggle} />
+                <FaTimes className="w-5 h-auto float-right mt-2 mr-2 text-white bg-red-500" onClick={toggle} />
                 <img
                   className="w-14 block mx-auto py-2"
                   src="/images/logo.png"
                   alt="010221.org"
                 />
                 <ul className="leading-10 text-xl mt-4 text-center uppercase">
-                  <li className="border-b border-t py-2">
+                  <li className="border-b border-t py-2 cursor-pointer">
                     <Popup
                       trigger={<span>ကျွန်တော်တို့ အကြောင်း</span>}
                       modal
@@ -55,7 +55,7 @@ function Navbar(props) {
                           >
                             &times;
                           </button>
-                          <div className="header text-center text-red-500 border-b py-2 mb-2 text-2xl">
+                          <div className="header text-center text-red-700 border-b py-2 mb-2 text-2xl">
                             010221.org
                           </div>
                           <div className="content px-6 leading-7 dark:text-white tracking-wide">
@@ -97,17 +97,22 @@ function Navbar(props) {
                       <FaExternalLinkAlt className="inline-block ml-2" />
                     </a>
                   </li>
-                  <li className="border-b py-2">အချက်အလက် ပြင်မယ်</li>
+                  <li className="border-b py-2 cursor-not-allowed">အချက်အလက် ပြင်မယ်</li>
                   <li onClick={() => setTheme(colorTheme)}>
-                    {colorTheme === "light" ? (
+                    <div
+                      className="wrapper bg-gray-300 dark:bg-gray-600 overflow-hidden w-1/2 mx-auto rounded-2xl mt-4 shadow-inner"
+                    >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        width="30%"
-                        height="auto"
-                        className="block mx-auto border mt-2"
+                        className={`light mr-4 w-10 h-auto inline-block mx-auto transition-all transform duration-150 ease-in-out 
+                        ${
+                          colorTheme === "dark"
+                            ? "-translate-y-full"
+                            : "translate-y-0"
+                        }`}
                       >
                         <path
                           stroke-linecap="round"
@@ -116,15 +121,18 @@ function Navbar(props) {
                           d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                         />
                       </svg>
-                    ) : (
+
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
-                        width="30%"
-                        height="auto"
-                        className="block mx-auto"
+                        className={`dark w-10 inline-block h-auto mx-auto overflow-hidden z-30 transition-all transform duration-150 ease-in-out 
+                        ${
+                          colorTheme === "dark"
+                            ? "translate-y-0"
+                            : "translate-y-full"
+                        }`}
                       >
                         <path
                           stroke-linecap="round"
@@ -133,7 +141,7 @@ function Navbar(props) {
                           d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
                         />
                       </svg>
-                    )}
+                    </div>
                   </li>
                 </ul>
               </aside>
@@ -162,7 +170,7 @@ function Navbar(props) {
                     className="px-3 py-2 rounded-md text-sm font-medium text-white focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    Home
+                    မူလစာမျက်နှာ
                   </NavLink>
 
                   <NavLink
@@ -170,7 +178,7 @@ function Navbar(props) {
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700"
                     activeClassName="active"
                   >
-                    Junta Business List
+                    ရှောင်ရန်
                   </NavLink>
 
                   <NavLink
@@ -178,14 +186,14 @@ function Navbar(props) {
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    CDM Information Center
+                    CDM ထောက်ပံ့ရေး
                   </NavLink>
                   <NavLink
                     to="/publicshame"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    Shame
+                    လောက်ကောင်များ
                   </NavLink>
                   {LoggedStatus ? (
                     <NavLink
@@ -219,7 +227,7 @@ function Navbar(props) {
                         >
                           &times;
                         </button>
-                        <div className="header text-center text-red-500 border-b py-2 mb-2 text-2xl">
+                        <div className="header text-center text-red-600 border-b py-2 mb-2 text-2xl">
                           010221.org
                         </div>
                         <div className="content px-6 leading-7 dark:text-white tracking-wide">

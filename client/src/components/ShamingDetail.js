@@ -35,12 +35,12 @@ function CDMDetail(props) {
   return (
     <div className="w-full md:max-w-4xl mx-auto items-center justify-center px-1">
       <div className="heading flex justify-items-center">
-        <Link to="/publicshame" className="text-center flex-none">
+        <Link to="/publicshame" className="text-center flex-none my-4">
           <IoIosArrowBack className="text-gray-500 inline-block" size={30} />
           <span>Back</span>
         </Link>
-        <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider flex-1">
-          Public Shaming List
+        <h1 className="text-xl md:text-3xl font-black dark:text-white text-gray-600 text-center my-4 tracking-wider flex-1">
+          လောက်ကောင်
         </h1>
       </div>
       <hr />
@@ -80,7 +80,7 @@ function CDMDetail(props) {
                 <img src={profile.proof} alt="proof" onClick={() => setIsImageViewerOpen(true)}
               className="mb-4 mx-auto w-full md:w-2/5 cursor-pointer"/>:null
             } */}
-            
+
               <div
                 className={`proof-img grid ${
                   profile.proof && profile.proof.length > 1 ? "grid-cols-2" : ""
