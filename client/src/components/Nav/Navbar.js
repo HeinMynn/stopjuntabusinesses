@@ -28,14 +28,17 @@ function Navbar(props) {
           <div className="lg:flex items-center justify-between h-31">
             <div className="flex lg:flex flex-grow items-center xs:mx-auto">
               <div className="setting">
-                <FaBars className="w-8 h-auto text-white" onClick={toggle} />
+                <FaBars
+                  className="w-8 h-auto text-white cursor-pointer"
+                  onClick={toggle}
+                />
               </div>
               <aside
                 className={`transform top-0 left-0 w-64 text-gray-800 bg-white dark:text-white dark:bg-gray-800 fixed h-full overflow-auto ease-in-out transition-all duration-300 z-30 
                 ${isOpen ? "translate-x-0" : "-translate-x-full"}`}
               >
                 <FaTimes
-                  className="w-5 h-auto float-right mt-2 mr-2 text-white bg-red-500"
+                  className="w-5 h-auto float-right mt-2 mr-2 text-white bg-red-500 cursor-pointer"
                   onClick={toggle}
                 />
                 <img
@@ -100,8 +103,15 @@ function Navbar(props) {
                       <FaExternalLinkAlt className="inline-block ml-2" />
                     </a>
                   </li>
-                  <li className="border-b py-2 cursor-not-allowed">
-                    အချက်အလက် ပြင်မယ်
+                  <li className="border-b py-2">
+                    <a
+                      href="https://forms.gle/mnqJ37yqo2cUaJZE6"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      အချက်အလက် ပြင်မယ်
+                      <FaExternalLinkAlt className="inline-block ml-2" />
+                    </a>
                   </li>
                   <li
                     onClick={() => {
@@ -109,7 +119,7 @@ function Navbar(props) {
                       localStorage.theme = colorTheme;
                     }}
                   >
-                    <div className="wrapper bg-gray-300 dark:bg-gray-600 overflow-hidden w-1/2 mx-auto rounded-2xl mt-4 shadow-inner">
+                    <div className="wrapper bg-gray-300 dark:bg-gray-600 overflow-hidden w-1/2 mx-auto rounded-2xl mt-4 shadow-inner cursor-pointer">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
