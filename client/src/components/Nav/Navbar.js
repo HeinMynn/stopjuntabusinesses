@@ -219,13 +219,6 @@ function Navbar(props) {
                     တပ်ပိုင်လုပ်ငန်းများ
                   </NavLink>
                   <NavLink
-                    to="/businesses"
-                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700"
-                    activeClassName="active"
-                  >
-                    ဘောမလုပ်ငန်းများ
-                  </NavLink>
-                  <NavLink
                     to="/cdm"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
