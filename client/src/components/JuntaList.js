@@ -3,12 +3,20 @@ import axios from "axios";
 import Spinner from "./Parts/Spinner";
 import { FaSearch } from "react-icons/fa";
 import CheckingEmpty from "./Parts/CheckingEmpty";
+import { Helmet } from "react-helmet";
 
 function JuntaList(props) {
   let [data, setData] = useState([]);
   const [isLoading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [searchInd, setSearchInd] = useState("");
+  const [owned, setOwned] = useState("military");
+  if (owned === 'military') {
+  data = data.filter((obj) => obj.owned === undefined);
+  } else if (owned === 'private') {
+    data = data.filter((obj) => obj.owned === "private");
+}
+  
 
   function fetchBusiness() {
     axios
@@ -21,6 +29,15 @@ function JuntaList(props) {
         console.log(err);
       });
   }
+
+  function handleBusinessMilitary(e) {
+    setOwned('military')
+  }
+
+  function handleBusinessPrivate(e) {
+    setOwned('private')
+  }
+
   function groupBy(data, key) {
     return data.reduce((acc, x) => {
       acc[x[key]] = [...(acc[x[key]] || []), x];
@@ -73,9 +90,35 @@ function JuntaList(props) {
   }, [search]);
   return (
     <div className="container px-2 mx-auto">
-      <h1 className="text-xl md:text-4xl font-black text-gray-600 dark:text-white text-center my-4">
-        တပ်ပိုင် စီးပွားရေး လုပ်ငန်းများ သပိတ်မှောက် လှုပ်ရှားမှု
-      </h1>
+      <Helmet>
+        <title>Boycott Military Businesses | Burma Spring Revolution 2021</title>
+        <meta
+          name="description"
+          content="စစ်တပ်ပိုင် လုပ်ငန်းများကို ရှောင်ကြဉ်နိုင်စေရန် စာရင်းပြုစုထားပါသည်။"
+        />
+      </Helmet>
+      <div className="tabs text-center mb-4">
+        <h2
+          className={`text-md cursor-pointer md:text-xl font-black text-gray-600 dark:text-white inline-block text-center mr-2 md:mr-10 px-2 md:px-10 py-2 ${
+            owned === "military"
+              ? "border-b-4 border-gray-600 dark:border-white shadow-md"
+              : ""
+          }`}
+          onClick={handleBusinessMilitary}
+        >
+          တပ်ပိုင်လုပ်ငန်းများ
+        </h2>
+        <h2
+          className={`text-md md:text-xl font-black text-gray-600 dark:text-white inline-block text-center mr-2 md:mr-10 px-2 md:px-10 py-2 cursor-pointer ${
+            owned === "private"
+              ? "border-b-4 dark:border-white border-black hover:border-gray-900 dark:hover:border-white hover:shadow-lg"
+              : ""
+          }`}
+          onClick={handleBusinessPrivate}
+        >
+          ဆက်စပ်လုပ်ငန်းများ
+        </h2>
+      </div>
       {isLoading ? <Spinner /> : ""}
       <div className="lg:max-w-4xl grid lg:grid-cols-2 gap-2 mx-auto">
         <div className="search relative">
@@ -145,9 +188,16 @@ function JuntaList(props) {
                         key={obj._id}
                         className="w-full border border-gray-200 px-4 py-4 rounded-md mb-2 shadow-md"
                       >
-                        <p className="font-normal text-gray-600 dark:text-white tracking-wider leading-4">
+                        <p
+                          className={`${
+                            owned === "private" ? "font-bold" : "font-normal"
+                          } text-lg text-gray-600 dark:text-white tracking-wider leading-4`}
+                        >
                           {obj.product}
                         </p>
+                        <small className="dark:text-gray-300">
+                          {obj.detail}
+                        </small>
                       </div>
                     );
                   })}

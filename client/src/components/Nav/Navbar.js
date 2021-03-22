@@ -46,7 +46,7 @@ function Navbar(props) {
                   src="/images/logo.png"
                   alt="010221.org"
                 />
-                <ul className="leading-10 text-xl mt-4 text-center uppercase">
+                <ul className="leading-10 text-md mt-4 text-center uppercase">
                   <li className="border-b border-t py-2 cursor-pointer">
                     <Popup
                       trigger={<span>ကျွန်တော်တို့ အကြောင်း</span>}
@@ -110,6 +110,26 @@ function Navbar(props) {
                       rel="noreferrer"
                     >
                       အချက်အလက် ပြင်မယ်
+                      <FaExternalLinkAlt className="inline-block ml-2" />
+                    </a>
+                  </li>
+                  <li className="border-b py-2">
+                    <a
+                      href="https://www.heroesofmyanmar.com/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      ကျဆုံးသူရဲကောင်းများ
+                      <FaExternalLinkAlt className="inline-block ml-2" />
+                    </a>
+                  </li>
+                  <li className="border-b py-2">
+                    <a
+                      href="https://www.crphmyanmar.org/"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      CRPH Website
                       <FaExternalLinkAlt className="inline-block ml-2" />
                     </a>
                   </li>
@@ -196,9 +216,15 @@ function Navbar(props) {
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700"
                     activeClassName="active"
                   >
-                    ရှောင်ရန်
+                    တပ်ပိုင်လုပ်ငန်းများ
                   </NavLink>
-
+                  <NavLink
+                    to="/businesses"
+                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700"
+                    activeClassName="active"
+                  >
+                    ဘောမလုပ်ငန်းများ
+                  </NavLink>
                   <NavLink
                     to="/cdm"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"

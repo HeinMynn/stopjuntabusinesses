@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
 import Disclaimer from "./Parts/Disclaimer";
+import { Helmet } from "react-helmet";
 
 function Home(props) {
   const contentful = require("contentful");
@@ -67,8 +68,15 @@ function Home(props) {
   };
   return (
     <div className="container px-4 mx-auto">
+      <Helmet>
+        <title>Burma Spring Revolution 2021 | Popular Events</title>
+        <meta
+          name="description"
+          content="မြန်မာ့နွေဦးတော်လှန်ရေးကာလအတွင်း ထင်ရှားသော အဖြစ်အပျက်များကို ဖတ်ရှုနိုင်ပါသည်။"
+        />
+      </Helmet>
       {/* <h1 className="title text-center">01 Feb 21</h1> */}
-      <Disclaimer/>
+      <Disclaimer />
       {/* <GetOS id="1474835114" /> */}
       <div className="mx-auto">
         <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
