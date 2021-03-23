@@ -4,7 +4,7 @@ import { IoIosArrowBack } from "react-icons/io";
 import { Link, useParams } from "react-router-dom";
 import Spinner from "./Parts/Spinner";
 import Lightbox from "react-image-lightbox";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 function CDMDetail(props) {
   const { id } = useParams();
@@ -36,10 +36,14 @@ function CDMDetail(props) {
   return (
     <div className="w-full md:max-w-4xl mx-auto items-center justify-center px-1">
       <Helmet>
-        <title>Shame {profile.name} | Burma Spring Revolution 2021</title>
+        <title>{`Social Punishment - ${profile.name} | Burma Spring Revolution 2021`}</title>
         <meta
           name="description"
-          content="စစ်အာဏာသိမ်းလုပ်ရပ်ကို ထောက်ခံသူများ၊ ပြည်သူကို အနိုင်ကျင့် နှိပ်စက်သူများကို Social Punishment ပြုလုပ်နိုင်ရန် စုစည်းပေးထားပါသည်။"
+          content={`Social Punishment for ${profile.name} - ${
+            
+            profile.designation
+          
+          } | ${profile.remark?profile.remark.slice(0,  150):""}`}
         />
       </Helmet>
       <div className="heading flex justify-items-center">

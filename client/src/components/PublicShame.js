@@ -4,7 +4,7 @@ import Spinner from "./Parts/Spinner";
 import { Link } from "react-router-dom";
 import { FaBriefcase, FaUserTie, FaSearch } from "react-icons/fa";
 import CheckingEmpty from "./Parts/CheckingEmpty";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
 
 function PublicShame(props) {
   let [shame, setShame] = useState([]);
@@ -87,9 +87,10 @@ function PublicShame(props) {
   }
   function filterSearch(array, value) {
     return array.filter((e) => {
+      const trimValue = value.replace(/\s+/g, "");
       return (
-        e.name.trim().toLowerCase().match(search.trim()) ||
-        e.mmName.trim().toLowerCase().match(search.trim())
+        e.name.replace(/\s+/g, "").toLowerCase().match(trimValue) ||
+        e.mmName.replace(/\s+/g, "").toLowerCase().match(trimValue)
       );
     });
   }
@@ -133,7 +134,7 @@ function PublicShame(props) {
         <title>Social Punishment List | Burma Spring Revolution 2021</title>
         <meta
           name="description"
-          content="စစ်အာဏာသိမ်းလုပ်ရပ်ကို ထောက်ခံသူများ၊ ပြည်သူကို အနိုင်ကျင့် နှိပ်စက်သူများကို Social Punishment ပြုလုပ်နိုင်ရန် စုစည်းပေးထားပါသည်။"
+          content="စစ်အာဏာသိမ်းလုပ်ရပ်ကို ထောက်ခံသူများ၊ ပြည်သူကို အနိုင်ကျင့် နှိပ်စက်သူ လောက်ကောင်များကို Social Punishment ပြုလုပ်နိုင်ရန် စုစည်းပေးထားပါသည်။"
         />
       </Helmet>
       <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider dark:text-white">

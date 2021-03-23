@@ -91,10 +91,12 @@ function JuntaList(props) {
   return (
     <div className="container px-2 mx-auto">
       <Helmet>
-        <title>Boycott Military Businesses | Burma Spring Revolution 2021</title>
+        <title>
+          Boycott Military Businesses | Burma Spring Revolution 2021
+        </title>
         <meta
           name="description"
-          content="စစ်တပ်ပိုင် လုပ်ငန်းများကို ရှောင်ကြဉ်နိုင်စေရန် စာရင်းပြုစုထားပါသည်။"
+          content="Military Owned Businesses - စစ်တပ်ပိုင် လုပ်ငန်းများကို ရှောင်ကြဉ်နိုင်စေရန် စာရင်းပြုစုထားပါသည်။ ကိုယ့်ရဲ့ ပိုက်ဆံဟာ ပြည်သူကို သတ်မယ့် ကျည်ဆံဖိုး မဖြစ်ပါစေနဲ့။"
         />
       </Helmet>
       <div className="tabs text-center mb-4">

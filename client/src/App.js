@@ -20,6 +20,7 @@ import LogOut from "./components/Auth/LogOut";
 import { isLogin } from "./utils";
 import { PageView, initGA } from "./components/Tracking";
 import { useEffect } from "react";
+import { HelmetProvider } from "react-helmet-async";
 
 function App() {
   useEffect(() => {
@@ -29,26 +30,28 @@ function App() {
   return (
     <Router>
       <ScrollToTop />
-      <div className="max-w-full container dark:bg-black dark:text-white">
-        <Navbar loggedIn={isLogin()} />
-        <div className="h-24 dark:bg-black"></div>
-        <div className="min-h-screen dark:bg-black">
-          <Switch>
-            <PublicRoute restricted={true} path="/login" component={Login} />
-            <PrivateRoute path="/logout" component={LogOut} />
-            <PrivateRoute path="/admin/addnewcdm" component={AddCDM} />
-            <Route path="/publicshame" component={PublicShame} />
-            <PublicRoute restricted={false} path="/cdm" component={CDM} />
-            <Route path="/shaming/:id" component={ShamingDetail} />
-            <Route path="/juntabusinesses" component={JuntaList} />
-            <Route path="/daily/:date" component={Daily} />
-            <Route exact path="/" component={Home} />
-          </Switch>
+      <HelmetProvider>
+        <div className="max-w-full container dark:bg-black dark:text-white">
+          <Navbar loggedIn={isLogin()} />
+          <div className="h-24 dark:bg-black"></div>
+          <div className="min-h-screen dark:bg-black">
+            <Switch>
+              <PublicRoute restricted={true} path="/login" component={Login} />
+              <PrivateRoute path="/logout" component={LogOut} />
+              <PrivateRoute path="/admin/addnewcdm" component={AddCDM} />
+              <Route path="/publicshame" component={PublicShame} />
+              <PublicRoute restricted={false} path="/cdm" component={CDM} />
+              <Route path="/shaming/:id" component={ShamingDetail} />
+              <Route path="/juntabusinesses" component={JuntaList} />
+              <Route path="/daily/:date" component={Daily} />
+              <Route exact path="/" component={Home} />
+            </Switch>
+          </div>
+          <Footer />
+          <div className="h-16 md:hidden"></div>
+          <MobileNav />
         </div>
-        <Footer />
-        <div className="h-16 md:hidden"></div>
-        <MobileNav />
-      </div>
+      </HelmetProvider>
     </Router>
   );
 }

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
+import { Helmet } from "react-helmet-async";
 
 function CDM(props) {
   let [cdm, setCDM] = useState([]);
@@ -117,6 +118,13 @@ function filterCityByRegion(array, value) {
   const Card = (props) => {
     return (
       <div className="card text-center">
+        <Helmet>
+          <title>CDM Support | Burma Spring Revolution 2021</title>
+          <meta
+            name="description"
+            content="CDM ဝန်ထမ်းများကို ထောက်ပံ့ပေးနေသည့် CRPH CDM Support အပါအဝင် CDM Support စာမျက်နှာများကို စုစည်းပေးထားပါသည်။"
+          />
+        </Helmet>
         <div className="cardBody mx-auto">
           <img
             src={props.imgLink}
