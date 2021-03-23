@@ -3,14 +3,15 @@ import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
 import Disclaimer from "./Parts/Disclaimer";
 import { Helmet } from "react-helmet-async";
+require("dotenv").config();
 
 function Home(props) {
   const contentful = require("contentful");
   const [isLoading, setLoading] = useState(true);
 
   const client = contentful.createClient({
-    space: "r2ak70f7xd3d",
-    accessToken: "86Bm_4aW31vATZgvdJOMuZbiZ2l04DATXR0Ihfluvrg",
+    space: process.env.REACT_APP_SPACE,
+    accessToken: process.env.REACT_APP_ACCESSTOKEN,
   });
 
   const [post, setPost] = useState([]);
