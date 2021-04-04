@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   FaBars,
   FaExternalLinkAlt,
-  FaInfoCircle,
   FaTimes,
 } from "react-icons/fa";
 import { Link, NavLink } from "react-router-dom";
 import Popup from "reactjs-popup";
 import useDarkMode from "../Parts/DarkMode";
+import { ChangeLang } from "../Parts/ChangeLang";
 
 function Navbar(props) {
   const LoggedStatus = props.loggedIn;
   const [isOpen, setOpen] = useState(false);
   const [colorTheme, setTheme] = useDarkMode();
+  const [locale, setLocale] = useContext(ChangeLang);
+  const [langOpen, setLangOpen] = useState(false);
 
   function toggle(e) {
     if (isOpen) {
@@ -46,10 +48,16 @@ function Navbar(props) {
                   src="/images/logo.png"
                   alt="010221.org"
                 />
-                <ul className="leading-10 text-md mt-4 text-center uppercase">
+                <ul className="leading-10 text-sm mt-4 text-center uppercase">
                   <li className="border-b border-t py-2 cursor-pointer">
                     <Popup
-                      trigger={<span>ကျွန်တော်တို့ အကြောင်း</span>}
+                      trigger={
+                        locale === "MY" ? (
+                          <span>ကျွန်တော်တို့ အကြောင်း</span>
+                        ) : (
+                          <span>About Us</span>
+                        )
+                      }
                       modal
                       nested
                     >
@@ -95,11 +103,22 @@ function Navbar(props) {
                   </li>
                   <li className="border-b py-2">
                     <a
+                      href="/magazine"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      မိုလိုတော့ဗ် စာစဉ် ဖတ်ရန်
+                    </a>
+                  </li>
+                  <li className="border-b py-2">
+                    <a
                       href="https://forms.gle/42hirfQ4AkTg13rcA"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      လောက်ကောင် ထည့်မယ်
+                      {locale === "MY"
+                        ? "လောက်ကောင် ထည့်မယ်"
+                        : "Add Social Punishment"}
                       <FaExternalLinkAlt className="inline-block ml-2" />
                     </a>
                   </li>
@@ -109,7 +128,9 @@ function Navbar(props) {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      အချက်အလက် ပြင်မယ်
+                      {locale === "MY"
+                        ? "အချက်အလက် ပြင်မယ်"
+                        : "Notice the wrong fact?"}
                       <FaExternalLinkAlt className="inline-block ml-2" />
                     </a>
                   </li>
@@ -119,10 +140,13 @@ function Navbar(props) {
                       target="_blank"
                       rel="noreferrer"
                     >
-                      ကျဆုံးသူရဲကောင်းများ
+                      {locale === "MY"
+                        ? "ကျဆုံးသူရဲကောင်းများ"
+                        : "Fallen Heroes"}
                       <FaExternalLinkAlt className="inline-block ml-2" />
                     </a>
                   </li>
+
                   <li className="border-b py-2">
                     <a
                       href="https://www.crphmyanmar.org/"
@@ -208,7 +232,7 @@ function Navbar(props) {
                     className="px-3 py-2 rounded-md text-sm font-medium text-white focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    မူလစာမျက်နှာ
+                    {locale === "MY" ? "မူလစာမျက်နှာ" : "Home"}
                   </NavLink>
 
                   <NavLink
@@ -216,21 +240,25 @@ function Navbar(props) {
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700"
                     activeClassName="active"
                   >
-                    တပ်ပိုင်လုပ်ငန်းများ
+                    {locale === "MY"
+                      ? "ရှောင်ရန် လုပ်ငန်းများ"
+                      : "Military Businesses"}
                   </NavLink>
                   <NavLink
                     to="/cdm"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    CDM ထောက်ပံ့ရေး
+                    {locale === "MY"
+                      ? "CDM ထောက်ပံ့ရေး"
+                      : "CDM Supporting Teams"}
                   </NavLink>
                   <NavLink
                     to="/publicshame"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
                   >
-                    လောက်ကောင်များ
+                    {locale === "MY" ? "လောက်ကောင်များ" : "Social Punishment"}
                   </NavLink>
                   {LoggedStatus ? (
                     <NavLink
@@ -245,58 +273,7 @@ function Navbar(props) {
                   )}
                 </div>
               </div>
-              <div className="right hidden flex-1 justify-self-end md:block">
-                <div className="about">
-                  <Popup
-                    trigger={
-                      <span>
-                        <FaInfoCircle className="float-right text-white cursor-pointer focus:outline-none w-8 h-auto" />
-                      </span>
-                    }
-                    modal
-                    nested
-                  >
-                    {(close) => (
-                      <div className="modal bg-white dark:bg-gray-500 px-6 py-2 shadow-md rounded-md">
-                        <button
-                          className="close focus:outline-none float-right"
-                          onClick={close}
-                        >
-                          &times;
-                        </button>
-                        <div className="header text-center text-red-600 border-b py-2 mb-2 text-2xl">
-                          010221.org
-                        </div>
-                        <div className="content px-6 leading-7 dark:text-white tracking-wide">
-                          မြန်မာ့နွေဦးတော်လှန်ရေးကာလအတွင်း အောက်ပါ
-                          အချက်အလက်များကို စုစည်းဖော်ပြပေးထားပါသည်။
-                          <ol className="list-decimal">
-                            <li>
-                              ထင်ရှားသောအဖြစ်အပျက်များကို မှတ်တမ်းတင်ခြင်း၊
-                            </li>
-                            <li>
-                              CDM Support facebook စာမျက်နှာများကို
-                              မြို့နယ်အလိုက် စုစည်းပေးခြင်း၊
-                            </li>
-                            <li>
-                              စစ်တပ်၏ စီးပွားရေး လုပ်ငန်းများကို ရှောင်နိုင်ရန်
-                              စုစည်းပေးခြင်း၊
-                            </li>
-                            <li>
-                              စစ်အာဏာသိမ်းလုပ်ရပ်ကို ထောက်ခံသူများ၊ ပြည်သူကို
-                              အနိုင်ကျင့် နှိပ်စက်သူများကို Social Punishment
-                              ပြုလုပ်နိုင်ရန် စုစည်းပေးခြင်း။
-                            </li>
-                          </ol>
-                          <br />
-                          အချက်အလက်များ ပေးပို့လိုပါက contact@010221.org သို့
-                          email ပေးပို့ အကြောင်းကြားနိုင်ပါသည်။
-                        </div>
-                      </div>
-                    )}
-                  </Popup>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
