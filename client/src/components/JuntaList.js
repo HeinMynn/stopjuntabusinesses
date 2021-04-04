@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Spinner from "./Parts/Spinner";
 import { FaSearch } from "react-icons/fa";
 import CheckingEmpty from "./Parts/CheckingEmpty";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+import {  ChangeLang, Lang  } from "./Parts/ChangeLang";
 
 function JuntaList(props) {
   let [data, setData] = useState([]);
@@ -11,12 +12,15 @@ function JuntaList(props) {
   const [search, setSearch] = useState("");
   const [searchInd, setSearchInd] = useState("");
   const [owned, setOwned] = useState("military");
-  if (owned === 'military') {
-  data = data.filter((obj) => obj.owned === undefined);
-  } else if (owned === 'private') {
+
+  let language = useContext(ChangeLang)[0];
+  let currentLang = Lang[language];
+
+  if (owned === "military") {
+    data = data.filter((obj) => obj.owned === undefined);
+  } else if (owned === "private") {
     data = data.filter((obj) => obj.owned === "private");
-}
-  
+  }
 
   function fetchBusiness() {
     axios
@@ -31,11 +35,11 @@ function JuntaList(props) {
   }
 
   function handleBusinessMilitary(e) {
-    setOwned('military')
+    setOwned("military");
   }
 
   function handleBusinessPrivate(e) {
-    setOwned('private')
+    setOwned("private");
   }
 
   function groupBy(data, key) {
@@ -59,7 +63,14 @@ function JuntaList(props) {
 
   function filterSearch(array, value) {
     return array.filter((e) => {
-      return e.product.trim().toLowerCase().match(search);
+      let mmName = "";
+      if (e.mmName !== undefined) {
+        mmName = e.mmName;
+      }
+      return (
+        e.product.trim().toLowerCase().match(search) ||
+        mmName.trim().toLowerCase().match(search)
+      );
     });
   }
 
@@ -98,27 +109,33 @@ function JuntaList(props) {
           name="description"
           content="Military Owned Businesses - စစ်တပ်ပိုင် လုပ်ငန်းများကို ရှောင်ကြဉ်နိုင်စေရန် စာရင်းပြုစုထားပါသည်။ ကိုယ့်ရဲ့ ပိုက်ဆံဟာ ပြည်သူကို သတ်မယ့် ကျည်ဆံဖိုး မဖြစ်ပါစေနဲ့။"
         />
+        <meta
+          name="keywords"
+          content="myanmar juntas' businesses, military-owned businesses"
+        />
       </Helmet>
       <div className="tabs text-center mb-4">
         <h2
           className={`text-md cursor-pointer md:text-xl font-black text-gray-600 dark:text-white inline-block text-center mr-2 md:mr-10 px-2 md:px-10 py-2 ${
             owned === "military"
-              ? "border-b-4 border-gray-600 dark:border-white shadow-md"
+              ? "border-b-4 border-gray-600 dark:border-white shadow-lg"
               : ""
           }`}
           onClick={handleBusinessMilitary}
         >
-          တပ်ပိုင်လုပ်ငန်းများ
+          {currentLang.lang === "my-MM"
+            ? "တပ်ပိုင်လုပ်ငန်းများ"
+            : "Military-Owned"}
         </h2>
         <h2
           className={`text-md md:text-xl font-black text-gray-600 dark:text-white inline-block text-center mr-2 md:mr-10 px-2 md:px-10 py-2 cursor-pointer ${
             owned === "private"
-              ? "border-b-4 dark:border-white border-black hover:border-gray-900 dark:hover:border-white hover:shadow-lg"
+              ? "border-b-4 dark:border-white border-black hover:border-gray-900 dark:hover:border-white shadow-lg"
               : ""
           }`}
           onClick={handleBusinessPrivate}
         >
-          ဆက်စပ်လုပ်ငန်းများ
+          {currentLang.lang === "my-MM" ? "ဆက်စပ်လုပ်ငန်းများ" : "Military-Related"}
         </h2>
       </div>
       {isLoading ? <Spinner /> : ""}
@@ -195,7 +212,10 @@ function JuntaList(props) {
                             owned === "private" ? "font-bold" : "font-normal"
                           } text-lg text-gray-600 dark:text-white tracking-wider leading-4`}
                         >
-                          {obj.product}
+                          {currentLang.lang === "my-MM" &&
+                          obj.mmName !== undefined
+                            ? obj.mmName
+                            : obj.product}
                         </p>
                         <small className="dark:text-gray-300">
                           {obj.detail}

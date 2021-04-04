@@ -7,13 +7,13 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import Popup from "reactjs-popup";
 import useDarkMode from "../Parts/DarkMode";
-// import { ChangeLang } from "../Parts/ChangeLang";
+import { ChangeLang } from "../Parts/ChangeLang";
 
 function Navbar(props) {
   const LoggedStatus = props.loggedIn;
   const [isOpen, setOpen] = useState(false);
   const [colorTheme, setTheme] = useDarkMode();
-  const [locale, setLocale] = useContext("ChangeLang");
+  const [locale, setLocale] = useContext(ChangeLang);
   const [langOpen, setLangOpen] = useState(false);
 
   function toggle(e) {
@@ -102,11 +102,7 @@ function Navbar(props) {
                     </Popup>
                   </li>
                   <li className="border-b py-2">
-                    <a
-                      href="/magazine"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href="/magazine" target="_blank" rel="noreferrer">
                       မိုလိုတော့ဗ် စာစဉ် ဖတ်ရန်
                     </a>
                   </li>
@@ -273,7 +269,72 @@ function Navbar(props) {
                   )}
                 </div>
               </div>
-              
+              <div className="right flex-1 justify-self-end md:block">
+                <div className="about">
+                  <div className="float-right relative inline-block text-left">
+                    <div>
+                      <button
+                        type="button"
+                        className="inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-2 py-2 bg-black text-sm font-medium text-gray-200 hover:bg-red-700 focus:outline-none focus:ring-offset-gray-100 focus:ring-indigo-500"
+                        id="options-menu"
+                        aria-expanded="true"
+                        aria-haspopup="true"
+                        onClick={() => {
+                          setLangOpen(langOpen ? false : true);
+                        }}
+                      >
+                        {locale === "EN" ? "EN" : "မြန်မာ"}
+                        <svg
+                          className="-mr-1 ml-2 h-5 w-5"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                          aria-hidden="true"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </button>
+                    </div>
+                    <div
+                      className={`origin-top-right absolute right-0 mt-2 w-30 rounded-md shadow-lg bg-black dark:bg-red-700 border border-white ring-1 ring-black ring-opacity-5 focus:outline-none ${
+                        langOpen ? "block" : "hidden"
+                      }`}
+                      role="menu"
+                      aria-orientation="vertical"
+                      aria-labelledby="options-menu"
+                    >
+                      <div className="py-1" role="none">
+                        <span
+                          className="block px-4 py-2 text-sm text-gray-50 hover:bg-gray-700 hover:text-gray-100 cursor-pointer"
+                          role="menuitem"
+                          onClick={() => {
+                            setLocale("EN");
+                            localStorage.setItem("lang", "EN");
+                            setLangOpen(false);
+                          }}
+                        >
+                          EN
+                        </span>
+                        <span
+                          className="block px-4 py-2 text-sm text-gray-50 hover:bg-gray-700 hover:text-gray-100 cursor-pointer"
+                          role="menuitem"
+                          onClick={() => {
+                            setLocale("MY");
+                            localStorage.setItem("lang", "MY");
+                            setLangOpen(false);
+                          }}
+                        >
+                          မြန်မာ
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

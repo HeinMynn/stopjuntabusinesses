@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
-import Disclaimer from "./Parts/Disclaimer";
+import { ChangeLang, Lang } from "../components/Parts/ChangeLang";
 import { Helmet } from "react-helmet-async";
 require("dotenv").config();
 
 function Home(props) {
   const contentful = require("contentful");
   const [isLoading, setLoading] = useState(true);
+  const [month, setMonth] = useState("");
+  let i = 0;
+  let language = useContext(ChangeLang)[0];
+  let currentLang = Lang[language];
 
   const client = contentful.createClient({
     space: process.env.REACT_APP_SPACE,
@@ -15,12 +19,36 @@ function Home(props) {
   });
 
   const [post, setPost] = useState([]);
+
+  const postFilter = post.filter(
+    (item) =>
+      item.fields.eventDate.substring(item.fields.eventDate.indexOf(" ")+1) ===
+      month
+  );
+  const monthArray = post.map((month) =>
+    month.fields.eventDate.substring(month.fields.eventDate.indexOf(" ")+1)
+  );
+  const months = [...new Set(monthArray)];
+  console.log(month)
+
+  function handleChange(e) {
+    setMonth(e.target.value)
+  }
+  
   useEffect(() => {
-    client.getEntries({ order: "sys.createdAt" }).then((response) => {
-      setPost(response.items.reverse());
-      setLoading(false);
-    });
-  }, []);
+    client
+      .getEntries({
+        locale: `${currentLang.lang}`,
+        content_type: "blogPost",
+        order: "-sys.createdAt",
+      })
+      .then((response) => {
+        setPost(response.items);
+        let eventDate = response.items[0].fields.eventDate;
+        setMonth(eventDate.substring(eventDate.indexOf(" ")+1))
+        setLoading(false);
+      });
+  }, [currentLang]);
 
   const Left = (props) => {
     return (
@@ -73,18 +101,39 @@ function Home(props) {
         <title>Burma Spring Revolution 2021 | Popular Events</title>
         <meta
           name="description"
-          content="010221.org is aimed to keep popular events during burma spring revolution 2021, to list down military-owned businesses to avoid and Social Punishment for persons who involved in military coup in any way."
+          content="010221.org is aimed to keep popular events during burma spring revolution 2021 (Feb 1, 2021 Coup), to list down military-owned businesses to avoid and Social Punishment for persons who involved in military coup in any way."
         />
+        <meta name="keywords" content="Feb 1 coup, myanmar spring revolution, myanmar coup, myanmar junta" />
       </Helmet>
       {/* <h1 className="title text-center">01 Feb 21</h1> */}
-      <Disclaimer />
+
       {/* <GetOS id="1474835114" /> */}
       <div className="mx-auto">
+        <div className="month">
+          <select
+            name="month"
+            id="month"
+            className="w-full border border-gray-300 text-gray-600 focus:outline-none px-4 py-2 my-2 h-10 rounded-md"
+            onChange={handleChange}
+          >
+            <option value="" disabled>
+              Choose Month
+            </option>
+            {months.map((obj) => {
+              i++;
+              return (
+                <option key={i} value={obj}>
+                  {obj}
+                </option>
+              );
+            })}
+          </select>
+        </div>
         <div className="flex flex-col md:grid grid-cols-9 mx-auto p-2 text-blue-50">
           {isLoading ? <Spinner /> : ""}
           {/* left */}
-          {post &&
-            post.map((obj) => {
+          {postFilter &&
+            postFilter.map((obj) => {
               if (obj.fields.left) {
                 return (
                   <Left
