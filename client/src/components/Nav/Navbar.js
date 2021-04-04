@@ -7,13 +7,13 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import Popup from "reactjs-popup";
 import useDarkMode from "../Parts/DarkMode";
-import { ChangeLang } from "../Parts/ChangeLang";
+// import { ChangeLang } from "../Parts/ChangeLang";
 
 function Navbar(props) {
   const LoggedStatus = props.loggedIn;
   const [isOpen, setOpen] = useState(false);
   const [colorTheme, setTheme] = useDarkMode();
-  const [locale, setLocale] = useContext(ChangeLang);
+  const [locale, setLocale] = useContext("ChangeLang");
   const [langOpen, setLangOpen] = useState(false);
 
   function toggle(e) {
