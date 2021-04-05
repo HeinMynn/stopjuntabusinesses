@@ -102,14 +102,9 @@ function Navbar(props) {
                     </Popup>
                   </li>
                   <li className="border-b py-2">
-                    <a
-                      href="https://idigitalnews.com/molotov"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
+                    <a href="/molotov" target="_blank" rel="noreferrer">
                       မိုလိုတော့ဗ် စာစဉ် ဖတ်ရန်
                     </a>
-                    <FaExternalLinkAlt className="inline-block ml-2" />
                   </li>
                   <li className="border-b py-2">
                     <a
