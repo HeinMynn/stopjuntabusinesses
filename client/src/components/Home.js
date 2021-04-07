@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import Interweave from "interweave";
 import Spinner from "./Parts/Spinner";
+import Campaign from "./Parts/Campaign";
 import { ChangeLang, Lang } from "../components/Parts/ChangeLang";
 import { Helmet } from "react-helmet-async";
 require("dotenv").config();
@@ -103,12 +104,16 @@ function Home(props) {
           name="description"
           content="010221.org is aimed to keep popular events during burma spring revolution 2021 (Feb 1, 2021 Coup), to list down military-owned businesses to avoid and Social Punishment for persons who involved in military coup in any way."
         />
-        <meta name="keywords" content="Feb 1 coup, myanmar spring revolution, myanmar coup, myanmar junta" />
+        <meta
+          name="keywords"
+          content="Feb 1 coup, myanmar spring revolution, myanmar coup, myanmar junta"
+        />
       </Helmet>
       {/* <h1 className="title text-center">01 Feb 21</h1> */}
 
       {/* <GetOS id="1474835114" /> */}
       <div className="mx-auto">
+        <Campaign />
         <div className="month">
           <select
             name="month"
