@@ -35,14 +35,14 @@ function Campaign(props) {
         <div className="img mx-auto px-2">
           <img src={props.artwork} className="w-60 h-auto" />
         </div>
-        <div className="mb-2 text-center md:text-left">
-          <div className="text-xl font-bold text-red-400 mt-4 hidden mb-2">
+        <div className="mb-2">
+          <div className="text-xl text-center font-bold text-red-400 mt-4 hidden mb-2">
             {props.title}
           </div>
-          <div className="slogan text-xl text-red-400 font-bold leading-9 mb-2">
+          <div className="slogan text-center text-lg text-red-400 font-bold leading-9 mb-2">
             {props.slogan}
           </div>
-          <div className="dateTime text-sm mb-2">
+          <div className="dateTime text-center text-sm mb-2">
             <span className="date font-extralight">
               <FcCalendar className="inline-block mr-1" />
               {props.date} |{" "}
@@ -53,7 +53,7 @@ function Campaign(props) {
             </span>
           </div>
           <div className="city"></div>
-          <div className="desc text-sm">
+          <div className="desc px-4 text-sm leading-7">
             {documentToReactComponents(props.desc)}
           </div>
         </div>
@@ -63,11 +63,15 @@ function Campaign(props) {
 
   const CardList = (props) => {
     return (
-      <div className="wrapper grid grid-cols-12 gap-2 border border-red-400 mb-2 p-2 rounded-md">
+      <div className="wrapper grid grid-cols-12 gap-2 border border-l-6 border-red-400 mb-2 p-2 rounded-md">
         <span className="col-span-2 date border border-t-8 border-red-400 text-center">
-          <span className="text-2xl">{props.date.substring(0, props.date.indexOf(" "))}</span>
-          <br  />
-          <span className="text-sm">{props.date.substring(props.date.indexOf(" "))}</span>
+          <span className="text-2xl font-black mt-4 inline-block">
+            {props.date.substring(0, props.date.indexOf(" "))}
+          </span>
+          <br />
+          <span className="text-sm">
+            {props.date.substring(props.date.indexOf(" "))}
+          </span>
         </span>
         <div className="col-span-3 mx-auto">
           <img
@@ -77,7 +81,7 @@ function Campaign(props) {
           />
         </div>
 
-        <div className="font-semibold col-span-7">
+        <div className="font-semibold col-span-7 leading-7">
           <div className="text-lg text-red-400 mb-2">{props.title}</div>
           <div className="dateTime text-sm mb-2">
             <span className="date font-extralight">
@@ -95,7 +99,11 @@ function Campaign(props) {
     );
   }
   useEffect(() => {
-    const today = new Date().toISOString().slice(0, 10);
+    const d = new Date();
+    const today = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
+      .toISOString()
+      .slice(0, 10);
+    
     client
       .getEntries({
         content_type: "campaign",
@@ -136,7 +144,7 @@ function Campaign(props) {
           </h3>
           {campaigns.slice(1).map((obj) => {
             const localDate = new Date(obj.fields.dateTime);
-            const date = FullDate(localDate, "2-digit", "short","numeric");
+            const date = FullDate(localDate, "2-digit", "short");
             const time = dateToTime(localDate);
             return (
               <CardList
