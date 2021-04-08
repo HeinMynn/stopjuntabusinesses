@@ -30,7 +30,6 @@ function Home(props) {
     month.fields.eventDate.substring(month.fields.eventDate.indexOf(" ")+1)
   );
   const months = [...new Set(monthArray)];
-  console.log(month)
 
   function handleChange(e) {
     setMonth(e.target.value)

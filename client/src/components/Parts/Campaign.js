@@ -31,7 +31,7 @@ function Campaign(props) {
   
   const Card = (props) => {
     return (
-      <div className="card-wrapper grid md:grid-cols-2 p-4 rounded-md dark:hover:bg-gray-900 border border-red-400">
+      <div className="card-wrapper px-2 mb-2 grid md:grid-cols-2 p-4 rounded-md dark:hover:bg-gray-900 border border-red-400">
         <div className="img mx-auto px-2">
           <img src={props.artwork} className="w-60 h-auto" />
         </div>
@@ -53,7 +53,9 @@ function Campaign(props) {
             </span>
           </div>
           <div className="city"></div>
-          <div className="desc text-sm">{documentToReactComponents(props.desc)}</div>
+          <div className="desc text-sm">
+            {documentToReactComponents(props.desc)}
+          </div>
         </div>
       </div>
     );
@@ -61,12 +63,21 @@ function Campaign(props) {
 
   const CardList = (props) => {
     return (
-      <div className="wrapper grid grid-cols-5 gap-2 border border-red-400 p-2 mb-2 rounded-md">
-        <div className="col-span-2 mx-auto w-28 h-28">
-          <img src={props.artwork} alt="" className="w-28 h-28 object-contain"/>
+      <div className="wrapper grid grid-cols-12 gap-2 border border-red-400 mb-2 p-2 rounded-md">
+        <span className="col-span-2 date border border-t-8 border-red-400 text-center">
+          <span className="text-2xl">{props.date.substring(0, props.date.indexOf(" "))}</span>
+          <br  />
+          <span className="text-sm">{props.date.substring(props.date.indexOf(" "))}</span>
+        </span>
+        <div className="col-span-3 mx-auto">
+          <img
+            src={props.artwork}
+            alt=""
+            className="w-28 h-28 object-contain"
+          />
         </div>
 
-        <div className="font-semibold col-span-3">
+        <div className="font-semibold col-span-7">
           <div className="text-lg text-red-400 mb-2">{props.title}</div>
           <div className="dateTime text-sm mb-2">
             <span className="date font-extralight">
@@ -84,7 +95,7 @@ function Campaign(props) {
     );
   }
   useEffect(() => {
-    const today = new Date();
+    const today = new Date().toISOString().slice(0, 10);
     client
       .getEntries({
         content_type: "campaign",
@@ -99,8 +110,8 @@ function Campaign(props) {
   }, []);
 
   return (
-    <div className="grid md:grid-cols-7">
-      <div className="featured col-span-4">
+    <div className="grid md:grid-cols-7 md:gap-4">
+      <div className="featured md:col-span-4">
         {isLoading ? <Spinner /> : ""}
         {campaigns.slice(0, 1).map((obj) => {
           const localDate = new Date(obj.fields.dateTime);
@@ -119,11 +130,14 @@ function Campaign(props) {
           );
         })}
       </div>
-      <div className="upcoming col-span-3">
-        <div className="wrapper px-2">
+      <div className="upcoming md:col-span-3">
+        <div className="wrapper">
+          <h3 className="text-red-400 font-extrabold text-lg text-center md:text-left">
+            Upcoming Strikes
+          </h3>
           {campaigns.slice(1).map((obj) => {
             const localDate = new Date(obj.fields.dateTime);
-            const date = FullDate(localDate, "2-digit", "short");
+            const date = FullDate(localDate, "2-digit", "short","numeric");
             const time = dateToTime(localDate);
             return (
               <CardList
