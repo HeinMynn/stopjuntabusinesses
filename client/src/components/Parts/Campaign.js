@@ -104,7 +104,6 @@ function Campaign(props) {
       })
       .then((response) => {
         setCampaign(response.items);
-        console.log(response.items);
         setLoading(false);
       });
   }, []);
