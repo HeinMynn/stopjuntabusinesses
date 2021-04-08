@@ -53,7 +53,7 @@ function Home(props) {
   const Left = (props) => {
     return (
       <div className="flex flex-row-reverse md:contents">
-        <div className="bg-red-500 col-start-1 col-end-5 p-4 mr-1 md:mr-5 rounded-xl my-4 ml-auto shadow-md md:max-w-full leftWrapper">
+        <div className="bg-red-500 col-start-1 col-end-5 p-4 mr-1 md:mr-5 rounded-xl my-4 ml-auto shadow-md md:max-w-full">
           <h3 className="font-semibold text-md md:text-lg mb-1">
             {props.title}
           </h3>
