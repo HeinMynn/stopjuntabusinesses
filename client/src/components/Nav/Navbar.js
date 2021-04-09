@@ -102,9 +102,7 @@ function Navbar(props) {
                     </Popup>
                   </li>
                   <li className="border-b py-2">
-                    <a href="/newsletter" target="_blank" rel="noreferrer">
-                      မိုလိုတော့ဗ် စာစဉ် ဖတ်ရန်
-                    </a>
+                    <a href="/newsletter">မိုလိုတော့ဗ် စာစဉ် ဖတ်ရန်</a>
                   </li>
                   <li className="border-b py-2">
                     <a
