@@ -33,7 +33,7 @@ function Campaign(props) {
     return (
       <div className="card-wrapper px-2 mb-2 grid md:grid-cols-2 p-4 rounded-md dark:hover:bg-gray-900 border border-red-400">
         <div className="img mx-auto px-2">
-          <img src={props.artwork} className="w-60 h-auto" />
+          <img src={props.artwork} alt="" className="w-60 h-auto" />
         </div>
         <div className="mb-2">
           <div className="text-xl text-center font-bold text-red-400 mt-4 hidden mb-2">

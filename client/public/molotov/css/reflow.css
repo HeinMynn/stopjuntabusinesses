@@ -907,6 +907,7 @@
 
 .flowpaper-static-link:hover{
     background-color:rgba(114,230,255,0.4);
+    color:transparent;
 }
 
 .flowpaper-center-outer{
@@ -2701,6 +2702,10 @@ li.flowpaper-submenu-treeitem input:checked ~ ol > li:last-child {margin:0; }
     display: block;
     margin: 0 auto;
     cursor: pointer;
+}
+
+.flowpaper-dropzone{
+    border-radius:inherit !important;
 }
 /* fonts from http://metroui.org.ua/icons.html */
 

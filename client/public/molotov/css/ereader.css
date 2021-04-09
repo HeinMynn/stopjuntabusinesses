@@ -6,6 +6,7 @@
     background-color:#262626;
     overflow-x:hidden;
     overflow-y:auto;
+    z-index:10;
 }
 
 .flowpaper-reflow-tocitem{

@@ -22,6 +22,7 @@ import { PageView, initGA } from "./components/Tracking";
 import { useEffect, useState } from "react";
 import { HelmetProvider } from "react-helmet-async";
 import { ChangeLang } from "./components/Parts/ChangeLang";
+import Newsletter from "./components/Newsletter";
 
 function App() {
   const localLang = localStorage.getItem("lang");
@@ -53,6 +54,7 @@ function App() {
                 <Route path="/shaming/:id" component={ShamingDetail} />
                 <Route path="/juntabusinesses" component={JuntaList} />
                 <Route path="/daily/:date" component={Daily} />
+                <Route path="/newsletter" component={Newsletter} />
                 <Route exact path="/" component={Home} />
               </Switch>
             </div>

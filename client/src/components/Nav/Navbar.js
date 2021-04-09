@@ -102,7 +102,7 @@ function Navbar(props) {
                     </Popup>
                   </li>
                   <li className="border-b py-2">
-                    <a href="/molotov" target="_blank" rel="noreferrer">
+                    <a href="/newsletter" target="_blank" rel="noreferrer">
                       မိုလိုတော့ဗ် စာစဉ် ဖတ်ရန်
                     </a>
                   </li>
@@ -249,12 +249,20 @@ function Navbar(props) {
                       ? "CDM ထောက်ပံ့ရေး"
                       : "CDM Supporting Teams"}
                   </NavLink>
+
                   <NavLink
                     to="/publicshame"
                     className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
                     activeClassName="active"
                   >
                     {locale === "MY" ? "လောက်ကောင်များ" : "Social Punishment"}
+                  </NavLink>
+                  <NavLink
+                    to="/newsletter"
+                    className="px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:bg-gray-900"
+                    activeClassName="active"
+                  >
+                    {locale === "MY" ? "စာစဉ်များ ဖတ်ရန်" : "Newsletter"}
                   </NavLink>
                   {LoggedStatus ? (
                     <NavLink
