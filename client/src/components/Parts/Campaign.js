@@ -98,6 +98,17 @@ function Campaign(props) {
       </div>
     );
   }
+
+  const CheckingEmpty = (props) => {
+    return (
+      <div
+        className="px-4 py-3 leading-normal mt-5 text-yellow-700 bg-yellow-100 rounded-lg w-full mx-auto"
+        role="alert"
+      >
+        <span>Stay Tuned with us. More Strikes are coming.</span>
+      </div>
+    );
+  };
   useEffect(() => {
     const d = new Date();
     const today = new Date(d.getTime() - d.getTimezoneOffset() * 60000)
@@ -118,7 +129,13 @@ function Campaign(props) {
 
   return (
     <div className="grid md:grid-cols-7 md:gap-4">
-      <div className="featured md:col-span-4">
+      <div
+        className={`featured md:col-span-4 ${
+          
+          campaigns.length === 0 ? "hidden" : ""
+        
+        }`}
+      >
         {isLoading ? <Spinner /> : ""}
         {campaigns.slice(0, 1).map((obj) => {
           const localDate = new Date(obj.fields.dateTime);
@@ -142,6 +159,7 @@ function Campaign(props) {
           <h3 className="text-red-400 font-extrabold text-lg text-center md:text-left">
             Upcoming Strikes
           </h3>
+          {campaigns.slice(1).length == 0 ? <CheckingEmpty /> : ""}
           {campaigns.slice(1).map((obj) => {
             const localDate = new Date(obj.fields.dateTime);
             const date = FullDate(localDate, "2-digit", "short");
