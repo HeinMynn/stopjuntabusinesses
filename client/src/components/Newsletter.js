@@ -20,10 +20,11 @@ function Newsletter() {
             <span className="text-xs font-serif">{props.number}</span>
           </div>
           <div className="link border text-center font-serif bg-red-500 py-2 cursor-pointer">
-            <a href={props.link} target="_blank" rel="noreferrer">
-              <FaBookReader className="inline-block mr-2" /> Read Me</a>
-            </div>
+            <a href={props.link}>
+              <FaBookReader className="inline-block mr-2" /> Read Me
+            </a>
           </div>
+        </div>
       );
   };
   return (
