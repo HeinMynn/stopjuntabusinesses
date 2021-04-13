@@ -2,9 +2,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import React, { useEffect, useState } from "react";
 import { FcCalendar, FcClock } from "react-icons/fc";
 import { ImEnlarge } from "react-icons/im";
-import { IoIosArrowBack } from "react-icons/io";
 import Lightbox from "react-image-lightbox";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Spinner from "./Parts/Spinner";
 
 function CampaignDetail(props) {
@@ -58,10 +57,6 @@ function CampaignDetail(props) {
 
   return (
     <div className="w-full md:max-w-4xl mx-auto items-center justify-center px-2">
-      <Link to="/" className="text-center flex-none my-4">
-        <IoIosArrowBack className="text-gray-500 inline-block" size={30} />
-        <span>Back</span>
-      </Link>
       {isLoading ? <Spinner /> : ""}
       {campaign.map((obj) => {
         const localDate = new Date(obj.fields.dateTime);
@@ -102,7 +97,7 @@ function CampaignDetail(props) {
                     ? "grid-cols-2"
                     : ""
                 } lg:grid-cols-${
-                  obj.fields.photos ? obj.fields.photos.length : "1"
+                  obj.fields.photos ? obj.fields.photos.length / 2 : "1"
                 } gap-3 mx-auto w-full`}
               >
                 {obj.fields.photos &&
@@ -119,7 +114,7 @@ function CampaignDetail(props) {
                           className="mb-4 px-6 py-6 w-full h-52 object-cover cursor-pointer border"
                         />
                         <span className="enlarge-icon absolute top-5 right-5 md:invisible">
-                          <ImEnlarge className="opacity-80" />
+                          <ImEnlarge className="opacity-80 text-red-500" />
                         </span>
                         <span className="absolute left-1/2 transform px-1 -translate-x-1/2 bottom-10 bg-black text-white text-xs">
                           {photo.fields.title}

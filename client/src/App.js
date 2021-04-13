@@ -24,6 +24,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { ChangeLang } from "./components/Parts/ChangeLang";
 import Newsletter from "./components/Newsletter";
 import CampaignDetail from "./components/CampaignDetail";
+import CampaignList from "./components/CampaignList";
 
 function App() {
   const localLang = localStorage.getItem("lang");
@@ -56,6 +57,7 @@ function App() {
                 <Route path="/juntabusinesses" component={JuntaList} />
                 <Route path="/daily/:date" component={Daily} />
                 <Route path="/newsletter" component={Newsletter} />
+                <Route path="/campaigns/:status" component={CampaignList} />
                 <Route path="/campaign/:id" component={CampaignDetail} />
                 <Route exact path="/" component={Home} />
               </Switch>

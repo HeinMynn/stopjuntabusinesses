@@ -4,20 +4,15 @@ import Spinner from "./Parts/Spinner";
 import Campaign from "./Parts/Campaign";
 import { ChangeLang, Lang } from "../components/Parts/ChangeLang";
 import { Helmet } from "react-helmet-async";
+import {client} from "./Parts/Contentful"
 require("dotenv").config();
 
 function Home(props) {
-  const contentful = require("contentful");
   const [isLoading, setLoading] = useState(true);
   const [month, setMonth] = useState("");
   let i = 0;
   let language = useContext(ChangeLang)[0];
   let currentLang = Lang[language];
-
-  const client = contentful.createClient({
-    space: process.env.REACT_APP_SPACE,
-    accessToken: process.env.REACT_APP_ACCESSTOKEN,
-  });
 
   const [post, setPost] = useState([]);
 
