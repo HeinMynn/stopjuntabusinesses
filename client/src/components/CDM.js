@@ -160,7 +160,7 @@ function filterCityByRegion(array, value) {
         <img
           src="https://bn1301files.storage.live.com/y4m1anhU9nlFZR2nIXw19TGONK6nooP2ztl4q45sDq-SYH2YYec2QNr7_6VkBp3_wLNrJ2PlPKayStjpJjo1eDTaDE6VNzjzEqDZwEK30kcSCLH4UQsyg-XnFBMU6sGyGYTuBjljxQfWbvAlvUycODAQztEPVMjSftvhJXlseRi1XM?width=1024&height=587&cropmode=none"
           alt="banner"
-          className="block mx-auto"
+          className={`block mx-auto ${isLoading ? "hidden" : ""}`}
         />
         <p className="text-xs text-right mb-3">
           Art by

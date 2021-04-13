@@ -1,6 +1,5 @@
 import React from "react";
 import { FaBookReader } from "react-icons/fa";
-import { Link } from "react-router-dom";
 
 function Newsletter() {
   const Newsletter = (props) => {

@@ -11,6 +11,11 @@ ol li{
   list-style-type:decimal;
 }
 
+.enlarge:hover .enlarge-icon{
+  visibility: visible;
+  z-index: 100;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

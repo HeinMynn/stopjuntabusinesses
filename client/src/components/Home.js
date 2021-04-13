@@ -45,9 +45,10 @@ function Home(props) {
       .then((response) => {
         setPost(response.items);
         let eventDate = response.items[0].fields.eventDate;
-        setMonth(eventDate.substring(eventDate.indexOf(" ")+1))
+        setMonth(eventDate.substring(eventDate.indexOf(" ") + 1));
         setLoading(false);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentLang]);
 
   const Left = (props) => {
