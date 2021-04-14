@@ -47,7 +47,28 @@ function CampaignList(props) {
   }, []);
   return (
     <div className="w-full md:max-w-3xl mx-auto items-center justify-center px-2">
-      {isRedirect ? <Redirect to="/404" /> : null}
+      <Helmet>
+        <title>
+          Burma Revolution Strike Lists | Burma Spring Revolution 2021
+        </title>
+        <meta
+          name="description"
+          content="a list of revolution strikes during burma spring revolution against military coup."
+        />
+        <meta
+          name="keywords"
+          content="Strike, myanmar spring revolution, myanmar coup, Silent, Flash Strike"
+        />
+      </Helmet>
+      {isRedirect ? (
+        <Redirect
+          to={{
+            pathname: "/404",
+            search: "?utm=your+face",
+            state: { comeFrom: "campaignList" },
+          }}
+        />
+      ) : null}
       <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider dark:text-white">
         {status === "completed" ? "Completed " : "Upcoming "} Campaigns
       </h1>

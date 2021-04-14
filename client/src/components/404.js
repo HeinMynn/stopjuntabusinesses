@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 function NotFound(props) {
+  useEffect((props) => {
+    const come = props.location.state.comeFrom;
+    console.log(come);
+  });;
+
   return (
     <div className="w-full max-w-4xl px-2 mx-auto text-center">
       <h3 className="font-bold text-red-400 text-3xl text-center">

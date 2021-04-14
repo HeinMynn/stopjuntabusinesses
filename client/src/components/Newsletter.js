@@ -5,6 +5,17 @@ function Newsletter() {
   const Newsletter = (props) => {
       return (
         <div className="inline-block mb-4 w-full px-4">
+          <Helmet>
+            <title>Read Newsletters | Burma Spring Revolution 2021</title>
+            <meta
+              name="description"
+              content="Read Burma Spring Revolution Newsletter spreading to fight against blocking information flow during internet cut off."
+            />
+            <meta
+              name="keywords"
+              content="Molotov, myanmar spring revolution, myanmar coup, LGE Newsletter"
+            />
+          </Helmet>
           <div className="image cursor-pointer">
             <img
               src={props.image}
@@ -20,9 +31,9 @@ function Newsletter() {
           </div>
           <a href={props.link}>
             <div className="link border text-center font-serif bg-red-500 py-2 cursor-pointer">
-                <FaBookReader className="inline-block mr-2" /> Read Me
+              <FaBookReader className="inline-block mr-2" /> Read Me
             </div>
-        </a>
+          </a>
         </div>
       );
   };

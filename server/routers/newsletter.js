@@ -35,7 +35,7 @@ newsletterRoutes.route("/").get(function (req, res) {
 });
 
 newsletterRoutes.post("/add", authenticateJWT, (req, res) => {
-  const { errors, isValid } = validateCDMInput(req.body);
+  const { errors, isValid } = validateNewsletterInput(req.body);
   const { email } = req.user;
   // Check validation
   if (!isValid) {
