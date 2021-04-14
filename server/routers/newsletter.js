@@ -1,7 +1,7 @@
 const express = require("express");
 const newsletterRoutes = express.Router();
-const jwt = require("jsonwebtoken");
 const cloudinary = require("cloudinary").v2;
+const jwt = require("jsonwebtoken");
 const multer = require("multer");
 
 let Newsletter = require("../models/newsletter.model");
