@@ -25,11 +25,11 @@ const authenticateJWT = (req, res, next) => {
 };
 
 newsletterRoutes.route("/").get(function (req, res) {
-  CDM.find(function (err, cdm) {
+  Newsletter.find(function (err, newsletter) {
     if (err) {
       console.log(err);
     } else {
-      res.json(cdm);
+      res.json(newsletter);
     }
   });
 });
@@ -72,8 +72,8 @@ newsletterRoutes.post("/add", authenticateJWT, (req, res) => {
 
 newsletterRoutes.route("/:id").get(function (req, res) {
   let id = req.params.id;
-  Newsletter.findById(id, function (err, cdm) {
-    res.json(cdm);
+  Newsletter.findById(id, function (err, newsletter) {
+    res.json(newsletter);
   });
 });
 
