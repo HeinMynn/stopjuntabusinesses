@@ -21,21 +21,21 @@ function Newsletter() {
             content="Molotov, myanmar spring revolution, myanmar coup, LGE Newsletter"
           />
         </Helmet>
-        <div className="image cursor-pointer">
-          <img
-            src={props.image}
-            alt="molotov cover"
-            className="w-3/4 md:w-full mx-auto border-2 rounded-lg border-red-400"
-          />
-        </div>
-        <div className="text mb-2 text-center">
-          <h3 className="font-bold font-serif text-xl text-red-400">
-            {props.title}
-          </h3>
-          <span className="text-xs font-serif">{props.number}</span>
-        </div>
         <a href={props.link}>
-          <div className="link border text-center font-serif bg-red-500 py-2 cursor-pointer">
+          <div className="image cursor-pointer mb-2">
+            <img
+              src={props.image}
+              alt="molotov cover"
+              className="w-3/4 md:w-full mx-auto border-2 rounded-lg border-red-400"
+            />
+          </div>
+          <div className="text mb-2 text-center">
+            <h3 className="font-bold font-serif text-xl text-red-400">
+              {props.title}
+            </h3>
+            <span className="text-xs font-serif">{props.number}</span>
+          </div>
+          <div className="link border text-center font-serif bg-red-500 text-white py-2 cursor-pointer">
             <FaBookReader className="inline-block mr-2" /> Read Me
           </div>
         </a>
