@@ -1,15 +1,18 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import Spinner from "../Parts/Spinner";
 
 function AddNewsletter(props) {
   const history = useHistory();
   const [msg, setMsg] = useState("");
   const [errors, setErrors] = useState([]);
   const token = localStorage.getItem("token");
+  const [imageURL, setImageURL] = useState("");
+  const [picLoading, setPicLoading] = useState(false);
   const [newLetter, setNewLetter] = useState({
     title: "",
-    imgURL: "",
+    imgURL: imageURL,
     number: "",
     link: "",
   });
@@ -17,7 +20,19 @@ function AddNewsletter(props) {
   function handleChange(e) {
     setNewLetter({ ...newLetter, [e.target.name]: e.target.value });
   }
-  console.log(newLetter);
+  const imageUploadHandler = (e) => {
+    e.preventDefault();
+    setPicLoading(true);
+    const image = e.target.files[0];
+    const data = new FormData();
+    data.append("file", image);
+    axios
+      .post("https://mm010221.herokuapp.com/newsletter/imageupload", data)
+      .then((response) => {
+        setPicLoading(false);
+        setImageURL(response.data.data);
+      });
+  };
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -83,15 +98,27 @@ function AddNewsletter(props) {
           ) : (
             ""
           )}
-          <label htmlFor="imgURL">
-            Cover URL
-            <input
-              type="text"
-              name="imgURL"
-              className="w-full border focus:outline-none px-2 rounded-md h-8"
-              onChange={handleChange}
-              value={newLetter.imgURL}
+          {picLoading ? <Spinner /> : null}
+          {imageURL ? (
+            <img
+              src={imageURL}
+              alt="your pic"
+              style={{ marginTop: "1rem", height: 150 }}
             />
+          ) : null}
+
+          <label htmlFor="contained-button-file">
+            <input
+              accept="image/*"
+              style={{ display: "none" }}
+              id="contained-button-file"
+              multiple
+              type="file"
+              onChange={imageUploadHandler}
+            />
+            <div className="bg-black hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+              ဓါတ်ပုံတင်မည်
+            </div>
           </label>
           <label htmlFor="number">
             Number
