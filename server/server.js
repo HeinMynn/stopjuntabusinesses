@@ -34,12 +34,14 @@ const cdmRouter = require("./routers/cdm");
 const shameRouter = require("./routers/shame");
 const userRouter = require("./routers/users");
 const cityRouter = require("./routers/city");
+const newsletterRouter = require("./routers/newsletter");
 
 app.use("/business", businessRouter);
 app.use("/cdm", cdmRouter);
 app.use("/shame", shameRouter);
 app.use("/user", userRouter);
 app.use("/city", cityRouter);
+app.use("/newsletter", newsletterRouter);
 
 app.listen(PORT, function () {
   console.log("Server is running on Port: " + PORT);
