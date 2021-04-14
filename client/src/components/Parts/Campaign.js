@@ -103,9 +103,9 @@ function Campaign(props) {
         })}
         <Link
           to="/campaigns/completed"
-          className="text-sm text-red-400 font-normal hover:underline"
+          className="text-sm text-red-400 font-normal hover:underline float-right mb-4"
         >
-          အရင်က သပိတ်အစီအစဉ်တွေ ပြန်ကြည့်မယ်{" "}
+          အရင်သပိတ်တွေ ပြန်ကြည့်မယ်{" "}
           <FaLongArrowAltRight className="inline-block" />
         </Link>
       </div>
