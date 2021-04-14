@@ -3,12 +3,12 @@ import { client } from "./Parts/Contentful";
 import { HCard } from "./Parts/HCard";
 import { FullDate, dateToTime } from "./Parts/Dates";
 import Spinner from "./Parts/Spinner";
-import { useParams } from "react-router-dom";
+import { useParams, Redirect } from "react-router-dom";
 
 function CampaignList(props) {
   const [isLoading, setLoading] = useState(true);
   const [campaigns, setCampaign] = useState([]);
-
+  const [isRedirect, setRedirect] = useState(false);
   const { status } = useParams();
 
   useEffect(() => {
@@ -27,7 +27,7 @@ function CampaignList(props) {
           setCampaign(response.items);
           setLoading(false);
         });
-    } else {
+    } else if (status === "upcoming") {
       client
         .getEntries({
           content_type: "campaign",
@@ -38,12 +38,16 @@ function CampaignList(props) {
           setCampaign(response.items);
           setLoading(false);
         });
+    } else {
+      setLoading(false);
+      setRedirect(true);
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return (
     <div className="w-full md:max-w-3xl mx-auto items-center justify-center px-2">
+      {isRedirect ? <Redirect to="/404" /> : null}
       <h1 className="text-xl md:text-3xl font-black text-gray-600 text-center my-4 tracking-wider dark:text-white">
         {status === "completed" ? "Completed " : "Upcoming "} Campaigns
       </h1>

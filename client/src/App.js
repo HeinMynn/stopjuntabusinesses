@@ -25,6 +25,7 @@ import { ChangeLang } from "./components/Parts/ChangeLang";
 import Newsletter from "./components/Newsletter";
 import CampaignDetail from "./components/CampaignDetail";
 import CampaignList from "./components/CampaignList";
+import NotFound from "./components/404";
 
 function App() {
   const localLang = localStorage.getItem("lang");
@@ -60,6 +61,7 @@ function App() {
                 <Route path="/campaigns/:status" component={CampaignList} />
                 <Route path="/campaign/:id" component={CampaignDetail} />
                 <Route exact path="/" component={Home} />
+                <Route component={NotFound} />
               </Switch>
             </div>
             <Footer />

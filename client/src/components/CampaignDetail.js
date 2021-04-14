@@ -4,6 +4,7 @@ import { FcCalendar, FcClock } from "react-icons/fc";
 import { ImEnlarge } from "react-icons/im";
 import Lightbox from "react-image-lightbox";
 import { useParams } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 import Spinner from "./Parts/Spinner";
 
 function CampaignDetail(props) {
@@ -12,6 +13,7 @@ function CampaignDetail(props) {
   const [isOpen, setOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
   const [isLoading, setLoading] = useState(true);
+  const [isRedirect, setRedirect] = useState(false);
 
   const { id } = useParams();
 
@@ -50,14 +52,16 @@ function CampaignDetail(props) {
       .then((response) => {
         setCampaign(response.items);
         setLoading(false);
-        console.log(response.items);
+        if (response.items.length === 0) {
+          setRedirect(true);
+        }
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
   return (
     <div className="w-full md:max-w-4xl mx-auto items-center justify-center px-2">
       {isLoading ? <Spinner /> : ""}
+      {isRedirect ? <Redirect to="/404" /> : null}
       {campaign.map((obj) => {
         const localDate = new Date(obj.fields.dateTime);
         const date = FullDate(localDate, "2-digit", "short", "numeric");
