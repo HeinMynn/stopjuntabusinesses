@@ -16,6 +16,7 @@ import Login from "./components/Auth/Login";
 import PrivateRoute from "./components/Parts/PrivateRoute";
 import PublicRoute from "./components/Parts/PublicRoute";
 import AddCDM from "./components/Admin/AddCDM";
+import AddNewsletter from "./components/Admin/AddNewsletter";
 import LogOut from "./components/Auth/LogOut";
 import { isLogin } from "./utils";
 import { PageView, initGA } from "./components/Tracking";
@@ -52,6 +53,10 @@ function App() {
                 />
                 <PrivateRoute path="/logout" component={LogOut} />
                 <PrivateRoute path="/admin/addnewcdm" component={AddCDM} />
+                <PrivateRoute
+                  path="/admin/addnewsletter"
+                  component={AddNewsletter}
+                />
                 <Route path="/publicshame" component={PublicShame} />
                 <PublicRoute restricted={false} path="/cdm" component={CDM} />
                 <Route path="/shaming/:id" component={ShamingDetail} />

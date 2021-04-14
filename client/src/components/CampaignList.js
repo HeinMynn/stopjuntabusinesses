@@ -4,6 +4,7 @@ import { HCard } from "./Parts/HCard";
 import { FullDate, dateToTime } from "./Parts/Dates";
 import Spinner from "./Parts/Spinner";
 import { useParams, Redirect } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 function CampaignList(props) {
   const [isLoading, setLoading] = useState(true);

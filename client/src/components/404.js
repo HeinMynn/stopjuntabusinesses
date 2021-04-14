@@ -1,10 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 function NotFound(props) {
-  useEffect((props) => {
-    const come = props.location.state.comeFrom;
-    console.log(come);
-  });;
 
   return (
     <div className="w-full max-w-4xl px-2 mx-auto text-center">
@@ -13,7 +9,7 @@ function NotFound(props) {
       </h3>
       <p className="leading-7 mb-4">
         သင်ရှာနေသော စာမျက်နှာကို မတွေ့ရပါ။ <br />
-        <span className="text-sm text-gray-300">
+        <span className="text-sm dark:text-gray-300">
           ညာဖက်က ခလုတ်ကို နှိပ်ရင် မူလစာမျက်နှာကို ပြန်ရောက်ပါမယ်။ ဘယ်ဖက်က
           ခလုတ်ကို နှိပ်ရင်လည်း တူတူပါပဲ။ ဒါပေမယ့် သူက အနီရောင်။
         </span>

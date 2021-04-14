@@ -8,7 +8,7 @@ function AddNewsletter(props) {
   const [errors, setErrors] = useState([]);
   const token = localStorage.getItem("token");
   const [newLetter, setNewLetter] = useState({
-    name: "",
+    title: "",
     imgURL: "",
     number: "",
     link: "",
@@ -17,6 +17,7 @@ function AddNewsletter(props) {
   function handleChange(e) {
     setNewLetter({ ...newLetter, [e.target.name]: e.target.value });
   }
+  console.log(newLetter);
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -27,7 +28,7 @@ function AddNewsletter(props) {
       .post(
         "https://mm010221.herokuapp.com/newsletter/add",
         {
-          name: newLetter.name,
+          title: newLetter.title,
           imgURL: newLetter.imgURL,
           number: newLetter.number,
           link: newLetter.link,
@@ -36,12 +37,12 @@ function AddNewsletter(props) {
       )
       .then((res) => {
         // localStorage.setItem("token", res.data.token);
-        setMsg(res.data.newsletter);
+        setMsg(res.data.newLetter);
         console.log(res);
         history.push("/admin/addnewsletter");
         setNewLetter({
           ...newLetter,
-          name: "",
+          title: "",
           imgURL: "",
           number: "",
           link: "",
@@ -75,9 +76,9 @@ function AddNewsletter(props) {
               value={newLetter.title}
             />
           </label>
-          {errors.name ? (
+          {errors.title ? (
             <span className="bg-red-400 text-white px-4 py-2 rounded-md mt-1 block">
-              {errors.name}
+              {errors.title}
             </span>
           ) : (
             ""
