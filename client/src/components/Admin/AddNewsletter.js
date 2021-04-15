@@ -31,8 +31,11 @@ function AddNewsletter(props) {
       .then((response) => {
         setPicLoading(false);
         setImageURL(response.data.data);
+        setNewLetter({ ...newLetter, imgURL: response.data.data });
       });
   };
+
+  console.log(newLetter);
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -62,6 +65,7 @@ function AddNewsletter(props) {
           number: "",
           link: "",
         });
+        setImageURL("");
       })
       .catch((err) => {
         if (err.response) {
