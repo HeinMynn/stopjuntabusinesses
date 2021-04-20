@@ -29,9 +29,11 @@ shameRoutes.route("/add").post((req, res) => {
 
   const newShamingData = {
     name,
+    mmName,
     designation,
     profile,
     department,
+    image,
     related,
     caseLink,
     remark,

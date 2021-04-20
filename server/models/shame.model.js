@@ -4,6 +4,12 @@ let Shame = new Schema({
   name: {
     type: String,
   },
+  mmName: {
+    type: String,
+  },
+  image: {
+    type: String,
+  },
   designation: {
     type: String,
   },
