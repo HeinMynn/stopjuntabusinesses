@@ -18,9 +18,11 @@ shameRoutes.route("/").get(function (req, res) {
 
 shameRoutes.route("/add").post((req, res) => {
   const name = req.body.name;
+  const mmName = req.body.mmName;
   const designation = req.body.designation;
   const profile = req.body.profile;
   const department = req.body.department;
+  const image = req.body.imgURL;
   const related = req.body.related;
   const caseLink = req.body.caseLink;
   const remark = req.body.remark;
