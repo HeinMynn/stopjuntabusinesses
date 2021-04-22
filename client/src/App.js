@@ -27,6 +27,7 @@ import Newsletter from "./components/Newsletter";
 import CampaignDetail from "./components/CampaignDetail";
 import CampaignList from "./components/CampaignList";
 import NotFound from "./components/404";
+import AddShame from "./components/Admin/AddShame";
 
 function App() {
   const localLang = localStorage.getItem("lang");
@@ -53,6 +54,7 @@ function App() {
                 />
                 <PrivateRoute path="/logout" component={LogOut} />
                 <PrivateRoute path="/admin/addnewcdm" component={AddCDM} />
+                <PrivateRoute path="/admin/addshame" component={AddShame} />
                 <PrivateRoute
                   path="/admin/addnewsletter"
                   component={AddNewsletter}

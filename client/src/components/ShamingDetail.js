@@ -5,6 +5,7 @@ import { Link, useParams } from "react-router-dom";
 import Spinner from "./Parts/Spinner";
 import Lightbox from "react-image-lightbox";
 import { Helmet } from "react-helmet-async";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
 
 function CDMDetail(props) {
   const { id } = useParams();
@@ -12,6 +13,7 @@ function CDMDetail(props) {
   const [isLoading, setLoading] = useState(true);
   const [isOpen, setOpen] = useState(false);
   const [photoIndex, setPhotoIndex] = useState();
+  const [isRedirect, setRedirect] = useState(false);
 
   function handleClick(props) {
     setOpen(true);
@@ -24,6 +26,9 @@ function CDMDetail(props) {
         // let newres = Object.entries(res);
         setProfile(res.data);
         setLoading(false);
+        if (res.data.length === 0) {
+          setRedirect(true);
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -36,15 +41,14 @@ function CDMDetail(props) {
 
   return (
     <div className="w-full md:max-w-4xl mx-auto items-center justify-center px-1">
+      {isRedirect ? <Redirect to="/404" /> : null}
       <Helmet>
         <title>{`Social Punishment - ${profile.name} | Burma Spring Revolution 2021`}</title>
         <meta
           name="description"
           content={`Social Punishment for ${profile.name} - ${
-            
             profile.designation
-          
-          } | ${profile.remark?profile.remark.slice(0,  150):""}`}
+          } | ${profile.remark ? profile.remark.slice(0, 150) : ""}`}
         />
       </Helmet>
       <div className="heading flex justify-items-center">
