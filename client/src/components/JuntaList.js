@@ -50,7 +50,7 @@ function JuntaList(props) {
   }
   var i = 0;
   var groupByIndustry = groupBy(data, "industry");
-
+console.log(groupByIndustry);
   function clearFilter() {
     setSearch("");
     setSearchInd("");
@@ -178,7 +178,7 @@ function JuntaList(props) {
               Industrial Estates/Offices
             </option>
             <option value="Manufacturing">Manufacturing</option>
-            <option value="Media">Media & Publishing</option>
+            <option value="Media & Publishing">Media & Publishing</option>
             <option value="Port">Port</option>
             <option value="Retail">Retail</option>
             <option value="Trading companies">Trading companies</option>
