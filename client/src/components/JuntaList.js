@@ -164,25 +164,15 @@ console.log(groupByIndustry);
             <option value="" disabled>
               --- Choose Industry ---
             </option>
-            <option value="Banking and finance">Banking and finance</option>
-            <option value="Cigarettes">Cigarettes</option>
-            <option value="Communications">Communications</option>
-            <option value="Construction">Construction</option>
-            <option value="Entertainment/Tourism">Entertainment/Tourism</option>
-            <option value="Food and drink">Food and drink</option>
-            <option value="Health Servcies">Health Servcies</option>
-            <option value="Health and Beauty Products">
-              Health and Beauty Products
-            </option>
-            <option value="Industrial Estates/Offices">
-              Industrial Estates/Offices
-            </option>
-            <option value="Manufacturing">Manufacturing</option>
-            <option value="Media & Publishing">Media & Publishing</option>
-            <option value="Port">Port</option>
-            <option value="Retail">Retail</option>
-            <option value="Trading companies">Trading companies</option>
-            <option value="Transport">Transport</option>
+            {groupByIndustry &&
+              Object.keys(groupByIndustry).map((ind) => {
+                i++;
+                return (
+                  <option key={i} value={ind}>
+                    {ind}
+                  </option>
+                );
+              })}
           </select>
           <button
             onClick={clearFilter}
