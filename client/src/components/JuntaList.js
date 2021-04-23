@@ -135,7 +135,9 @@ function JuntaList(props) {
           }`}
           onClick={handleBusinessPrivate}
         >
-          {currentLang.lang === "my-MM" ? "ဆက်စပ်လုပ်ငန်းများ" : "Military-Related"}
+          {currentLang.lang === "my-MM"
+            ? "ဆက်စပ်လုပ်ငန်းများ"
+            : "Military-Related"}
         </h2>
       </div>
       {isLoading ? <Spinner /> : ""}
@@ -176,7 +178,7 @@ function JuntaList(props) {
               Industrial Estates/Offices
             </option>
             <option value="Manufacturing">Manufacturing</option>
-            <option value="Media">Media</option>
+            <option value="Media">Media & Publishing</option>
             <option value="Port">Port</option>
             <option value="Retail">Retail</option>
             <option value="Trading companies">Trading companies</option>
