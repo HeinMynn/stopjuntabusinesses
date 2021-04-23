@@ -50,7 +50,7 @@ function JuntaList(props) {
   }
   var i = 0;
   var groupByIndustry = groupBy(data, "industry");
-console.log(groupByIndustry);
+
   function clearFilter() {
     setSearch("");
     setSearchInd("");
