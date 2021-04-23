@@ -31,7 +31,7 @@ import AddShame from "./components/Admin/AddShame";
 
 function App() {
   const localLang = localStorage.getItem("lang");
-  const locale = useState(localLang === null ? "EN" : localLang);
+  const locale = useState(localLang === null ? "MY" : localLang);
   
   useEffect(() => {
     initGA("UA-43406006-6");

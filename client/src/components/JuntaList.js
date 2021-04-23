@@ -50,7 +50,7 @@ function JuntaList(props) {
   }
   var i = 0;
   var groupByIndustry = groupBy(data, "industry");
-
+  var industry = groupBy(data, "industry");
   function clearFilter() {
     setSearch("");
     setSearchInd("");
@@ -165,7 +165,7 @@ function JuntaList(props) {
               --- Choose Industry ---
             </option>
             {groupByIndustry &&
-              Object.keys(groupByIndustry).map((ind) => {
+              Object.keys(industry).map((ind) => {
                 i++;
                 return (
                   <option key={i} value={ind}>
