@@ -36,6 +36,7 @@ function JuntaList(props) {
 
   function handleBusinessMilitary(e) {
     setOwned("military");
+    setSearchInd(...searchInd);
   }
 
   function handleBusinessPrivate(e) {

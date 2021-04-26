@@ -54,6 +54,13 @@ function Campaign(props) {
         role="alert"
       >
         <span>Stay Tuned with us. More Strikes are coming.</span>
+        <Link
+          to="/campaigns/completed"
+          className="inline-block text-sm text-red-400 font-normal hover:underline mb-4"
+        >
+          အရင်သပိတ်တွေ ပြန်ကြည့်မယ်{" "}
+          <FaLongArrowAltRight className="inline-block" />
+        </Link>
       </div>
     );
   };

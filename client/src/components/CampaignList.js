@@ -65,7 +65,6 @@ function CampaignList(props) {
         <Redirect
           to={{
             pathname: "/404",
-            search: "?utm=your+face",
             state: { comeFrom: "campaignList" },
           }}
         />
