@@ -36,11 +36,12 @@ function JuntaList(props) {
 
   function handleBusinessMilitary(e) {
     setOwned("military");
-    setSearchInd(...searchInd);
+    clearFilter();
   }
 
   function handleBusinessPrivate(e) {
     setOwned("private");
+    clearFilter();
   }
 
   function groupBy(data, key) {
@@ -52,6 +53,7 @@ function JuntaList(props) {
   var i = 0;
   var groupByIndustry = groupBy(data, "industry");
   var industry = groupBy(data, "industry");
+
   function clearFilter() {
     setSearch("");
     setSearchInd("");
